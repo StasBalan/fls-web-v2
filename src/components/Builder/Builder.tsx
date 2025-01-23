@@ -10,6 +10,11 @@ export function Builder({
   isTransparent,
   onNicknameChange,
   onIsTransparentChange,
+}: {
+  nickname: string;
+  isTransparent: boolean;
+  onNicknameChange: (value: string) => void;
+  onIsTransparentChange: (value: boolean) => void;
 }) {
   return (
     <div className={styles.wrapper}>
