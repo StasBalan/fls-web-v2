@@ -1,0 +1,45 @@
+.wrapper {
+  height: 100dvh;
+  width: 100dvw;
+
+  min-width: 1024px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .builder {
+    height: 100%;
+    width: 400px;
+  }
+
+  .widget {
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.background {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  height: 100dvh;
+  width: 100dvw;
+  display: block;
+  background-image: url("/anubis-map.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

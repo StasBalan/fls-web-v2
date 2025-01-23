@@ -1,0 +1,30 @@
+.wrapper {
+  min-width: 310px;
+  width: 310px;
+
+  .container {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 8px;
+
+    gap: 4px;
+    border-radius: 8px;
+
+    color: #f1f1f1;
+    background-color: #121212;
+
+    &_transparent {
+      background-color: #121212e6;
+    }
+
+    .divider {
+      height: 1px;
+      width: 100%;
+      background-color: #242424;
+    }
+  }
+}
