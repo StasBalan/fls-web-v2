@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import styles from "./BaseWidget.module.scss";
 import { FaceitMatchStats, FaceitProfile } from "@/types";
-import { SkillLevel10 } from "@/assets/skill-level";
+import { SkillLevelAppearance } from "../SkillLevelAppearance/SkillLevelAppearance";
 // import { getEloBeforeToday, getTodayStartingPointDate } from "@/utils";
 
 export function BaseWidget({
@@ -43,8 +43,23 @@ export function BaseWidget({
         )}
       >
         Base Widget {profile.games.cs2.faceit_elo}
-        <SkillLevel10 className={styles.icon} />
-        <SkillLevel10 transparent />
+        <SkillLevelAppearance level={0} rank={5} />
+        <SkillLevelAppearance level={1} rank={5} />
+        <SkillLevelAppearance level={2} rank={5} />
+        <SkillLevelAppearance level={3} rank={5} />
+        <SkillLevelAppearance level={4} rank={5} />
+        <SkillLevelAppearance level={5} rank={5} />
+        <SkillLevelAppearance level={6} rank={5} />
+        <SkillLevelAppearance level={7} rank={5} />
+        <SkillLevelAppearance level={8} rank={5} />
+        <SkillLevelAppearance level={9} rank={5} />
+        <SkillLevelAppearance level={10} rank={1001} />
+        <SkillLevelAppearance level={10} rank={800} />
+        <SkillLevelAppearance level={10} rank={800} hideRank />
+        <SkillLevelAppearance level={10} rank={800} hideChallenger />
+        <SkillLevelAppearance level={10} rank={3} />
+        <SkillLevelAppearance level={10} rank={2} />
+        <SkillLevelAppearance level={10} rank={1} />
         {!isTransparent && <div className={styles.divider}></div>}
       </div>
     </div>

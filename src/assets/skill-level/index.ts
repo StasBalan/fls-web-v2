@@ -9,6 +9,4 @@ export * from "./SkillLevel7";
 export * from "./SkillLevel8";
 export * from "./SkillLevel9";
 export * from "./SkillLevel10";
-export * from "./SkillLevelChallenger1";
-export * from "./SkillLevelChallenger2";
-export * from "./SkillLevelChallenger3";
+export * from "./SkillLevelChallenger";

@@ -1,4 +1,7 @@
 export type SkillLevelComponentProps = {
-  transparent?: boolean;
   className?: string;
+};
+
+export type SkillLevelChallengerComponentProps = SkillLevelComponentProps & {
+  fill?: string;
 };

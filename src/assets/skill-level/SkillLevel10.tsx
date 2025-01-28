@@ -1,22 +1,13 @@
 import { SkillLevelComponentProps } from "./types";
 
-export const SkillLevel10 = ({
-  transparent = false,
-  className,
-}: SkillLevelComponentProps) => (
+export const SkillLevel10 = ({ className }: SkillLevelComponentProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     className={className}
   >
-    <circle
-      cx={12}
-      cy={12}
-      r={12}
-      fill="#121212"
-      fillOpacity={transparent ? 0.7 : 1}
-    />
+    <circle cx={12} cy={12} r={12} fill="#121212" />
     <path
       fill="#CDCDCD"
       fillOpacity={0.1}
