@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import styles from "./BaseWidget.module.scss";
 import { FaceitMatchStats, FaceitProfile } from "@/types";
+import { SkillLevel10 } from "@/assets/skill-level";
 // import { getEloBeforeToday, getTodayStartingPointDate } from "@/utils";
 
 export function BaseWidget({
@@ -42,6 +43,8 @@ export function BaseWidget({
         )}
       >
         Base Widget {profile.games.cs2.faceit_elo}
+        <SkillLevel10 className={styles.icon} />
+        <SkillLevel10 transparent />
         {!isTransparent && <div className={styles.divider}></div>}
       </div>
     </div>

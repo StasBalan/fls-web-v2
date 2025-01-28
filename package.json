@@ -25,7 +25,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
-    "@tanstack/router-devtools": "^1.97.8",
     "@tanstack/router-plugin": "^1.97.8",
     "@types/node": "^22.10.7",
     "@types/react": "^18.3.18",
@@ -41,6 +40,7 @@
     "tailwindcss": "^3.4.17",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",
-    "vite": "^6.0.5"
+    "vite": "^6.0.5",
+    "vite-plugin-svgr": "^4.3.0"
   }
 }
