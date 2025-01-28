@@ -9,6 +9,7 @@ export function useBaseWidgetInfo(
   const [profile, setProfile] = useState<FaceitProfile | null>(null);
   const [matches, setMatches] = useState<FaceitMatchStats[]>([]);
   const [kdr, setKdr] = useState<number>(0);
+  const [regionRanking, setRegionRanking] = useState<number>(0);
   const [countryRanking, setCountryRanking] = useState<number>(0);
 
   const fetchProfile = useCallback(async () => {
@@ -50,11 +51,27 @@ export function useBaseWidgetInfo(
     }
   }, []);
 
-  const fetchRanking = useCallback(
+  const fetchRegionRanking = useCallback(async (id: string, region: string) => {
+    try {
+      const fetchedFaceitRanking = await faceitApiDataService.getRanking(
+        id,
+        region
+      );
+
+      setRegionRanking(fetchedFaceitRanking);
+    } catch (err) {
+      //
+    }
+  }, []);
+
+  const fetchCountryRanking = useCallback(
     async (id: string, region: string, country: string) => {
       try {
-        const fetchedFaceitRanking =
-          await faceitApiDataService.getCountryRanking(id, region, country);
+        const fetchedFaceitRanking = await faceitApiDataService.getRanking(
+          id,
+          region,
+          country
+        );
 
         setCountryRanking(fetchedFaceitRanking);
       } catch (err) {
@@ -84,7 +101,8 @@ export function useBaseWidgetInfo(
     if (profile?.games.cs2.faceit_elo) {
       fetchMatches(profile.player_id);
       fetchLifetimeStats(profile.player_id);
-      fetchRanking(
+      fetchRegionRanking(profile.player_id, profile.games.cs2.region);
+      fetchCountryRanking(
         profile.player_id,
         profile.games.cs2.region,
         profile.country
@@ -95,12 +113,13 @@ export function useBaseWidgetInfo(
   }, [
     fetchMatches,
     fetchLifetimeStats,
-    fetchRanking,
+    fetchRegionRanking,
+    fetchCountryRanking,
     profile?.player_id,
     profile?.games.cs2.faceit_elo,
     profile?.games.cs2.region,
     profile?.country,
   ]);
 
-  return { profile, matches, kdr, countryRanking };
+  return { profile, matches, kdr, countryRanking, regionRanking };
 }

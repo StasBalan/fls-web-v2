@@ -10,10 +10,13 @@
   color: #000000;
   font-weight: bold;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 20px;
 
   .rank {
     padding-left: 6px;
+
+    display: flex;
+    align-items: flex-end;
   }
 
   .icon {

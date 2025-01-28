@@ -1,0 +1,30 @@
+.wrapper {
+  .container {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding: 8px 10px 8px 8px;
+
+    gap: 4px;
+    border-radius: 8px;
+
+    color: #f1f1f1;
+    background-color: #121212;
+
+    &_transparent {
+      background-color: #121212e6;
+    }
+
+    &_rounded {
+      border-radius: 99999px;
+    }
+
+    .elo {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { SkillLevelChallenger } from "@/assets/skill-level";
 import styles from "./ChallengerSection.module.scss";
+import { AnimatedNumber } from "../ui/AnimatedNumber";
 
 const getChallengerColor = (rank: number): string => {
   switch (rank) {
@@ -30,7 +31,12 @@ export function ChallengerSection({
         backgroundColor: color,
       }}
     >
-      {!hideRank && <div className={styles.rank}>#{rank}</div>}
+      {!hideRank && (
+        <div className={styles.rank}>
+          <span>#</span>
+          <AnimatedNumber value={rank} />
+        </div>
+      )}
       <SkillLevelChallenger className={styles.icon} fill={color} />
     </div>
   );

@@ -4,11 +4,13 @@ import { rootRoute } from "./root";
 import { homeRoute } from "./Home";
 import { widgetRoute } from "./Widget";
 import { widgetBuilderRoute } from "./WidgetBuilder";
+import { compactWidgetRoute } from "./CompactWidget";
 
 const routeTree = rootRoute.addChildren([
   homeRoute,
   widgetRoute,
   widgetBuilderRoute,
+  compactWidgetRoute,
 ]);
 const router = createRouter({ routeTree });
 

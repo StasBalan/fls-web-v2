@@ -33,13 +33,13 @@ export class FaceitApiDataService {
     return kdrFromStats ? Number(kdrFromStats) : 0;
   }
 
-  public async getCountryRanking(
+  public async getRanking(
     id: string,
     region: string,
-    country: string
+    country?: string
   ): Promise<number> {
     const apiCall = await fetch(
-      `https://open.faceit.com/data/v4/rankings/games/cs2/regions/${region}/players/${id}?country=${country}&limit=1`,
+      `https://open.faceit.com/data/v4/rankings/games/cs2/regions/${region}/players/${id}?limit=1&${country ? "country=" + country : ""}`,
       {
         method: "GET",
         headers,
