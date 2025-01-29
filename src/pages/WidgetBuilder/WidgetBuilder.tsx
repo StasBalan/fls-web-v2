@@ -1,125 +1,91 @@
-import { BaseWidget } from "@/components/BaseWidget";
-import { Builder } from "@/components/Builder";
-
 import styles from "./WidgetBuilder.module.scss";
 import { useState } from "react";
-import { useBaseWidgetInfo } from "@/features";
-import { CompactWidget } from "@/components/CompactWidget";
+import { useFullWidgetInfo } from "@/features";
+import { useDebouncedCallback } from "use-debounce";
+import { Input } from "@/components/ui/input";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
+import { CompactWidgetBuilder } from "@/components/CompactWidgetBuilder";
+import { RichWidgetBuilder } from "@/components/RichWidgetBuilder";
 
 export function WidgetBuilder() {
-  const [nickname, setNickname] = useState("Magnojezzz");
-  const [isTransparent, setIsTransparent] = useState(true);
+  const [nickname, setNickname] = useState("");
 
-  const { profile, matches, countryRanking, kdr } = useBaseWidgetInfo(
-    nickname,
-    false
-  );
+  const debouncedNicknameChange = useDebouncedCallback((value) => {
+    setNickname(value);
+  }, 1000);
+
+  const [widgetType, setWidgetType] = useState<string>("rich");
+
+  const { profile, matches, regionRanking, countryRanking, kdr } =
+    useFullWidgetInfo(nickname, false);
+
+  const handleWidgetLinkBuild = (link: string) => {
+    console.log("handleWidgetLinkChange: ", link);
+  };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <div className={styles.builder}>
-          <Builder
-            nickname={nickname}
-            isTransparent={isTransparent}
-            onNicknameChange={setNickname}
-            onIsTransparentChange={setIsTransparent}
-          />
-        </div>
-        <div className={styles.widget}>
-          {profile !== null && (
-            // <BaseWidget
-            //   isTransparent={isTransparent}
-            //   profile={profile}
-            //   lastMatches={matches}
-            //   countryRanking={countryRanking}
-            //   kdr={kdr}
-            // />
+        <div className={styles.topForm}>
+          <div className="w-[300px]">
+            <Label htmlFor="faceit-nickname">Faceit Nickname</Label>
+            <Input
+              id="faceit-nickname"
+              placeholder="Faceit Nickname"
+              defaultValue={""}
+              onChange={(event) => {
+                debouncedNicknameChange(event.target.value);
+              }}
+            />
+          </div>
 
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "6px",
+          <div className="w-[200px]">
+            <Label htmlFor="widget-type">Widget type</Label>
+            <Select
+              value={widgetType}
+              onValueChange={(value: string) => {
+                setWidgetType(value);
               }}
             >
-              <div
-                style={{
-                  display: "flex",
-                  gap: "6px",
-                }}
-              >
-                <CompactWidget
-                  elo={4200}
-                  level={10}
-                  rank={2200}
-                  transparent={isTransparent}
-                />
-
-                <CompactWidget
-                  elo={4200}
-                  level={10}
-                  rank={22}
-                  transparent={isTransparent}
-                />
-
-                <CompactWidget
-                  elo={4200}
-                  level={10}
-                  rank={22}
-                  hideRank
-                  transparent={isTransparent}
-                />
-
-                <CompactWidget
-                  elo={4200}
-                  level={10}
-                  rank={1}
-                  transparent={isTransparent}
-                />
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "6px",
-                }}
-              >
-                <CompactWidget
-                  elo={4200}
-                  level={10}
-                  rank={2200}
-                  transparent={isTransparent}
-                  rounded
-                />
-
-                <CompactWidget
-                  elo={4200}
-                  level={10}
-                  rank={22}
-                  transparent={isTransparent}
-                  rounded
-                />
-
-                <CompactWidget
-                  elo={4200}
-                  level={10}
-                  rank={22}
-                  hideRank
-                  transparent={isTransparent}
-                  rounded
-                />
-
-                <CompactWidget
-                  elo={4271}
-                  level={10}
-                  rank={1}
-                  transparent={isTransparent}
-                  rounded
-                />
-              </div>
-            </div>
-          )}
+              <SelectTrigger id="widget-type">
+                <SelectValue placeholder="Select widget type" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="compact">Compact</SelectItem>
+                <SelectItem value="rich">Rich</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
+
+        {widgetType === "compact" && profile && regionRanking ? (
+          <CompactWidgetBuilder
+            nickname={nickname}
+            onWidgetLinkBuild={handleWidgetLinkBuild}
+            elo={profile.games.cs2.faceit_elo}
+            level={profile.games.cs2.skill_level}
+            rank={regionRanking}
+          />
+        ) : (
+          <></>
+        )}
+
+        {widgetType === "rich" ? (
+          <RichWidgetBuilder
+            nickname={nickname}
+            onWidgetLinkBuild={handleWidgetLinkBuild}
+          />
+        ) : (
+          <></>
+        )}
       </div>
       <div className={styles.background} />
     </div>

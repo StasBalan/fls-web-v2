@@ -4,29 +4,30 @@
 
   min-width: 1024px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   .container {
     height: 100%;
     width: 100%;
 
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
-  }
-
-  .builder {
-    height: 100%;
-    width: 400px;
-  }
-
-  .widget {
-    flex-grow: 1;
-
-    display: flex;
-    justify-content: center;
     align-items: center;
+
+    .topForm {
+      margin: 8px;
+      padding: 12px;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      gap: 8px;
+
+      border-radius: 8px;
+      background-color: #121212;
+
+      filter: drop-shadow(#121212 2px 2px 5px);
+    }
   }
 }
 

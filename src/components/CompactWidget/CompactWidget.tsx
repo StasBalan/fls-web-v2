@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import styles from "./CompactWidget.module.scss";
 import { SkillLevelAppearance } from "../SkillLevelAppearance/SkillLevelAppearance";
-import { AnimatedNumber } from "../ui/AnimatedNumber";
+import { EloSection } from "../EloSection";
 
 export function CompactWidget({
   elo,
@@ -35,9 +35,7 @@ export function CompactWidget({
           hideChallenger={hideChallenger}
           hideRank={hideRank}
         />
-        <div className={styles.elo}>
-          <AnimatedNumber value={elo} />
-        </div>
+        <EloSection elo={elo} />
       </div>
     </div>
   );

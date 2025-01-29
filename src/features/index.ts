@@ -1,1 +1,1 @@
-export * from "./useBaseWidgetInfo";
+export * from "./useFullWidgetInfo";

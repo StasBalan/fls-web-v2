@@ -2,7 +2,7 @@ import { faceitApiDataService } from "@/data-services";
 import { FaceitMatchStats, FaceitProfile } from "@/types";
 import { useCallback, useEffect, useState } from "react";
 
-export function useBaseWidgetInfo(
+export function useFullWidgetInfo(
   nickname: string,
   shouldRepeat: boolean = true
 ) {

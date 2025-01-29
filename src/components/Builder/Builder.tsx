@@ -18,15 +18,7 @@ export function Builder({
 }) {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.nickname}>
-        <Input
-          placeholder="Faceit Nickname"
-          value={nickname}
-          onChange={(event) => {
-            onNicknameChange(event.currentTarget.value);
-          }}
-        />
-      </div>
+      <div className={styles.nickname}></div>
       <div className={styles.transparent}>
         <Switch
           id="is-transparent"
