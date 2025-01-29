@@ -19,11 +19,33 @@
     }
 
     .topSection {
+      width: 100%;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
 
       gap: 16px;
+    }
+
+    .bottomSection {
+      width: 100%;
+    }
+
+    .statsHeader {
+      text-align: center;
+      font-size: 12px;
+      line-height: 16px;
+
+      color: #a7a7a7;
+    }
+
+    .statsContainer {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+      gap: 8px;
     }
 
     .levelElo {
@@ -33,5 +55,65 @@
 
       gap: 4px;
     }
+
+    .matchesPlayed {
+      &Container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 8px;
+      }
+
+      &Property {
+        padding-right: 0;
+        padding-left: 0;
+
+        &Win {
+          color: #32d35a;
+        }
+
+        &Loss {
+          color: #ff002b;
+        }
+      }
+    }
+  }
+}
+
+.animatedContainer {
+  position: relative;
+
+  &Base {
+    transition: opacity 0.7s ease;
+
+    width: 100%;
+  }
+
+  &Secondary {
+    transition: opacity 0.7s ease;
+
+    opacity: 1;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &Visible {
+    visibility: visible;
+    opacity: 1;
+    transition:
+      visibility 0s linear 0s,
+      opacity 700ms;
+  }
+
+  &Hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      visibility 0s linear 700ms,
+      opacity 700ms;
   }
 }

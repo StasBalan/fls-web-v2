@@ -1,0 +1,21 @@
+.labels {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  gap: 2px;
+}
+
+.values {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  gap: 2px;
+}
+
+.value {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}

@@ -1,0 +1,26 @@
+.value {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  gap: 1px;
+}
+
+.gain {
+  border-radius: 8px;
+
+  &Zero {
+    color: #f1f1f1;
+    background-color: #242424b3;
+  }
+
+  &Plus {
+    color: #32d35a;
+    background-color: #123117b3;
+  }
+
+  &Minus {
+    color: #ff002b;
+    background-color: #360e0db3;
+  }
+}

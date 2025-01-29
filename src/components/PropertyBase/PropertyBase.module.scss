@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  transition: all 0.7s ease;
+
+  padding: 4px 8px;
+
+  .value {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .label {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

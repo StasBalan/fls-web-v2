@@ -30,9 +30,10 @@ export function RichWidgetBuilder({
         <RichWidget
           elo={4200}
           level={10}
-          rank={22}
+          rank={1000}
+          kdr={1.33}
           countryCode="nl"
-          countryRank={7}
+          countryRank={999}
           transparent={transparent}
           hideChallenger={!showChallenger}
           hideRank={!showRank}
