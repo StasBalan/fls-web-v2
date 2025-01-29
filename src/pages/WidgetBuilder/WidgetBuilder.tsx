@@ -110,7 +110,7 @@ export function WidgetBuilder() {
                 />
 
                 <CompactWidget
-                  elo={4200}
+                  elo={4271}
                   level={10}
                   rank={1}
                   transparent={isTransparent}

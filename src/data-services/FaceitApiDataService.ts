@@ -13,9 +13,14 @@ export class FaceitApiDataService {
         headers,
       }
     );
-    const profile: FaceitProfile = await apiCall.json();
 
-    return profile;
+    if (apiCall.ok) {
+      const profile: FaceitProfile = await apiCall.json();
+
+      return profile;
+    }
+
+    throw apiCall;
   }
 
   public async getLifetimeStats(id: string): Promise<number> {
@@ -26,11 +31,16 @@ export class FaceitApiDataService {
         headers,
       }
     );
-    const stats: any = await apiCall.json();
 
-    const kdrFromStats = stats?.lifetime?.["Average K/D Ratio"];
+    if (apiCall.ok) {
+      const stats: any = await apiCall.json();
 
-    return kdrFromStats ? Number(kdrFromStats) : 0;
+      const kdrFromStats = stats?.lifetime?.["Average K/D Ratio"];
+
+      return kdrFromStats ? Number(kdrFromStats) : 0;
+    }
+
+    throw apiCall;
   }
 
   public async getRanking(
@@ -45,17 +55,27 @@ export class FaceitApiDataService {
         headers,
       }
     );
-    const ranking: any = await apiCall.json();
 
-    return ranking?.position || 0;
+    if (apiCall.ok) {
+      const ranking: any = await apiCall.json();
+
+      return ranking?.position || 0;
+    }
+
+    throw apiCall;
   }
 
   public async getStatsForMatches(id: string): Promise<FaceitMatchStats[]> {
     const apiCall = await fetch(
       `https://morning-glade-4641.artyom-stan0905.workers.dev/?id=${id}`
     );
-    const matches: any[] = await apiCall.json();
 
-    return matches.map(mapInnerApiMatchStatsToLocal);
+    if (apiCall.ok) {
+      const matches: any[] = await apiCall.json();
+
+      return matches.map(mapInnerApiMatchStatsToLocal);
+    }
+
+    throw apiCall;
   }
 }
