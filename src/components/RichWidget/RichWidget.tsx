@@ -8,6 +8,7 @@ import { SingleNumericProperty } from "../SingleNumericProperty";
 import { DoubledNumericProperty } from "../DoubledNumericProperty";
 import { GainProperty } from "../GainProperty";
 import { useEffect, useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
 // import { getEloBeforeToday, getTodayStartingPointDate } from "@/utils";
 
 export function RichWidget({
@@ -31,14 +32,36 @@ export function RichWidget({
   hideRank?: boolean;
   transparent?: boolean;
 }) {
-  const [visibleContainers, setVisibleContainers] = useState<
-    [boolean, boolean]
-  >([true, false]);
+  const [firstContainerVisible, setFirstContainerVisible] = useState(true);
+  const [secondContainerVisible, setSecondContainerVisible] = useState(false);
+
+  const debouncedFirstChange = useDebouncedCallback((value) => {
+    setFirstContainerVisible(value);
+  }, 700);
+
+  const debouncedSecondChange = useDebouncedCallback((value) => {
+    setSecondContainerVisible(value);
+  }, 700);
 
   useEffect(() => {
     const id = setInterval(() => {
-      setVisibleContainers((prev) => [!prev[0], !prev[1]]);
-    }, 7000);
+      setFirstContainerVisible((prev) => {
+        if (prev === true) {
+          return false;
+        }
+
+        debouncedFirstChange(true);
+        return false;
+      });
+      setSecondContainerVisible((prev) => {
+        if (prev === true) {
+          return false;
+        }
+
+        debouncedSecondChange(true);
+        return false;
+      });
+    }, 8000);
 
     return () => {
       clearInterval(id);
@@ -74,7 +97,7 @@ export function RichWidget({
             className={clsx(
               styles.statsSection,
               styles.animatedContainerBase,
-              visibleContainers[0]
+              firstContainerVisible
                 ? styles.animatedContainerVisible
                 : styles.animatedContainerHidden
             )}
@@ -113,7 +136,7 @@ export function RichWidget({
             className={clsx(
               styles.statsSection,
               styles.animatedContainerSecondary,
-              visibleContainers[1]
+              secondContainerVisible
                 ? styles.animatedContainerVisible
                 : styles.animatedContainerHidden
             )}
