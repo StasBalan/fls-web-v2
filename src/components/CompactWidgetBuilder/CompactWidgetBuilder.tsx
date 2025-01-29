@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 
 import { CompactWidget } from "../CompactWidget";
 
@@ -27,6 +27,7 @@ export function CompactWidgetBuilder({
   const [showRank, setShowRank] = useState(true);
 
   const buildWidgetLink = () => {
+    console.log(nickname);
     onWidgetLinkBuild("link");
   };
 

@@ -1,8 +1,6 @@
 import clsx from "clsx";
 import styles from "./RichWidget.module.scss";
-import { FaceitMatchStats, FaceitProfile } from "@/types";
 import { SkillLevelAppearance } from "../SkillLevelAppearance";
-import { AnimatedNumber } from "../ui/AnimatedNumber";
 import { EloSection } from "../EloSection";
 import { CountryRankSection } from "../CountryRankSection/CountryRankSection";
 // import { getEloBeforeToday, getTodayStartingPointDate } from "@/utils";

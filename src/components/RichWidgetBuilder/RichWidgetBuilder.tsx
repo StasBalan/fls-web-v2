@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 
-import { CompactWidget } from "../CompactWidget";
 import { RichWidget } from "../RichWidget";
 
 import styles from "./RichWidgetBuilder.module.scss";
@@ -21,6 +20,7 @@ export function RichWidgetBuilder({
   const [showRank, setShowRank] = useState(true);
 
   const buildWidgetLink = () => {
+    console.log(nickname);
     onWidgetLinkBuild("link");
   };
 

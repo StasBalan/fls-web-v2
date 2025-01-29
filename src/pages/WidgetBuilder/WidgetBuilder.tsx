@@ -27,6 +27,8 @@ export function WidgetBuilder() {
   const { profile, matches, regionRanking, countryRanking, kdr } =
     useFullWidgetInfo(nickname, false);
 
+  console.log(matches, countryRanking, kdr);
+
   const handleWidgetLinkBuild = (link: string) => {
     console.log("handleWidgetLinkChange: ", link);
   };
