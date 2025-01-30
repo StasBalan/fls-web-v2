@@ -27,7 +27,7 @@ export function CompactWidgetBuilder({
   const [showRank, setShowRank] = useState(true);
   const [showChallengerIconBorder, setShowChallengerIconBorder] =
     useState(true);
-  const [isGiant] = useState(true);
+  const [_isGiant] = useState(true);
 
   const buildWidgetLink = () => {
     console.log(nickname);
