@@ -19,10 +19,10 @@ export function CompactWidget() {
 
   const [faceitProfile, setFaceitProfile] = useState<
     FaceitProfile | null | undefined
-  >(undefined);
-  const [regionRanking, setRegionRanking] = useState<number | null | undefined>(
-    undefined
-  );
+  >();
+  const [regionRanking, setRegionRanking] = useState<
+    number | null | undefined
+  >();
 
   const fetchFaceitProfile = useCallback(async () => {
     try {

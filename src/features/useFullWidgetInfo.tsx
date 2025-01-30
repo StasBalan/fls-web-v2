@@ -6,37 +6,39 @@ export function useFullWidgetInfo(
   nickname: string,
   shouldRepeat: boolean = true
 ) {
-  const [profile, setProfile] = useState<FaceitProfile | null>(null);
-  const [matches, setMatches] = useState<FaceitMatchStats[]>([]);
-  const [kdr, setKdr] = useState<number>(0);
-  const [regionRanking, setRegionRanking] = useState<number>(0);
-  const [countryRanking, setCountryRanking] = useState<number>(0);
+  const [profile, setProfile] = useState<FaceitProfile | null | undefined>();
+  const [matches, setMatches] = useState<
+    FaceitMatchStats[] | null | undefined
+  >();
+  const [kdr, setKdr] = useState<number | null | undefined>();
+  const [regionRanking, setRegionRanking] = useState<
+    number | null | undefined
+  >();
+  const [countryRanking, setCountryRanking] = useState<
+    number | null | undefined
+  >();
 
   const fetchProfile = useCallback(async () => {
-    if (!nickname) {
-      return;
-    }
-
     try {
-      const fetchedProfile = await faceitApiDataService.getProfile(nickname);
+      if (nickname) {
+        const fetchedProfile = await faceitApiDataService.getProfile(nickname);
 
-      setProfile(fetchedProfile);
+        setProfile(fetchedProfile);
+      } else {
+        setProfile(null);
+      }
     } catch (err) {
-      //
+      setProfile(null);
     }
   }, [nickname]);
 
-  const fetchMatches = useCallback(async (id?: string) => {
-    if (!id) {
-      return;
-    }
-
+  const fetchMatches = useCallback(async (id: string) => {
     try {
-      const fetchedProfile = await faceitApiDataService.getStatsForMatches(id);
+      const fetchedMatches = await faceitApiDataService.getStatsForMatches(id);
 
-      setMatches(fetchedProfile);
+      setMatches(fetchedMatches);
     } catch (err) {
-      //
+      setMatches(null);
     }
   }, []);
 
@@ -47,7 +49,7 @@ export function useFullWidgetInfo(
 
       setKdr(fetchedLifetimeStats);
     } catch (err) {
-      //
+      setKdr(null);
     }
   }, []);
 
@@ -60,7 +62,7 @@ export function useFullWidgetInfo(
 
       setRegionRanking(fetchedFaceitRanking);
     } catch (err) {
-      //
+      setRegionRanking(null);
     }
   }, []);
 
@@ -75,7 +77,7 @@ export function useFullWidgetInfo(
 
         setCountryRanking(fetchedFaceitRanking);
       } catch (err) {
-        //
+        setCountryRanking(null);
       }
     },
     []
@@ -98,7 +100,7 @@ export function useFullWidgetInfo(
   }, [fetchProfile, shouldRepeat]);
 
   useEffect(() => {
-    if (profile?.games.cs2.faceit_elo) {
+    if (profile?.games?.cs2?.faceit_elo) {
       fetchMatches(profile.player_id);
       fetchLifetimeStats(profile.player_id);
       fetchRegionRanking(profile.player_id, profile.games.cs2.region);
@@ -116,8 +118,8 @@ export function useFullWidgetInfo(
     fetchRegionRanking,
     fetchCountryRanking,
     profile?.player_id,
-    profile?.games.cs2.faceit_elo,
-    profile?.games.cs2.region,
+    profile?.games?.cs2?.faceit_elo,
+    profile?.games?.cs2?.region,
     profile?.country,
   ]);
 

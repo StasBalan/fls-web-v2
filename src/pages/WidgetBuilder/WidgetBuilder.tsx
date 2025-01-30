@@ -14,10 +14,10 @@ import {
 import { Label } from "@/components/ui/label";
 import { CompactWidgetBuilder } from "@/components/CompactWidgetBuilder";
 import { RichWidgetBuilder } from "@/components/RichWidgetBuilder";
+import { getLastMatchesStats, getTodayMatchesStats } from "@/utils";
 
 export function WidgetBuilder() {
   const [nickname, setNickname] = useState("");
-
   const debouncedNicknameChange = useDebouncedCallback((value) => {
     setNickname(value);
   }, 1000);
@@ -26,8 +26,6 @@ export function WidgetBuilder() {
 
   const { profile, matches, regionRanking, countryRanking, kdr } =
     useFullWidgetInfo(nickname, false);
-
-  console.log(matches, countryRanking, kdr);
 
   const handleWidgetLinkBuild = (link: string) => {
     console.log("handleWidgetLinkChange: ", link);
@@ -68,7 +66,49 @@ export function WidgetBuilder() {
           </div>
         </div>
 
-        {widgetType === "compact" && profile && regionRanking ? (
+        {!nickname ? (
+          <div className={styles.error}>
+            <div className={styles.errorHeader}>Error: NO NICKNAME</div>
+            <div className={styles.errorDescription}>
+              Enter your FACEIT nickname in the input field. Please note that
+              nickname is <b>case sensitive</b>.
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
+
+        {nickname && profile === null ? (
+          <div className={styles.error}>
+            <div className={styles.errorHeader}>Error: NO FACEIT PROFILE</div>
+            <div className={styles.errorDescription}>
+              We can't find FACEIT profile with nickname <b>'{nickname}'</b>.
+              Please make sure you have entered the correct nickname.
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
+
+        {nickname && profile && !profile.games?.cs2 ? (
+          <div className={styles.error}>
+            <div className={styles.errorHeader}>
+              Error: NO CS2 GAME IN FACEIT PROFILE
+            </div>
+            <div className={styles.errorDescription}>
+              Profile with nickname <b>'{nickname}'</b> does not have cs2 game
+              enabled.
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
+
+        {widgetType === "compact" &&
+        nickname &&
+        profile &&
+        profile.games?.cs2 &&
+        regionRanking ? (
           <CompactWidgetBuilder
             nickname={nickname}
             onWidgetLinkBuild={handleWidgetLinkBuild}
@@ -80,9 +120,29 @@ export function WidgetBuilder() {
           <></>
         )}
 
-        {widgetType === "rich" ? (
+        {widgetType === "rich" &&
+        nickname &&
+        profile &&
+        profile.games?.cs2 &&
+        matches &&
+        regionRanking &&
+        kdr &&
+        countryRanking ? (
           <RichWidgetBuilder
             nickname={nickname}
+            data={{
+              elo: profile.games.cs2.faceit_elo,
+              level: profile.games.cs2.skill_level,
+              rank: regionRanking,
+              kdr: kdr,
+              lastMatchesData: getLastMatchesStats(matches),
+              todayMatchesData: getTodayMatchesStats(
+                matches,
+                profile.games.cs2.faceit_elo
+              ),
+              countryCode: profile.country,
+              countryRank: countryRanking,
+            }}
             onWidgetLinkBuild={handleWidgetLinkBuild}
           />
         ) : (

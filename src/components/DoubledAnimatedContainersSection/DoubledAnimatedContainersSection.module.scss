@@ -1,0 +1,27 @@
+.container {
+  width: 100%;
+  position: relative;
+
+  .base {
+    width: 100%;
+  }
+
+  .secondary {
+    opacity: 1;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .visible {
+    opacity: 1;
+    transition: opacity 700ms ease;
+  }
+
+  .hidden {
+    opacity: 0;
+    transition: opacity 700ms ease;
+  }
+}

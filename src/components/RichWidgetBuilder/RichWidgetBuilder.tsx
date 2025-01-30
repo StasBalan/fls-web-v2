@@ -10,9 +10,32 @@ import { Switch } from "../ui/switch";
 
 export function RichWidgetBuilder({
   nickname,
+  data,
   onWidgetLinkBuild,
 }: {
   nickname: string;
+  data: {
+    elo: number;
+    level: number;
+    rank: number;
+    kdr: number;
+    lastMatchesData: {
+      winRate: number | string;
+      avgKills: number | string;
+      avgHS: number | string;
+      avgKD: number | string;
+      avgKR: number | string;
+    };
+    todayMatchesData: {
+      wins: number | string;
+      losses: number | string;
+      gain: number;
+      avgKills: number | string;
+      avgKD: number | string;
+    };
+    countryCode: string;
+    countryRank: number;
+  };
   onWidgetLinkBuild: (link: string) => void;
 }) {
   const [transparent, setTransparent] = useState(false);
@@ -30,12 +53,14 @@ export function RichWidgetBuilder({
     <div className={styles.wrapper}>
       <div className={styles.preview}>
         <RichWidget
-          elo={4200}
-          level={10}
-          rank={1000}
-          kdr={1.33}
-          countryCode="nl"
-          countryRank={999}
+          elo={data.elo}
+          level={data.level}
+          rank={data.rank}
+          kdr={data.kdr}
+          lastMatchesData={data.lastMatchesData}
+          todayMatchesData={data.todayMatchesData}
+          countryCode={data.countryCode}
+          countryRank={data.countryRank}
           transparent={transparent}
           hideChallenger={!showChallenger}
           hideRank={!showRank}

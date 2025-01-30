@@ -7,15 +7,15 @@ import { KDRSection } from "../KDRSection";
 import { SingleNumericProperty } from "../SingleNumericProperty";
 import { DoubledNumericProperty } from "../DoubledNumericProperty";
 import { GainProperty } from "../GainProperty";
-import { useEffect, useState } from "react";
-import { useDebouncedCallback } from "use-debounce";
-// import { getEloBeforeToday, getTodayStartingPointDate } from "@/utils";
+import { DoubledAnimatedContainersSection } from "../DoubledAnimatedContainersSection";
 
 export function RichWidget({
   elo,
   level,
   rank,
   kdr,
+  lastMatchesData,
+  todayMatchesData,
   countryCode,
   countryRank,
   hideChallenger = false,
@@ -27,6 +27,20 @@ export function RichWidget({
   level: number;
   rank: number;
   kdr: number;
+  lastMatchesData: {
+    winRate: number | string;
+    avgKills: number | string;
+    avgHS: number | string;
+    avgKD: number | string;
+    avgKR: number | string;
+  };
+  todayMatchesData: {
+    wins: number | string;
+    losses: number | string;
+    gain: number;
+    avgKills: number | string;
+    avgKD: number | string;
+  };
   countryCode: string;
   countryRank: number;
   hideChallenger?: boolean;
@@ -34,42 +48,6 @@ export function RichWidget({
   hideChallengerIconBorder?: boolean;
   transparent?: boolean;
 }) {
-  const [firstContainerVisible, setFirstContainerVisible] = useState(true);
-  const [secondContainerVisible, setSecondContainerVisible] = useState(false);
-
-  const debouncedFirstChange = useDebouncedCallback((value) => {
-    setFirstContainerVisible(value);
-  }, 700);
-
-  const debouncedSecondChange = useDebouncedCallback((value) => {
-    setSecondContainerVisible(value);
-  }, 700);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setFirstContainerVisible((prev) => {
-        if (prev === true) {
-          return false;
-        }
-
-        debouncedFirstChange(true);
-        return false;
-      });
-      setSecondContainerVisible((prev) => {
-        if (prev === true) {
-          return false;
-        }
-
-        debouncedSecondChange(true);
-        return false;
-      });
-    }, 8000);
-
-    return () => {
-      clearInterval(id);
-    };
-  }, []);
-
   return (
     <div className={styles.wrapper}>
       <div
@@ -95,91 +73,84 @@ export function RichWidget({
           <CountryRankSection code={countryCode} rank={countryRank} />
         </div>
 
-        <div className={clsx(styles.bottomSection, styles.animatedContainer)}>
-          <div
-            className={clsx(
-              styles.statsSection,
-              styles.animatedContainerBase,
-              firstContainerVisible
-                ? styles.animatedContainerVisible
-                : styles.animatedContainerHidden
-            )}
-          >
-            <div className={styles.statsHeader}>LAST 20 MATCHES</div>
-            <div className={styles.statsContainer}>
-              <SingleNumericProperty label={"Win rate"} value={50} unit="%" />
-
-              <DoubledNumericProperty
-                left={{
-                  label: "Avg. Kills",
-                  value: 17,
-                }}
-                right={{
-                  label: "Avg. HS",
-                  value: 78,
-                  unit: "%",
-                }}
-              />
-
-              <DoubledNumericProperty
-                left={{
-                  label: "Avg. K/D",
-                  value: "1.23",
-                }}
-                right={{
-                  label: "K/R",
-                  value: 1.32,
-                  unit: "%",
-                }}
-              />
-            </div>
-          </div>
-
-          <div
-            className={clsx(
-              styles.statsSection,
-              styles.animatedContainerSecondary,
-              secondContainerVisible
-                ? styles.animatedContainerVisible
-                : styles.animatedContainerHidden
-            )}
-          >
-            <div className={styles.statsHeader}>STATS TODAY</div>
-            <div className={styles.statsContainer}>
-              <GainProperty label={"Gain"} value={-50} />
-
-              <div className={styles.matchesPlayedContainer}>
+        <DoubledAnimatedContainersSection
+          left={
+            <>
+              <div className={styles.statsHeader}>LAST 20 MATCHES</div>
+              <div className={styles.statsContainer}>
                 <SingleNumericProperty
-                  label={"Wins"}
-                  value={2}
-                  wrapperClassName={clsx(
-                    styles.matchesPlayedProperty,
-                    styles.matchesPlayedPropertyWin
-                  )}
+                  label={"Win rate"}
+                  value={lastMatchesData.winRate}
+                  unit="%"
                 />
-                <SingleNumericProperty
-                  label={"Losses"}
-                  value={4}
-                  wrapperClassName={clsx(
-                    styles.matchesPlayedProperty,
-                    styles.matchesPlayedPropertyLoss
-                  )}
+
+                <DoubledNumericProperty
+                  left={{
+                    label: "Avg. Kills",
+                    value: lastMatchesData.avgKills,
+                  }}
+                  right={{
+                    label: "Avg. HS",
+                    value: lastMatchesData.avgHS,
+                    unit: "%",
+                  }}
+                />
+
+                <DoubledNumericProperty
+                  left={{
+                    label: "Avg. K/D",
+                    value: lastMatchesData.avgKD,
+                  }}
+                  right={{
+                    label: "K/R",
+                    value: lastMatchesData.avgKR,
+                    unit: "%",
+                  }}
                 />
               </div>
+            </>
+          }
+          right={
+            <>
+              <div className={styles.statsHeader}>STATS TODAY</div>
+              <div className={styles.statsContainer}>
+                <GainProperty label={"Gain"} value={todayMatchesData.gain} />
 
-              <DoubledNumericProperty
-                left={{
-                  label: "Avg. Kills",
-                  value: 12,
-                }}
-                right={{
-                  label: "Avg. K/D",
-                  value: 1.32,
-                }}
-              />
-            </div>
-          </div>
-        </div>
+                <div className={styles.matchesPlayedContainer}>
+                  <SingleNumericProperty
+                    label={"Wins"}
+                    value={todayMatchesData.wins}
+                    wrapperClassName={clsx(
+                      styles.matchesPlayedProperty,
+                      styles.matchesPlayedPropertyWin
+                    )}
+                  />
+                  <SingleNumericProperty
+                    label={"Losses"}
+                    value={todayMatchesData.losses}
+                    wrapperClassName={clsx(
+                      styles.matchesPlayedProperty,
+                      styles.matchesPlayedPropertyLoss
+                    )}
+                  />
+                </div>
+
+                <DoubledNumericProperty
+                  left={{
+                    label: "Avg. Kills",
+                    value: todayMatchesData.avgKills,
+                  }}
+                  right={{
+                    label: "Avg. K/D",
+                    value: todayMatchesData.avgKD,
+                  }}
+                />
+              </div>
+            </>
+          }
+          presenceDuration={8000}
+          pauseDuration={700}
+        />
       </div>
     </div>
   );

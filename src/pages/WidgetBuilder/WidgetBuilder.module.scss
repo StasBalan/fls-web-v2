@@ -28,6 +28,30 @@
 
       filter: drop-shadow(#121212 2px 2px 5px);
     }
+
+    .error {
+      max-width: 600px;
+
+      margin: 8px;
+      padding: 12px;
+      border-radius: 8px;
+
+      color: #121212;
+      background-color: #ff002b;
+      filter: drop-shadow(#121212 2px 2px 5px);
+
+      &Header {
+        font-weight: bold;
+
+        font-size: 18px;
+        line-height: 26px;
+      }
+
+      &Description {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
   }
 }
 
