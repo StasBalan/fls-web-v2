@@ -80,7 +80,18 @@ export function CompactWidget() {
 
   if (faceitProfile === null) {
     return (
-      <div>Error: Can't find FACEIT profile with nickname: {nickname}.</div>
+      <div>
+        Error: Can't find FACEIT profile with nickname: <b>{nickname}</b>.
+      </div>
+    );
+  }
+
+  if (nickname && faceitProfile && !faceitProfile.games?.cs2) {
+    return (
+      <div>
+        Error: Profile with nickname <b>'{nickname}'</b> does not have cs2 game
+        enabled.
+      </div>
     );
   }
 

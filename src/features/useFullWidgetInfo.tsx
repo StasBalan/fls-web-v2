@@ -90,7 +90,6 @@ export function useFullWidgetInfo(
     if (shouldRepeat) {
       timeout = setInterval(() => {
         fetchProfile();
-        console.log("FETCH PROFILE");
       }, 30000);
     }
 
@@ -109,8 +108,6 @@ export function useFullWidgetInfo(
         profile.games.cs2.region,
         profile.country
       );
-
-      console.log("FETCH MATCHES");
     }
   }, [
     fetchMatches,
