@@ -18,10 +18,12 @@
   .visible {
     opacity: 1;
     transition: opacity 700ms ease;
+    transition-delay: 700ms;
   }
 
   .hidden {
     opacity: 0;
     transition: opacity 700ms ease;
+    transition-delay: 0ms;
   }
 }

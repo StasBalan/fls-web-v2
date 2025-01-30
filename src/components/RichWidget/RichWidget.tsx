@@ -149,7 +149,6 @@ export function RichWidget({
             </>
           }
           presenceDuration={8000}
-          pauseDuration={700}
         />
       </div>
     </div>
