@@ -47,11 +47,13 @@ export function SkillLevelAppearance({
   rank,
   hideChallenger = false,
   hideRank = false,
+  hideChallengerIconBorder = false,
 }: {
   level: number;
   rank: number;
   hideChallenger?: boolean;
   hideRank?: boolean;
+  hideChallengerIconBorder?: boolean;
 }) {
   if (level < 10) {
     const SkillLevelIconComponent = getSkillLevelIcon(level);
@@ -64,7 +66,13 @@ export function SkillLevelAppearance({
   }
 
   if (rank <= 1000) {
-    return <ChallengerSection rank={rank} hideRank={hideRank} />;
+    return (
+      <ChallengerSection
+        rank={rank}
+        hideRank={hideRank}
+        hideChallengerIconBorder={hideChallengerIconBorder}
+      />
+    );
   }
 
   return <SkillLevel10 className={styles.icon} />;

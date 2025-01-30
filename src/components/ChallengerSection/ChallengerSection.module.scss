@@ -12,6 +12,10 @@
   font-size: 14px;
   line-height: 20px;
 
+  &Bigger {
+    padding: 0;
+  }
+
   .rank {
     padding-left: 6px;
 
@@ -22,5 +26,10 @@
   .icon {
     height: 28px;
     width: 28px;
+
+    &Bigger {
+      height: 32px;
+      width: 32px;
+    }
   }
 }

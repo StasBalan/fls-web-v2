@@ -18,6 +18,8 @@ export function RichWidgetBuilder({
   const [transparent, setTransparent] = useState(false);
   const [showChallenger, setShowChallenger] = useState(true);
   const [showRank, setShowRank] = useState(true);
+  const [showChallengerIconBorder, setShowChallengerIconBorder] =
+    useState(true);
 
   const buildWidgetLink = () => {
     console.log(nickname);
@@ -37,6 +39,7 @@ export function RichWidgetBuilder({
           transparent={transparent}
           hideChallenger={!showChallenger}
           hideRank={!showRank}
+          hideChallengerIconBorder={!showChallengerIconBorder}
         />
       </div>
 
@@ -67,13 +70,28 @@ export function RichWidgetBuilder({
             />
           </div>
           <div className={styles.control}>
-            <Label htmlFor="show-rank">Show challenger rank</Label>
+            <Label htmlFor="show-rank">Show rank</Label>
             <Switch
               id="show-rank"
               disabled={!showChallenger}
               checked={showRank}
               onCheckedChange={(event) => {
                 setShowRank(event);
+
+                if (event) {
+                  setShowChallengerIconBorder(true);
+                }
+              }}
+            />
+          </div>
+          <div className={styles.control}>
+            <Label htmlFor="show-challenger-border">Show icon border</Label>
+            <Switch
+              id="show-challenger-border"
+              disabled={!showChallenger || showRank}
+              checked={showChallengerIconBorder}
+              onCheckedChange={(event) => {
+                setShowChallengerIconBorder(event);
               }}
             />
           </div>

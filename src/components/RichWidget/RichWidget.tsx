@@ -20,6 +20,7 @@ export function RichWidget({
   countryRank,
   hideChallenger = false,
   hideRank = false,
+  hideChallengerIconBorder = false,
   transparent = false,
 }: {
   elo: number;
@@ -30,6 +31,7 @@ export function RichWidget({
   countryRank: number;
   hideChallenger?: boolean;
   hideRank?: boolean;
+  hideChallengerIconBorder?: boolean;
   transparent?: boolean;
 }) {
   const [firstContainerVisible, setFirstContainerVisible] = useState(true);
@@ -83,6 +85,7 @@ export function RichWidget({
               rank={rank}
               hideChallenger={hideChallenger}
               hideRank={hideRank}
+              hideChallengerIconBorder={hideChallengerIconBorder}
             />
             <EloSection elo={elo} />
           </div>
