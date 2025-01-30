@@ -20,10 +20,12 @@ export function ChallengerSection({
   rank,
   hideRank = false,
   hideChallengerIconBorder = false,
+  isGiant = false,
 }: {
   rank: number;
   hideRank?: boolean;
   hideChallengerIconBorder?: boolean;
+  isGiant?: boolean;
 }) {
   const color = getChallengerColor(rank);
 
@@ -31,7 +33,8 @@ export function ChallengerSection({
     <div
       className={clsx(
         styles.container,
-        hideRank && hideChallengerIconBorder && styles.containerBigger
+        isGiant && styles.containerGiant,
+        hideRank && hideChallengerIconBorder && styles.container_no_border
       )}
       style={{
         backgroundColor:
@@ -39,7 +42,7 @@ export function ChallengerSection({
       }}
     >
       {!hideRank && (
-        <div className={styles.rank}>
+        <div className={clsx(styles.rank, isGiant && styles.rankGiant)}>
           <span>#</span>
           <AnimatedNumber value={rank} />
         </div>
@@ -47,7 +50,12 @@ export function ChallengerSection({
       <SkillLevelChallenger
         className={clsx(
           styles.icon,
-          hideRank && hideChallengerIconBorder && styles.iconBigger
+          isGiant && styles.iconGiant,
+          hideRank && hideChallengerIconBorder && styles.icon_no_border,
+          hideRank &&
+            hideChallengerIconBorder &&
+            isGiant &&
+            styles.icon_no_borderGiant
         )}
         fill={color}
       />

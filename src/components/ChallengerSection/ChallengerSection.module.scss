@@ -12,12 +12,24 @@
   font-size: 14px;
   line-height: 20px;
 
-  &Bigger {
+  &Giant {
+    padding: 6px;
+    gap: 12px;
+
+    font-size: 42px;
+    line-height: 54px;
+  }
+
+  &_no_border {
     padding: 0;
   }
 
   .rank {
     padding-left: 6px;
+
+    &Giant {
+      padding-left: 18px;
+    }
 
     display: flex;
     align-items: flex-end;
@@ -27,9 +39,19 @@
     height: 28px;
     width: 28px;
 
-    &Bigger {
+    &Giant {
+      height: 84px;
+      width: 84px;
+    }
+
+    &_no_border {
       height: 32px;
       width: 32px;
+
+      &Giant {
+        height: 96px;
+        width: 96px;
+      }
     }
   }
 }

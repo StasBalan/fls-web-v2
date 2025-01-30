@@ -15,6 +15,7 @@ export function CompactWidget() {
     rounded,
     transparent,
     hideChallengerIconBorder,
+    isGiant,
   } = routeApi.useSearch();
 
   const [faceitProfile, setFaceitProfile] = useState<
@@ -115,6 +116,7 @@ export function CompactWidget() {
         }
         rounded={rounded}
         transparent={transparent}
+        isGiant={isGiant}
       />
     </>
   );

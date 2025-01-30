@@ -15,8 +15,14 @@ export const compactWidgetRoute = createRoute({
     hideChallengerIconBorder: boolean;
     rounded: boolean;
     transparent: boolean;
+    isGiant: boolean;
     nickname: string;
   } => {
+    const isGiant =
+      search.isGiant === undefined
+        ? true
+        : (search.isGiant as boolean) || false;
+
     return {
       hideRank: (search.hideRank as boolean) || false,
       hideChallenger: (search.hideChallenger as boolean) || false,
@@ -24,6 +30,7 @@ export const compactWidgetRoute = createRoute({
         (search.hideChallengerIconBorder as boolean) || false,
       rounded: (search.rounded as boolean) || false,
       transparent: (search.transparent as boolean) || false,
+      isGiant: isGiant,
       nickname: (search.nickname as string) || "",
     };
   },

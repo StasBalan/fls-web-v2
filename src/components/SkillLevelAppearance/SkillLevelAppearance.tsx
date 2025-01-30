@@ -14,6 +14,7 @@ import {
 import { ChallengerSection } from "../ChallengerSection";
 
 import styles from "./SkillLevelAppearance.module.scss";
+import clsx from "clsx";
 
 const getSkillLevelIcon = (level: number) => {
   switch (level) {
@@ -48,21 +49,25 @@ export function SkillLevelAppearance({
   hideChallenger = false,
   hideRank = false,
   hideChallengerIconBorder = false,
+  isGiant = false,
 }: {
   level: number;
   rank: number;
   hideChallenger?: boolean;
   hideRank?: boolean;
   hideChallengerIconBorder?: boolean;
+  isGiant?: boolean;
 }) {
+  const classNames = clsx(styles.icon, isGiant && styles.iconGiant);
+
   if (level < 10) {
     const SkillLevelIconComponent = getSkillLevelIcon(level);
 
-    return <SkillLevelIconComponent className={styles.icon} />;
+    return <SkillLevelIconComponent className={classNames} />;
   }
 
   if (hideChallenger) {
-    return <SkillLevel10 className={styles.icon} />;
+    return <SkillLevel10 className={classNames} />;
   }
 
   if (rank <= 1000) {
@@ -71,9 +76,10 @@ export function SkillLevelAppearance({
         rank={rank}
         hideRank={hideRank}
         hideChallengerIconBorder={hideChallengerIconBorder}
+        isGiant={isGiant}
       />
     );
   }
 
-  return <SkillLevel10 className={styles.icon} />;
+  return <SkillLevel10 className={classNames} />;
 }

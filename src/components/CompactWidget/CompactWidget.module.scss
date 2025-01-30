@@ -6,13 +6,19 @@
     justify-content: flex-start;
     align-items: center;
 
-    padding: 8px 10px 8px 8px;
+    padding: 6px 8px 6px 6px;
 
     gap: 4px;
     border-radius: 8px;
 
     color: #f1f1f1;
     background-color: #121212;
+
+    &Giant {
+      padding: 18px 24px 18px 18px;
+      gap: 12px;
+      border-radius: 24px;
+    }
 
     &_transparent {
       background-color: #121212e6;

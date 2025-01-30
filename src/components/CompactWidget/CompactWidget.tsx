@@ -12,6 +12,7 @@ export function CompactWidget({
   hideChallengerIconBorder = false,
   transparent = false,
   rounded = false,
+  isGiant = false,
 }: {
   elo: number;
   level: number;
@@ -21,6 +22,7 @@ export function CompactWidget({
   hideChallengerIconBorder?: boolean;
   transparent?: boolean;
   rounded?: boolean;
+  isGiant?: boolean;
 }) {
   return (
     <div className={styles.wrapper}>
@@ -28,7 +30,8 @@ export function CompactWidget({
         className={clsx(
           styles.container,
           transparent && styles.container_transparent,
-          rounded && styles.container_rounded
+          rounded && styles.container_rounded,
+          isGiant && styles.containerGiant
         )}
       >
         <SkillLevelAppearance
@@ -37,8 +40,9 @@ export function CompactWidget({
           hideChallenger={hideChallenger}
           hideRank={hideRank}
           hideChallengerIconBorder={hideChallengerIconBorder}
+          isGiant={isGiant}
         />
-        <EloSection elo={elo} />
+        <EloSection elo={elo} isGiant={isGiant} />
       </div>
     </div>
   );
