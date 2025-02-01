@@ -27,12 +27,12 @@
   .rank {
     padding-left: 6px;
 
+    display: flex;
+    align-items: flex-end;
+
     &Giant {
       padding-left: 18px;
     }
-
-    display: flex;
-    align-items: flex-end;
   }
 
   .icon {

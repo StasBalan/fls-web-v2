@@ -13,12 +13,19 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
 
-export function CopyLinkDialog() {
+export function CopyLinkDialog({ buildUrl }: { buildUrl: () => string }) {
+  const [url, setUrl] = useState("");
+
+  const handleButtonClick = () => {
+    setUrl(buildUrl());
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>
+        <Button onClick={handleButtonClick}>
           <Blocks />
           Build link
         </Button>
@@ -35,11 +42,7 @@ export function CopyLinkDialog() {
             <Label htmlFor="link" className="sr-only">
               Link
             </Label>
-            <Input
-              id="link"
-              defaultValue="https://ui.shadcn.com/docs/installation"
-              readOnly
-            />
+            <Input id="link" defaultValue={url} readOnly />
           </div>
           <Button type="submit" size="sm" className="px-3">
             <span className="sr-only">Copy</span>

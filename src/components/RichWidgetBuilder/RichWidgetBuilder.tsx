@@ -3,15 +3,13 @@ import { useState } from "react";
 import { RichWidget } from "../RichWidget";
 
 import styles from "./RichWidgetBuilder.module.scss";
-import { Button } from "../ui/button";
-import { Blocks } from "lucide-react";
 import { Label } from "../ui/label";
 import { Switch } from "../ui/switch";
+import { CopyLinkDialog } from "../CopyLinkDialog";
 
 export function RichWidgetBuilder({
   nickname,
   data,
-  onWidgetLinkBuild,
 }: {
   nickname: string;
   data: {
@@ -36,7 +34,6 @@ export function RichWidgetBuilder({
     countryCode: string;
     countryRank: number;
   };
-  onWidgetLinkBuild: (link: string) => void;
 }) {
   const [transparent, setTransparent] = useState(false);
   const [showChallenger, setShowChallenger] = useState(true);
@@ -44,9 +41,8 @@ export function RichWidgetBuilder({
   const [showChallengerIconBorder, setShowChallengerIconBorder] =
     useState(true);
 
-  const buildWidgetLink = () => {
-    console.log(nickname);
-    onWidgetLinkBuild("link");
+  const buildUrl = () => {
+    return `https://faceitlivestats.win/widget-rich?hideRank=${!showRank}&hideChallenger=${!showChallenger}&hideChallengerIconBorder=${!showChallengerIconBorder}&transparent=${transparent}&nickname=${nickname}`;
   };
 
   return (
@@ -122,14 +118,7 @@ export function RichWidgetBuilder({
           </div>
         </div>
 
-        <Button
-          onClick={buildWidgetLink}
-          type="button"
-          className={styles.button}
-        >
-          <Blocks />
-          Build link
-        </Button>
+        <CopyLinkDialog buildUrl={buildUrl} />
       </div>
     </div>
   );

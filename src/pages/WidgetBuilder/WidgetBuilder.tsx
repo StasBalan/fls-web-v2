@@ -27,10 +27,6 @@ export function WidgetBuilder() {
   const { profile, matches, regionRanking, countryRanking, kdr } =
     useFullWidgetInfo(nickname, false);
 
-  const handleWidgetLinkBuild = (link: string) => {
-    console.log("handleWidgetLinkChange: ", link);
-  };
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -111,7 +107,6 @@ export function WidgetBuilder() {
         regionRanking ? (
           <CompactWidgetBuilder
             nickname={nickname}
-            onWidgetLinkBuild={handleWidgetLinkBuild}
             elo={profile.games.cs2.faceit_elo}
             level={profile.games.cs2.skill_level}
             rank={regionRanking}
@@ -143,7 +138,6 @@ export function WidgetBuilder() {
               countryCode: profile.country,
               countryRank: countryRanking,
             }}
-            onWidgetLinkBuild={handleWidgetLinkBuild}
           />
         ) : (
           <></>

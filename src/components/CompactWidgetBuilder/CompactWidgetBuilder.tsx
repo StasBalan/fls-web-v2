@@ -5,21 +5,18 @@ import { CompactWidget } from "../CompactWidget";
 import styles from "./CompactWidgetBuilder.module.scss";
 import { Switch } from "../ui/switch";
 import { Label } from "../ui/label";
-import { Button } from "../ui/button";
-import { Blocks } from "lucide-react";
+import { CopyLinkDialog } from "../CopyLinkDialog";
 
 export function CompactWidgetBuilder({
   elo,
   level,
   rank,
   nickname,
-  onWidgetLinkBuild,
 }: {
   elo: number;
   level: number;
   rank: number;
   nickname: string;
-  onWidgetLinkBuild: (link: string) => void;
 }) {
   const [transparent, setTransparent] = useState(false);
   const [rounded, setRounded] = useState(false);
@@ -27,11 +24,10 @@ export function CompactWidgetBuilder({
   const [showRank, setShowRank] = useState(true);
   const [showChallengerIconBorder, setShowChallengerIconBorder] =
     useState(true);
-  const [_isGiant] = useState(true);
+  const isGiant = true;
 
-  const buildWidgetLink = () => {
-    console.log(nickname);
-    onWidgetLinkBuild("link");
+  const buildUrl = () => {
+    return `https://faceitlivestats.win/widget-compact?hideRank=${!showRank}&hideChallenger=${!showChallenger}&hideChallengerIconBorder=${!showChallengerIconBorder}&rounded=${rounded}&transparent=${transparent}&isGiant=${isGiant}&nickname=${nickname}`;
   };
 
   return (
@@ -114,14 +110,7 @@ export function CompactWidgetBuilder({
           </div>
         </div>
 
-        <Button
-          onClick={buildWidgetLink}
-          type="button"
-          className={styles.button}
-        >
-          <Blocks />
-          Build link
-        </Button>
+        <CopyLinkDialog buildUrl={buildUrl} />
       </div>
     </div>
   );
