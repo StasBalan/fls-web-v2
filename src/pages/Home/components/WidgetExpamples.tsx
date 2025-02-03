@@ -3,7 +3,7 @@ import { RichWidgetExample } from "./RichWidgetExample";
 import clsx from "clsx";
 import { CompactWidgetExample } from "./CompactWidgetExample";
 
-export function WidgetExamples() {
+function WidgetExamples() {
   return (
     <div className={styles.wrapper}>
       <div>
@@ -96,3 +96,5 @@ export function WidgetExamples() {
     </div>
   );
 }
+
+export default WidgetExamples;

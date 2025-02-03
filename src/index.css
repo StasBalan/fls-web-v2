@@ -14,6 +14,15 @@
   --site-text: #f1f1f1;
   --site-text-secondary: #a3a3a3;
   --site-background: #1f1f1f;
+  --site-background-light: #000000;
+  --site-background-gradient: linear-gradient(
+    45deg,
+    var(--site-background-light),
+    var(--site-background),
+    var(--site-background-light)
+  );
+  --site-header-background: #161616aa;
+  --site-header-border: #3f3f3faa;
 
   font-family: Play, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
