@@ -7,12 +7,20 @@
 /* ... */
 
 :root {
+  --widget-text: #f1f1f1;
+  --widget-background: #121212;
+  --widget-background-transparent: #121212e6;
+
+  --site-text: #f1f1f1;
+  --site-text-secondary: #a3a3a3;
+  --site-background: #1f1f1f;
+
   font-family: Play, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: var(--site-text);
   background-color: transparent;
 
   font-synthesis: none;
@@ -24,6 +32,7 @@
 body {
   margin: 0;
   display: flex;
+
   min-width: 300px;
   min-height: 100dvh;
 }
@@ -88,8 +97,5 @@ body {
 @layer base {
   * {
     @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
   }
 }

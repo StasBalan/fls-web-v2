@@ -11,8 +11,8 @@
     gap: 4px;
     border-radius: 8px;
 
-    color: #f1f1f1;
-    background-color: #121212;
+    color: var(--widget-text);
+    background-color: var(--widget-background);
 
     &Giant {
       padding: 18px 24px 18px 18px;
@@ -21,7 +21,7 @@
     }
 
     &_transparent {
-      background-color: #121212e6;
+      background-color: var(--widget-background-transparent);
     }
 
     &_rounded {
