@@ -15,6 +15,8 @@ import { Label } from "@/components/ui/label";
 import { CompactWidgetBuilder } from "@/components/CompactWidgetBuilder";
 import { RichWidgetBuilder } from "@/components/RichWidgetBuilder";
 import { getLastMatchesStats, getTodayMatchesStats } from "@/utils";
+import { PageHeader } from "@/components/PageHeader";
+import { PageFooter } from "@/components/PageFooter";
 
 export function WidgetBuilder() {
   const [nickname, setNickname] = useState("");
@@ -29,6 +31,8 @@ export function WidgetBuilder() {
 
   return (
     <div className={styles.wrapper}>
+      <PageHeader />
+
       <div className={styles.container}>
         <div className={styles.topForm}>
           <div className="w-[300px]">
@@ -143,7 +147,8 @@ export function WidgetBuilder() {
           <></>
         )}
       </div>
-      <div className={styles.background} />
+
+      <PageFooter />
     </div>
   );
 }

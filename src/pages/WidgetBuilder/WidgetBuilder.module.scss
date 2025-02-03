@@ -1,17 +1,27 @@
 .wrapper {
-  height: 100dvh;
+  height: 100%;
   width: 100dvw;
+  min-width: 600px;
 
-  min-width: 1024px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  background: var(--site-background-gradient);
 
   .container {
-    height: 100%;
     width: 100%;
 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    flex-grow: 1;
+
+    margin-top: 74px;
+    margin-bottom: 30px;
 
     .topForm {
       margin: 8px;

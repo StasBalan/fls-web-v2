@@ -9,6 +9,12 @@
   gap: 16px;
 
   .preview {
+    border-radius: 8px;
+    padding: 16px;
+    background-image: url("/anubis-map.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .controls {
