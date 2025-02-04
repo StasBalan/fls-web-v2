@@ -7,6 +7,8 @@ export function useFullWidgetInfo(
   shouldRepeat: boolean = true
 ) {
   const [profile, setProfile] = useState<FaceitProfile | null | undefined>();
+  const [profileLoading, setProfileLoading] = useState<boolean>(false);
+
   const [matches, setMatches] = useState<
     FaceitMatchStats[] | null | undefined
   >();
@@ -21,14 +23,15 @@ export function useFullWidgetInfo(
   const fetchProfile = useCallback(async () => {
     try {
       if (nickname) {
+        setProfileLoading(true);
         const fetchedProfile = await faceitApiDataService.getProfile(nickname);
 
         setProfile(fetchedProfile);
-      } else {
-        setProfile(null);
       }
     } catch (err) {
       setProfile(null);
+    } finally {
+      setProfileLoading(false);
     }
   }, [nickname]);
 
@@ -120,5 +123,12 @@ export function useFullWidgetInfo(
     profile?.country,
   ]);
 
-  return { profile, matches, kdr, countryRanking, regionRanking };
+  return {
+    profile,
+    profileLoading,
+    matches,
+    kdr,
+    countryRanking,
+    regionRanking,
+  };
 }

@@ -9,7 +9,6 @@ export function CompactWidget({
   rank,
   hideChallenger = false,
   hideRank = false,
-  hideChallengerIconBorder = false,
   transparent = false,
   rounded = false,
   isGiant = false,
@@ -19,7 +18,6 @@ export function CompactWidget({
   rank: number;
   hideChallenger?: boolean;
   hideRank?: boolean;
-  hideChallengerIconBorder?: boolean;
   transparent?: boolean;
   rounded?: boolean;
   isGiant?: boolean;
@@ -39,7 +37,6 @@ export function CompactWidget({
           rank={rank}
           hideChallenger={hideChallenger}
           hideRank={hideRank}
-          hideChallengerIconBorder={hideChallengerIconBorder}
           isGiant={isGiant}
         />
         <EloSection elo={elo} isGiant={isGiant} />

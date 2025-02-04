@@ -19,12 +19,10 @@ const getChallengerColor = (rank: number): string => {
 export function ChallengerSection({
   rank,
   hideRank = false,
-  hideChallengerIconBorder = false,
   isGiant = false,
 }: {
   rank: number;
   hideRank?: boolean;
-  hideChallengerIconBorder?: boolean;
   isGiant?: boolean;
 }) {
   const color = getChallengerColor(rank);
@@ -34,11 +32,10 @@ export function ChallengerSection({
       className={clsx(
         styles.container,
         isGiant && styles.containerGiant,
-        hideRank && hideChallengerIconBorder && styles.container_no_border
+        hideRank && styles.container_no_border
       )}
       style={{
-        backgroundColor:
-          hideRank && hideChallengerIconBorder ? undefined : color,
+        backgroundColor: hideRank ? undefined : color,
       }}
     >
       {!hideRank && (
@@ -51,11 +48,8 @@ export function ChallengerSection({
         className={clsx(
           styles.icon,
           isGiant && styles.iconGiant,
-          hideRank && hideChallengerIconBorder && styles.icon_no_border,
-          hideRank &&
-            hideChallengerIconBorder &&
-            isGiant &&
-            styles.icon_no_borderGiant
+          hideRank && styles.icon_no_border,
+          hideRank && isGiant && styles.icon_no_borderGiant
         )}
         fill={color}
       />

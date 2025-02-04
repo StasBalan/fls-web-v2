@@ -13,7 +13,9 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
 import { useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export function CopyLinkDialog({ buildUrl }: { buildUrl: () => string }) {
   const [url, setUrl] = useState("");
@@ -32,9 +34,10 @@ export function CopyLinkDialog({ buildUrl }: { buildUrl: () => string }) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Share link</DialogTitle>
+          <DialogTitle>Widget link</DialogTitle>
           <DialogDescription>
-            Anyone who has this link will be able to view this.
+            Create 'Browser' source in OBS or other studio software and paste
+            this link.
           </DialogDescription>
         </DialogHeader>
         <div className="flex items-center space-x-2">
@@ -44,10 +47,17 @@ export function CopyLinkDialog({ buildUrl }: { buildUrl: () => string }) {
             </Label>
             <Input id="link" defaultValue={url} readOnly />
           </div>
-          <Button type="submit" size="sm" className="px-3">
-            <span className="sr-only">Copy</span>
-            <Copy />
-          </Button>
+          <CopyToClipboard
+            text={url}
+            onCopy={() => {
+              toast("Copied.");
+            }}
+          >
+            <Button type="submit" size="sm" className="px-3">
+              <span className="sr-only">Copy</span>
+              <Copy />
+            </Button>
+          </CopyToClipboard>
         </div>
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>

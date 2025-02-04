@@ -34,7 +34,6 @@ function WidgetExamples() {
             duration={7000}
             hideChallenger={false}
             hideRank={false}
-            hideChallengerIconBorder={false}
             rounded={false}
           />
         </div>
@@ -61,7 +60,6 @@ function WidgetExamples() {
             duration={9000}
             hideChallenger={false}
             hideRank={true}
-            hideChallengerIconBorder={true}
             rounded={true}
           />
         </div>
@@ -88,7 +86,6 @@ function WidgetExamples() {
             duration={6000}
             hideChallenger={true}
             hideRank={true}
-            hideChallengerIconBorder={true}
             rounded={false}
           />
         </div>

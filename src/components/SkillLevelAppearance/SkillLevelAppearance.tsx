@@ -48,14 +48,12 @@ export function SkillLevelAppearance({
   rank,
   hideChallenger = false,
   hideRank = false,
-  hideChallengerIconBorder = false,
   isGiant = false,
 }: {
   level: number;
   rank: number;
   hideChallenger?: boolean;
   hideRank?: boolean;
-  hideChallengerIconBorder?: boolean;
   isGiant?: boolean;
 }) {
   const classNames = clsx(styles.icon, isGiant && styles.iconGiant);
@@ -72,12 +70,7 @@ export function SkillLevelAppearance({
 
   if (rank <= 1000) {
     return (
-      <ChallengerSection
-        rank={rank}
-        hideRank={hideRank}
-        hideChallengerIconBorder={hideChallengerIconBorder}
-        isGiant={isGiant}
-      />
+      <ChallengerSection rank={rank} hideRank={hideRank} isGiant={isGiant} />
     );
   }
 

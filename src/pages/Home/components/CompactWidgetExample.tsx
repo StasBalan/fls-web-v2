@@ -7,7 +7,6 @@ export function CompactWidgetExample({
   rounded,
   hideChallenger,
   hideRank,
-  hideChallengerIconBorder,
 }: {
   data: Array<{
     elo: number;
@@ -18,7 +17,6 @@ export function CompactWidgetExample({
   rounded: boolean;
   hideChallenger: boolean;
   hideRank: boolean;
-  hideChallengerIconBorder: boolean;
 }) {
   const [dataIdx, setDataIdx] = useState(0);
 
@@ -49,7 +47,6 @@ export function CompactWidgetExample({
       rounded={rounded}
       hideChallenger={hideChallenger}
       hideRank={hideRank}
-      hideChallengerIconBorder={hideChallengerIconBorder}
       isGiant={false}
     />
   );

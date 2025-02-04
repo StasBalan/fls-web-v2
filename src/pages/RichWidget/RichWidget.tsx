@@ -6,13 +6,8 @@ import { getRouteApi } from "@tanstack/react-router";
 const routeApi = getRouteApi("/widget-rich");
 
 export function RichWidget() {
-  const {
-    nickname,
-    hideRank,
-    hideChallenger,
-    transparent,
-    hideChallengerIconBorder,
-  } = routeApi.useSearch();
+  const { nickname, hideRank, hideChallenger, transparent } =
+    routeApi.useSearch();
 
   const { profile, matches, kdr, countryRanking, regionRanking } =
     useFullWidgetInfo(nickname, true);
@@ -82,7 +77,6 @@ export function RichWidget() {
         countryRank={countryRanking}
         hideRank={hideRank}
         hideChallenger={hideChallenger}
-        hideChallengerIconBorder={hideChallengerIconBorder}
         transparent={transparent}
       />
     </>

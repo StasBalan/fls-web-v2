@@ -17,17 +17,24 @@ import { RichWidgetBuilder } from "@/components/RichWidgetBuilder";
 import { getLastMatchesStats, getTodayMatchesStats } from "@/utils";
 import { PageHeader } from "@/components/PageHeader";
 import { PageFooter } from "@/components/PageFooter";
+import clsx from "clsx";
 
 export function WidgetBuilder() {
   const [nickname, setNickname] = useState("");
   const debouncedNicknameChange = useDebouncedCallback((value) => {
     setNickname(value);
-  }, 1000);
+  }, 1500);
 
   const [widgetType, setWidgetType] = useState<string>("rich");
 
-  const { profile, matches, regionRanking, countryRanking, kdr } =
-    useFullWidgetInfo(nickname, false);
+  const {
+    profile,
+    profileLoading,
+    matches,
+    regionRanking,
+    countryRanking,
+    kdr,
+  } = useFullWidgetInfo(nickname, false);
 
   return (
     <div className={styles.wrapper}>
@@ -44,6 +51,7 @@ export function WidgetBuilder() {
               onChange={(event) => {
                 debouncedNicknameChange(event.target.value);
               }}
+              className={clsx(!nickname && "border-red-500")}
             />
           </div>
 
@@ -66,19 +74,9 @@ export function WidgetBuilder() {
           </div>
         </div>
 
-        {!nickname ? (
-          <div className={styles.error}>
-            <div className={styles.errorHeader}>Error: NO NICKNAME</div>
-            <div className={styles.errorDescription}>
-              Enter your FACEIT nickname in the input field. Please note that
-              nickname is <b>case sensitive</b>.
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
+        {!nickname && <></>}
 
-        {nickname && profile === null ? (
+        {nickname && profile === null && !profileLoading ? (
           <div className={styles.error}>
             <div className={styles.errorHeader}>Error: NO FACEIT PROFILE</div>
             <div className={styles.errorDescription}>
@@ -90,7 +88,7 @@ export function WidgetBuilder() {
           <></>
         )}
 
-        {nickname && profile && !profile.games?.cs2 ? (
+        {nickname && profile && !profileLoading && !profile.games?.cs2 ? (
           <div className={styles.error}>
             <div className={styles.errorHeader}>
               Error: NO CS2 GAME IN FACEIT PROFILE
@@ -107,6 +105,7 @@ export function WidgetBuilder() {
         {widgetType === "compact" &&
         nickname &&
         profile &&
+        !profileLoading &&
         profile.games?.cs2 &&
         regionRanking ? (
           <CompactWidgetBuilder
@@ -122,6 +121,7 @@ export function WidgetBuilder() {
         {widgetType === "rich" &&
         nickname &&
         profile &&
+        !profileLoading &&
         profile.games?.cs2 &&
         matches &&
         regionRanking &&

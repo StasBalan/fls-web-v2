@@ -6,6 +6,7 @@ import styles from "./CompactWidgetBuilder.module.scss";
 import { Switch } from "../ui/switch";
 import { Label } from "../ui/label";
 import { CopyLinkDialog } from "../CopyLinkDialog";
+import { ChallengerSettingsInfoCard } from "../ChallengerSettingsInfoCard";
 
 export function CompactWidgetBuilder({
   elo,
@@ -22,12 +23,11 @@ export function CompactWidgetBuilder({
   const [rounded, setRounded] = useState(false);
   const [showChallenger, setShowChallenger] = useState(true);
   const [showRank, setShowRank] = useState(true);
-  const [showChallengerIconBorder, setShowChallengerIconBorder] =
-    useState(true);
+
   const isGiant = true;
 
   const buildUrl = () => {
-    return `https://faceitlivestats.win/widget-compact?hideRank=${!showRank}&hideChallenger=${!showChallenger}&hideChallengerIconBorder=${!showChallengerIconBorder}&rounded=${rounded}&transparent=${transparent}&isGiant=${isGiant}&nickname=${nickname}`;
+    return `https://faceitlivestats.win/widget-compact?hideRank=${!showRank}&hideChallenger=${!showChallenger}&rounded=${rounded}&transparent=${transparent}&isGiant=${isGiant}&nickname=${nickname}`;
   };
 
   return (
@@ -41,7 +41,6 @@ export function CompactWidgetBuilder({
           rounded={rounded}
           hideChallenger={!showChallenger}
           hideRank={!showRank}
-          hideChallengerIconBorder={!showChallengerIconBorder}
           isGiant={false}
         />
       </div>
@@ -71,7 +70,10 @@ export function CompactWidgetBuilder({
           </div>
         </div>
         <div className={styles.controlsGroup}>
-          <span>Challenger settings</span>
+          <div className="flex items-center justify-center gap-[8px]">
+            <span>Challenger settings</span>
+            <ChallengerSettingsInfoCard />
+          </div>
           <div className={styles.control}>
             <Label htmlFor="show-challenger">Show challenger icon</Label>
             <Switch
@@ -90,21 +92,6 @@ export function CompactWidgetBuilder({
               checked={showRank}
               onCheckedChange={(event) => {
                 setShowRank(event);
-
-                if (event) {
-                  setShowChallengerIconBorder(true);
-                }
-              }}
-            />
-          </div>
-          <div className={styles.control}>
-            <Label htmlFor="show-challenger-border">Show icon border</Label>
-            <Switch
-              id="show-challenger-border"
-              disabled={!showChallenger || showRank}
-              checked={showChallengerIconBorder}
-              onCheckedChange={(event) => {
-                setShowChallengerIconBorder(event);
               }}
             />
           </div>

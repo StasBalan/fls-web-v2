@@ -104,7 +104,6 @@ export function RichWidgetExample() {
       transparent={false}
       hideChallenger={false}
       hideRank={false}
-      hideChallengerIconBorder={false}
     />
   );
 }

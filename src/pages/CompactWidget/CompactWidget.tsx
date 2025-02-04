@@ -8,15 +8,8 @@ import { faceitApiDataService } from "@/data-services";
 const routeApi = getRouteApi("/widget-compact");
 
 export function CompactWidget() {
-  const {
-    nickname,
-    hideRank,
-    hideChallenger,
-    rounded,
-    transparent,
-    hideChallengerIconBorder,
-    isGiant,
-  } = routeApi.useSearch();
+  const { nickname, hideRank, hideChallenger, rounded, transparent, isGiant } =
+    routeApi.useSearch();
 
   const [faceitProfile, setFaceitProfile] = useState<
     FaceitProfile | null | undefined
@@ -111,9 +104,6 @@ export function CompactWidget() {
         rank={regionRanking || 2000}
         hideRank={regionRanking === null || hideRank}
         hideChallenger={regionRanking === null || hideChallenger}
-        hideChallengerIconBorder={
-          regionRanking === null || hideChallengerIconBorder
-        }
         rounded={rounded}
         transparent={transparent}
         isGiant={isGiant}

@@ -10,15 +10,12 @@ export const richWidgetRoute = createRoute({
   ): {
     hideRank: boolean;
     hideChallenger: boolean;
-    hideChallengerIconBorder: boolean;
     transparent: boolean;
     nickname: string;
   } => {
     return {
       hideRank: (search.hideRank as boolean) || false,
       hideChallenger: (search.hideChallenger as boolean) || false,
-      hideChallengerIconBorder:
-        (search.hideChallengerIconBorder as boolean) || false,
       transparent: (search.transparent as boolean) || false,
       nickname: (search.nickname as string) || "",
     };

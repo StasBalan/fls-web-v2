@@ -5,13 +5,21 @@ export function PageFooter() {
     <footer className={styles.container}>
       <div>
         Created and maintained by{" "}
-        <a href={"https://translate.google.com"} target="_blank">
+        <a
+          href={"https://www.twitch.tv/podokoniktw/about"}
+          target="_blank"
+          className={styles.twitch}
+        >
           <b>
             <u>@podokonikTW</u>
           </b>
         </a>{" "}
         &{" "}
-        <a href={"https://translate.google.com"} target="_blank">
+        <a
+          href={"https://www.twitch.tv/nymfgg/about"}
+          target="_blank"
+          className={styles.twitch}
+        >
           <b>
             <u>@nymfgg</u>
           </b>
@@ -19,7 +27,11 @@ export function PageFooter() {
       </div>
       <div>
         Follow our telegram channel{" "}
-        <a href={"https://translate.google.com"} target="_blank">
+        <a
+          href={"https://translate.google.com"}
+          target="_blank"
+          className={styles.telegram}
+        >
           <b>
             <u>@faceitlivestats</u>
           </b>
