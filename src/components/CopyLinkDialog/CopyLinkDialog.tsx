@@ -12,12 +12,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useTranslation } from "react-i18next";
 
 export function CopyLinkDialog({ buildUrl }: { buildUrl: () => string }) {
+  const { t } = useTranslation();
+
   const [url, setUrl] = useState("");
 
   const handleButtonClick = () => {
@@ -29,32 +31,27 @@ export function CopyLinkDialog({ buildUrl }: { buildUrl: () => string }) {
       <DialogTrigger asChild>
         <Button onClick={handleButtonClick}>
           <Blocks />
-          Build link
+          {t("builder.controls.dialog.trigger")}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Widget link</DialogTitle>
+          <DialogTitle>{t("builder.controls.dialog.title")}</DialogTitle>
           <DialogDescription>
-            Create 'Browser' source in OBS or other studio software and paste
-            this link.
+            {t("builder.controls.dialog.description")}
           </DialogDescription>
         </DialogHeader>
         <div className="flex items-center space-x-2">
           <div className="grid flex-1 gap-2">
-            <Label htmlFor="link" className="sr-only">
-              Link
-            </Label>
             <Input id="link" defaultValue={url} readOnly />
           </div>
           <CopyToClipboard
             text={url}
             onCopy={() => {
-              toast("Copied.");
+              toast(t("builder.controls.dialog.toast"));
             }}
           >
             <Button type="submit" size="sm" className="px-3">
-              <span className="sr-only">Copy</span>
               <Copy />
             </Button>
           </CopyToClipboard>
@@ -62,7 +59,7 @@ export function CopyLinkDialog({ buildUrl }: { buildUrl: () => string }) {
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
             <Button type="button" variant="secondary">
-              Close
+              {t("builder.controls.dialog.close")}
             </Button>
           </DialogClose>
         </DialogFooter>

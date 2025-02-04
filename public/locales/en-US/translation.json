@@ -1,0 +1,39 @@
+{
+  "title": "Enhance your stream with <0></0><1>FACEIT</1> CS2 statistics",
+  "description": "Dynamic customizable widgets for OBS <0></0>and other studio software.",
+  "button": "Build Widget",
+  "footer": {
+    "maintainers": "Created and maintained by <0>@podokonikTW</0> & <1>@nymfgg</1>",
+    "news": "Follow our telegram channel <0>@faceitlivestats</0> to stay up to date with all the news and updates.",
+    "disclaimer": "FACEIT Live Stats is developed independently and is not officially endorsed by or affiliated with FACEIT."
+  },
+  "builder": {
+    "nickname": {
+      "label": "Faceit nickname",
+      "placeholder": "Enter your Faceit nickname"
+    },
+    "type": {
+      "label": "Widget type"
+    },
+    "controls": {
+      "style": {
+        "label": "Style settings",
+        "transparent": "Transparent background",
+        "rounded": "Rounded corners"
+      },
+      "challenger": {
+        "label": "Challenger settings",
+        "info": "Changes in this settings group will be visible only if you are Challenger #1000 and higher in your region.",
+        "icon": "Show challenger icon",
+        "rank": "Show rank"
+      },
+      "dialog": {
+        "trigger": "Build Link",
+        "title": "Widget link",
+        "description": "Create 'Browser' source in OBS or other studio software and paste this link.",
+        "close": "Close",
+        "toast": "Copied."
+      }
+    }
+  }
+}

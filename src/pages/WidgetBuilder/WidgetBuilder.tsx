@@ -18,8 +18,11 @@ import { getLastMatchesStats, getTodayMatchesStats } from "@/utils";
 import { PageHeader } from "@/components/PageHeader";
 import { PageFooter } from "@/components/PageFooter";
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
 export function WidgetBuilder() {
+  const { t } = useTranslation();
+
   const [nickname, setNickname] = useState("");
   const debouncedNicknameChange = useDebouncedCallback((value) => {
     setNickname(value);
@@ -43,10 +46,12 @@ export function WidgetBuilder() {
       <div className={styles.container}>
         <div className={styles.topForm}>
           <div className="w-[300px]">
-            <Label htmlFor="faceit-nickname">Faceit Nickname</Label>
+            <Label htmlFor="faceit-nickname">
+              {t("builder.nickname.label")}
+            </Label>
             <Input
               id="faceit-nickname"
-              placeholder="Faceit Nickname"
+              placeholder={t("builder.nickname.placeholder")}
               defaultValue={""}
               onChange={(event) => {
                 debouncedNicknameChange(event.target.value);
@@ -56,7 +61,7 @@ export function WidgetBuilder() {
           </div>
 
           <div className="w-[200px]">
-            <Label htmlFor="widget-type">Widget type</Label>
+            <Label htmlFor="widget-type"> {t("builder.type.label")}</Label>
             <Select
               value={widgetType}
               onValueChange={(value: string) => {

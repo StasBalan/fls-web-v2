@@ -7,6 +7,7 @@ import { Switch } from "../ui/switch";
 import { Label } from "../ui/label";
 import { CopyLinkDialog } from "../CopyLinkDialog";
 import { ChallengerSettingsInfoCard } from "../ChallengerSettingsInfoCard";
+import { useTranslation } from "react-i18next";
 
 export function CompactWidgetBuilder({
   elo,
@@ -19,6 +20,8 @@ export function CompactWidgetBuilder({
   rank: number;
   nickname: string;
 }) {
+  const { t } = useTranslation();
+
   const [transparent, setTransparent] = useState(false);
   const [rounded, setRounded] = useState(false);
   const [showChallenger, setShowChallenger] = useState(true);
@@ -47,9 +50,11 @@ export function CompactWidgetBuilder({
 
       <div className={styles.controls}>
         <div className={styles.controlsGroup}>
-          <span>View settings</span>
+          <span>{t("builder.controls.style.label")}</span>
           <div className={styles.control}>
-            <Label htmlFor="transparent">Transparent background</Label>
+            <Label htmlFor="transparent">
+              {t("builder.controls.style.transparent")}
+            </Label>
             <Switch
               id="transparent"
               checked={transparent}
@@ -59,7 +64,9 @@ export function CompactWidgetBuilder({
             />
           </div>
           <div className={styles.control}>
-            <Label htmlFor="rounded">Rounded corners</Label>
+            <Label htmlFor="rounded">
+              {t("builder.controls.style.rounded")}
+            </Label>
             <Switch
               id="rounded"
               checked={rounded}
@@ -71,11 +78,15 @@ export function CompactWidgetBuilder({
         </div>
         <div className={styles.controlsGroup}>
           <div className="flex items-center justify-center gap-[8px]">
-            <span>Challenger settings</span>
-            <ChallengerSettingsInfoCard />
+            <span>{t("builder.controls.challenger.label")}</span>
+            <ChallengerSettingsInfoCard
+              text={t("builder.controls.challenger.info")}
+            />
           </div>
           <div className={styles.control}>
-            <Label htmlFor="show-challenger">Show challenger icon</Label>
+            <Label htmlFor="show-challenger">
+              {t("builder.controls.challenger.icon")}
+            </Label>
             <Switch
               id="show-challenger"
               checked={showChallenger}
@@ -85,7 +96,9 @@ export function CompactWidgetBuilder({
             />
           </div>
           <div className={styles.control}>
-            <Label htmlFor="show-rank">Show rank</Label>
+            <Label htmlFor="show-rank">
+              {t("builder.controls.challenger.rank")}
+            </Label>
             <Switch
               id="show-rank"
               disabled={!showChallenger}

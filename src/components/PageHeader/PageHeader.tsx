@@ -6,8 +6,13 @@ import { Link } from "@tanstack/react-router";
 import { Logo } from "@/assets/Logo";
 import { Button } from "../ui/button";
 import { Telegram } from "@/assets/Telegram";
+import { SelectLanguage } from "../SelectLanguage";
+import { SideMenu } from "./components";
+import { useTranslation } from "react-i18next";
 
 export function PageHeader() {
+  const { t } = useTranslation();
+
   const [blurred, setBlurred] = useState(false);
 
   useEffect(() => {
@@ -40,12 +45,35 @@ export function PageHeader() {
           </Link>
           <div className={styles.buttons}>
             <Button asChild>
-              <Link to="/widget-builder">Build Widget</Link>
+              <Link to="/widget-builder">{t("button")}</Link>
             </Button>
 
             <a href={"https://t.me/faceitlivestats"} target="_blank">
               <Telegram className={styles.telegram} />
             </a>
+
+            <SelectLanguage />
+          </div>
+          <div className={styles.menu}>
+            <SideMenu>
+              <div className={styles.menuButtons}>
+                <Button asChild>
+                  <Link to="/widget-builder">{t("button")}</Link>
+                </Button>
+
+                <div className="w-full flex items-center justify-between">
+                  <SelectLanguage />
+
+                  <a
+                    href={"https://t.me/faceitlivestats"}
+                    target="_blank"
+                    className="flex items-center justify-start gap-[8px]"
+                  >
+                    Telegram <Telegram className={styles.telegram} />
+                  </a>
+                </div>
+              </div>
+            </SideMenu>
           </div>
         </div>
       </header>

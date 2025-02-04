@@ -1,46 +1,45 @@
+import clsx from "clsx";
 import styles from "./PageFooter.module.scss";
+import { Trans, useTranslation } from "react-i18next";
 
 export function PageFooter() {
+  useTranslation();
+
   return (
     <footer className={styles.container}>
       <div>
-        Created and maintained by{" "}
-        <a
-          href={"https://www.twitch.tv/podokoniktw/about"}
-          target="_blank"
-          className={styles.twitch}
-        >
-          <b>
-            <u>@podokonikTW</u>
-          </b>
-        </a>{" "}
-        &{" "}
-        <a
-          href={"https://www.twitch.tv/nymfgg/about"}
-          target="_blank"
-          className={styles.twitch}
-        >
-          <b>
-            <u>@nymfgg</u>
-          </b>
-        </a>
+        <Trans
+          i18nKey="footer.maintainers"
+          components={[
+            <a
+              href={"https://www.twitch.tv/podokoniktw/about"}
+              target="_blank"
+              className={clsx(styles.link, styles.twitch)}
+            />,
+            <a
+              href={"https://www.twitch.tv/nymfgg/about"}
+              target="_blank"
+              className={clsx(styles.link, styles.twitch)}
+            />,
+          ]}
+        />
       </div>
+
       <div>
-        Follow our telegram channel{" "}
-        <a
-          href={"https://t.me/faceitlivestats"}
-          target="_blank"
-          className={styles.telegram}
-        >
-          <b>
-            <u>@faceitlivestats</u>
-          </b>
-        </a>{" "}
-        to stay up to date with all the news and updates.
+        <Trans
+          i18nKey="footer.news"
+          components={[
+            <a
+              href={"https://t.me/faceitlivestats"}
+              target="_blank"
+              className={clsx(styles.link, styles.telegram)}
+            />,
+          ]}
+        />
       </div>
+
       <div className={styles.disclaimer}>
-        FACEIT Live Stats is developed independently and is not officially
-        endorsed by or affiliated with FACEIT.
+        <Trans i18nKey="footer.disclaimer" />
       </div>
     </footer>
   );
