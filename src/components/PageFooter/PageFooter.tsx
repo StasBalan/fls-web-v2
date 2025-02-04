@@ -28,7 +28,7 @@ export function PageFooter() {
       <div>
         Follow our telegram channel{" "}
         <a
-          href={"https://translate.google.com"}
+          href={"https://t.me/faceitlivestats"}
           target="_blank"
           className={styles.telegram}
         >

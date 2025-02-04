@@ -43,7 +43,7 @@ export function PageHeader() {
               <Link to="/widget-builder">Build Widget</Link>
             </Button>
 
-            <a href={"https://translate.google.com"} target="_blank">
+            <a href={"https://t.me/faceitlivestats"} target="_blank">
               <Telegram className={styles.telegram} />
             </a>
           </div>
