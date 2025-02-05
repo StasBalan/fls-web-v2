@@ -9,6 +9,8 @@ import { Trans, useTranslation } from "react-i18next";
 import styles from "./Home.module.scss";
 import "./Home.scss";
 
+import * as amplitude from "@amplitude/analytics-browser";
+
 const WidgetExamples = lazy(() => import("./components/WidgetExpamples.tsx"));
 
 export function Home() {
@@ -37,7 +39,14 @@ export function Home() {
               <Trans i18nKey="description" components={[<br />]} />
             </p>
             <Button asChild className="mt-4">
-              <Link to="/widget-builder">{t("button")}</Link>
+              <Link
+                to="/widget-builder"
+                onClick={() => {
+                  amplitude.track("build_widget_click", { source: "home" });
+                }}
+              >
+                {t("button")}
+              </Link>
             </Button>
           </div>
 

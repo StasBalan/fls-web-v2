@@ -10,6 +10,8 @@ import { SelectLanguage } from "../SelectLanguage";
 import { SideMenu } from "./components";
 import { useTranslation } from "react-i18next";
 
+import * as amplitude from "@amplitude/analytics-browser";
+
 export function PageHeader() {
   const { t } = useTranslation();
 
@@ -45,7 +47,14 @@ export function PageHeader() {
           </Link>
           <div className={styles.buttons}>
             <Button asChild>
-              <Link to="/widget-builder">{t("button")}</Link>
+              <Link
+                to="/widget-builder"
+                onClick={() => {
+                  amplitude.track("build_widget_click", { source: "header" });
+                }}
+              >
+                {t("button")}
+              </Link>
             </Button>
 
             <a href={"https://t.me/faceitlivestats"} target="_blank">
