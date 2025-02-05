@@ -61,7 +61,7 @@ export function WidgetBuilder() {
               onChange={(event) => {
                 debouncedNicknameChange(event.target.value);
               }}
-              className={clsx(!nickname && "border-red-500")}
+              autoFocus
             />
           </div>
 
