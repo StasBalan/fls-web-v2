@@ -17,7 +17,6 @@ import { RichWidgetBuilder } from "@/components/RichWidgetBuilder";
 import { getLastMatchesStats, getTodayMatchesStats } from "@/utils";
 import { PageHeader } from "@/components/PageHeader";
 import { PageFooter } from "@/components/PageFooter";
-import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import { eventService } from "@/services";
 
