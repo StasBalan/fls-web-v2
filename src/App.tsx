@@ -4,12 +4,9 @@ import { router } from "./router";
 
 import "./i18n";
 
-import * as amplitude from "@amplitude/analytics-browser";
+import { eventService } from "./services";
 
-amplitude.init("5fe11ecd8d119639f6fa9598b8347fb8", {
-  autocapture: true,
-  serverZone: "EU",
-});
+eventService.init();
 
 function App() {
   return <RouterProvider router={router} />;

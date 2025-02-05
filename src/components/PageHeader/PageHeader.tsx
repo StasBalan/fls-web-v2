@@ -10,7 +10,7 @@ import { SelectLanguage } from "../SelectLanguage";
 import { SideMenu } from "./components";
 import { useTranslation } from "react-i18next";
 
-import * as amplitude from "@amplitude/analytics-browser";
+import { eventService } from "@/services";
 
 export function PageHeader() {
   const { t } = useTranslation();
@@ -50,14 +50,24 @@ export function PageHeader() {
               <Link
                 to="/widget-builder"
                 onClick={() => {
-                  amplitude.track("build_widget_click", { source: "header" });
+                  eventService.track("build_widget_click", {
+                    source: "header",
+                  });
                 }}
               >
                 {t("button")}
               </Link>
             </Button>
 
-            <a href={"https://t.me/faceitlivestats"} target="_blank">
+            <a
+              href={"https://t.me/faceitlivestats"}
+              target="_blank"
+              onClick={() => {
+                eventService.track("telegram_click", {
+                  source: "header",
+                });
+              }}
+            >
               <Telegram className={styles.telegram} />
             </a>
 
@@ -67,7 +77,16 @@ export function PageHeader() {
             <SideMenu>
               <div className={styles.menuButtons}>
                 <Button asChild>
-                  <Link to="/widget-builder">{t("button")}</Link>
+                  <Link
+                    to="/widget-builder"
+                    onClick={() => {
+                      eventService.track("build_widget_click", {
+                        source: "header",
+                      });
+                    }}
+                  >
+                    {t("button")}
+                  </Link>
                 </Button>
 
                 <div className="w-full flex items-center justify-between">
@@ -77,6 +96,11 @@ export function PageHeader() {
                     href={"https://t.me/faceitlivestats"}
                     target="_blank"
                     className="flex items-center justify-start gap-[8px]"
+                    onClick={() => {
+                      eventService.track("telegram_click", {
+                        source: "header",
+                      });
+                    }}
                   >
                     Telegram <Telegram className={styles.telegram} />
                   </a>

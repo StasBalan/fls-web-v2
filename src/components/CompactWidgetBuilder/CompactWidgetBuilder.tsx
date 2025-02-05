@@ -8,6 +8,7 @@ import { Label } from "../ui/label";
 import { CopyLinkDialog } from "../CopyLinkDialog";
 import { ChallengerSettingsInfoCard } from "../ChallengerSettingsInfoCard";
 import { useTranslation } from "react-i18next";
+import { eventService } from "@/services";
 
 export function CompactWidgetBuilder({
   elo,
@@ -30,6 +31,20 @@ export function CompactWidgetBuilder({
   const isGiant = true;
 
   const buildUrl = () => {
+    eventService.track(
+      "build_widget_link_click",
+      {
+        type: "compact",
+        nickname: nickname,
+        elo: elo,
+        transparent: transparent,
+        rounded: rounded,
+        hideChallenger: !showChallenger,
+        hideRank: !showRank,
+      },
+      { user_id: nickname }
+    );
+
     return `https://faceitlivestats.win/widget-compact?hideRank=${!showRank}&hideChallenger=${!showChallenger}&rounded=${rounded}&transparent=${transparent}&isGiant=${isGiant}&nickname=${nickname}`;
   };
 

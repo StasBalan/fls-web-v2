@@ -8,6 +8,7 @@ import { Switch } from "../ui/switch";
 import { CopyLinkDialog } from "../CopyLinkDialog";
 import { ChallengerSettingsInfoCard } from "../ChallengerSettingsInfoCard";
 import { useTranslation } from "react-i18next";
+import { eventService } from "@/services";
 
 export function RichWidgetBuilder({
   nickname,
@@ -44,6 +45,19 @@ export function RichWidgetBuilder({
   const [showRank, setShowRank] = useState(true);
 
   const buildUrl = () => {
+    eventService.track(
+      "build_widget_link_click",
+      {
+        type: "rich",
+        nickname: nickname,
+        elo: data.elo,
+        transparent: transparent,
+        hideChallenger: !showChallenger,
+        hideRank: !showRank,
+      },
+      { user_id: nickname }
+    );
+
     return `https://faceitlivestats.win/widget-rich?hideRank=${!showRank}&hideChallenger=${!showChallenger}&transparent=${transparent}&nickname=${nickname}`;
   };
 

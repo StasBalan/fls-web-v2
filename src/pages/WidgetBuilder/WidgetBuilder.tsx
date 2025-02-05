@@ -1,5 +1,5 @@
 import styles from "./WidgetBuilder.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFullWidgetInfo } from "@/features";
 import { useDebouncedCallback } from "use-debounce";
 import { Input } from "@/components/ui/input";
@@ -19,6 +19,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { PageFooter } from "@/components/PageFooter";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
+import { eventService } from "@/services";
 
 export function WidgetBuilder() {
   const { t } = useTranslation();
@@ -38,6 +39,10 @@ export function WidgetBuilder() {
     countryRanking,
     kdr,
   } = useFullWidgetInfo(nickname, false);
+
+  useEffect(() => {
+    eventService.track("view_widget_builder_page");
+  }, []);
 
   return (
     <div className={styles.wrapper}>

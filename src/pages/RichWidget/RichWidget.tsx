@@ -1,7 +1,9 @@
 import { RichWidget as RichWidgetComponent } from "@/components/RichWidget";
 import { useFullWidgetInfo } from "@/features";
+import { eventService } from "@/services";
 import { getLastMatchesStats, getTodayMatchesStats } from "@/utils";
 import { getRouteApi } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 const routeApi = getRouteApi("/widget-rich");
 
@@ -11,6 +13,24 @@ export function RichWidget() {
 
   const { profile, matches, kdr, countryRanking, regionRanking } =
     useFullWidgetInfo(nickname, true);
+
+  useEffect(() => {
+    eventService.track("view_widget_page", { type: "rich" });
+  }, []);
+
+  useEffect(() => {
+    if (profile?.games?.cs2?.faceit_elo) {
+      eventService.track(
+        "widget_update_data",
+        {
+          type: "rich",
+          nickname: nickname,
+          elo: profile.games.cs2.faceit_elo,
+        },
+        { user_id: nickname }
+      );
+    }
+  }, [nickname, profile?.games?.cs2?.faceit_elo]);
 
   if (!nickname) {
     return <div>Error: No nickname found in URL.</div>;

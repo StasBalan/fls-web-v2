@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import styles from "./PageFooter.module.scss";
 import { Trans, useTranslation } from "react-i18next";
+import { eventService } from "@/services";
 
 export function PageFooter() {
   useTranslation();
@@ -15,11 +16,23 @@ export function PageFooter() {
               href={"https://www.twitch.tv/podokoniktw/about"}
               target="_blank"
               className={clsx(styles.link, styles.twitch)}
+              onClick={() => {
+                eventService.track("twitch_click", {
+                  source: "footer",
+                  value: "podokoniktw",
+                });
+              }}
             />,
             <a
               href={"https://www.twitch.tv/nymfgg/about"}
               target="_blank"
               className={clsx(styles.link, styles.twitch)}
+              onClick={() => {
+                eventService.track("twitch_click", {
+                  source: "footer",
+                  value: "nymfgg",
+                });
+              }}
             />,
           ]}
         />
@@ -33,6 +46,11 @@ export function PageFooter() {
               href={"https://t.me/faceitlivestats"}
               target="_blank"
               className={clsx(styles.link, styles.telegram)}
+              onClick={() => {
+                eventService.track("telegram_click", {
+                  source: "footer",
+                });
+              }}
             />,
           ]}
         />

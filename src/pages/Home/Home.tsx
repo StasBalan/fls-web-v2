@@ -1,22 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { PageHeader } from "@/components/PageHeader";
 import { PageFooter } from "@/components/PageFooter";
 import { Trans, useTranslation } from "react-i18next";
+import { eventService } from "@/services";
 
 import styles from "./Home.module.scss";
 import "./Home.scss";
 
-import * as amplitude from "@amplitude/analytics-browser";
-
 const WidgetExamples = lazy(() => import("./components/WidgetExpamples.tsx"));
 
 export function Home() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
-  console.log(i18n.resolvedLanguage, i18n.languages);
+  useEffect(() => {
+    eventService.track("view_home_page");
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -42,7 +43,7 @@ export function Home() {
               <Link
                 to="/widget-builder"
                 onClick={() => {
-                  amplitude.track("build_widget_click", { source: "home" });
+                  eventService.track("build_widget_click", { source: "home" });
                 }}
               >
                 {t("button")}

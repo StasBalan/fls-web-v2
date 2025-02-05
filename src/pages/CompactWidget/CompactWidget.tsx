@@ -4,6 +4,7 @@ import { CompactWidget as CompactWidgetComponent } from "@/components/CompactWid
 
 import { FaceitProfile } from "@/types";
 import { faceitApiDataService } from "@/data-services";
+import { eventService } from "@/services";
 
 const routeApi = getRouteApi("/widget-compact");
 
@@ -67,6 +68,24 @@ export function CompactWidget() {
       fetchRegionRanking();
     }
   }, [faceitProfile?.games?.cs2?.faceit_elo, fetchRegionRanking]);
+
+  useEffect(() => {
+    eventService.track("view_widget_page", { type: "compact" });
+  }, []);
+
+  useEffect(() => {
+    if (faceitProfile?.games?.cs2?.faceit_elo) {
+      eventService.track(
+        "widget_update_data",
+        {
+          type: "compact",
+          nickname: nickname,
+          elo: faceitProfile.games.cs2.faceit_elo,
+        },
+        { user_id: nickname }
+      );
+    }
+  }, [nickname, faceitProfile?.games?.cs2?.faceit_elo]);
 
   if (!nickname) {
     return <div>Error: No nickname found in URL.</div>;

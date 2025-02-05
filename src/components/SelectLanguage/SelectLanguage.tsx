@@ -6,6 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { eventService } from "@/services";
 import { useTranslation } from "react-i18next";
 
 const languages = [
@@ -21,6 +22,10 @@ export function SelectLanguage() {
       value={i18n.resolvedLanguage}
       onValueChange={(value) => {
         i18n.changeLanguage(value);
+
+        eventService.track("change_language_click", {
+          lang: value,
+        });
       }}
     >
       <SelectTrigger className="w-[100px]">
