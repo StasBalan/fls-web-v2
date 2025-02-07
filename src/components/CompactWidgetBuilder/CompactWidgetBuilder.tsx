@@ -63,6 +63,10 @@ export function CompactWidgetBuilder({
         />
       </div>
 
+      <div className={styles.button}>
+        <CopyLinkDialog buildUrl={buildUrl} />
+      </div>
+
       <div className={styles.controls}>
         <div className={styles.controlsGroup}>
           <span>{t("builder.controls.style.label")}</span>
@@ -124,8 +128,6 @@ export function CompactWidgetBuilder({
             />
           </div>
         </div>
-
-        <CopyLinkDialog buildUrl={buildUrl} />
       </div>
     </div>
   );
