@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 1px;
+
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: bold;
+
+  &Giant {
+    font-size: 42px;
+    line-height: 42px;
+  }
+
+  &Zero {
+    color: #a7a7a7;
+  }
+
+  &Plus {
+    color: #32d35a;
+  }
+
+  &Minus {
+    color: #ff002b;
+  }
+
+  .sign {
+    height: 12px;
+    width: 12px;
+
+    &Giant {
+      height: 36px;
+      width: 36px;
+    }
+  }
+}

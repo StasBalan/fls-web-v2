@@ -12,12 +12,15 @@ type SingleNumericPropertyProps = {
 export function DoubledNumericProperty({
   left,
   right,
+  isGiant = false,
 }: {
   left: SingleNumericPropertyProps;
   right: SingleNumericPropertyProps;
+  isGiant?: boolean;
 }) {
   return (
     <PropertyBase
+      isGiant={isGiant}
       label={
         <div className={styles.labels}>
           <span>{left.label}</span>

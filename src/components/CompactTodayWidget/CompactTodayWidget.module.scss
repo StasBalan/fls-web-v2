@@ -1,0 +1,101 @@
+.wrapper {
+  .container {
+    height: 44px;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding: 6px 10px 6px 6px;
+
+    border-radius: 8px;
+
+    color: var(--widget-text);
+    background-color: var(--widget-background);
+
+    overflow: hidden;
+
+    .content {
+      gap: 4px;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      gap: 4px;
+
+      &Giant {
+        gap: 12px;
+      }
+    }
+
+    .matchesPlayed {
+      &Container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 8px;
+        margin-left: 8px;
+      }
+
+      &Property {
+        padding-right: 0;
+        padding-left: 0;
+
+        &Value {
+          font-size: 16px;
+          line-height: 18px;
+        }
+
+        &Label {
+          font-size: 12px;
+          line-height: 14px;
+        }
+
+        &Win {
+          color: #32d35a;
+        }
+
+        &Loss {
+          color: #ff002b;
+        }
+      }
+    }
+
+    &Giant {
+      height: 132px;
+
+      padding: 18px 30px 18px 18px;
+      border-radius: 24px;
+
+      .matchesPlayed {
+        &Container {
+          gap: 24px;
+          margin-left: 24px;
+        }
+
+        &Property {
+          &Value {
+            font-size: 48px;
+            line-height: 52px;
+          }
+
+          &Label {
+            font-size: 36px;
+            line-height: 40px;
+          }
+        }
+      }
+    }
+
+    &_transparent {
+      background-color: var(--widget-background-transparent);
+    }
+
+    &_rounded {
+      border-radius: 99999px;
+    }
+  }
+}

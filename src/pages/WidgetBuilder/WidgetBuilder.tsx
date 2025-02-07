@@ -19,6 +19,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { PageFooter } from "@/components/PageFooter";
 import { useTranslation } from "react-i18next";
 import { eventService } from "@/services";
+import { CompactTodayWidgetBuilder } from "@/components/CompactTodayWidgetBuilder";
 
 export function WidgetBuilder() {
   const { t } = useTranslation();
@@ -28,7 +29,7 @@ export function WidgetBuilder() {
     setNickname(value);
   }, 1500);
 
-  const [widgetType, setWidgetType] = useState<string>("rich");
+  const [widgetType, setWidgetType] = useState<string>("compact-today");
 
   const {
     profile,
@@ -76,8 +77,9 @@ export function WidgetBuilder() {
                 <SelectValue placeholder="Select widget type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="compact">Compact</SelectItem>
+                <SelectItem value="compact-today">Compact+</SelectItem>
                 <SelectItem value="rich">Rich</SelectItem>
+                <SelectItem value="compact">Compact</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -151,6 +153,27 @@ export function WidgetBuilder() {
               countryCode: profile.country,
               countryRank: countryRanking,
             }}
+          />
+        ) : (
+          <></>
+        )}
+
+        {widgetType === "compact-today" &&
+        nickname &&
+        profile &&
+        !profileLoading &&
+        profile.games?.cs2 &&
+        matches &&
+        regionRanking ? (
+          <CompactTodayWidgetBuilder
+            nickname={nickname}
+            elo={profile.games.cs2.faceit_elo}
+            level={profile.games.cs2.skill_level}
+            todayMatchesData={getTodayMatchesStats(
+              matches,
+              profile.games.cs2.faceit_elo
+            )}
+            rank={regionRanking}
           />
         ) : (
           <></>

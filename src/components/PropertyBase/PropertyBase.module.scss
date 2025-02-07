@@ -17,4 +17,18 @@
     font-size: 12px;
     line-height: 16px;
   }
+
+  &Giant {
+    padding: 4px 8px;
+
+    .value {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    .label {
+      font-size: 36px;
+      line-height: 36px;
+    }
+  }
 }

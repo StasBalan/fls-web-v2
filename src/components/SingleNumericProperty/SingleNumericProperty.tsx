@@ -8,14 +8,21 @@ export function SingleNumericProperty({
   value,
   unit,
   wrapperClassName,
+  valueClassName,
+  labelClassName,
+  isGiant = false,
 }: {
   label: string;
   value: number | string;
   unit?: string;
   wrapperClassName?: string;
+  valueClassName?: string;
+  labelClassName?: string;
+  isGiant?: boolean;
 }) {
   return (
     <PropertyBase
+      isGiant={isGiant}
       label={label}
       value={
         <div className={styles.value}>
@@ -24,6 +31,8 @@ export function SingleNumericProperty({
         </div>
       }
       wrapperClassName={wrapperClassName}
+      valueClassName={valueClassName}
+      labelClassName={labelClassName}
     />
   );
 }
