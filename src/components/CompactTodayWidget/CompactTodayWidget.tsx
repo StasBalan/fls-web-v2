@@ -47,13 +47,15 @@ export function CompactTodayWidget({
         )}
       >
         <div className={clsx(styles.content, isGiant && styles.contentGiant)}>
-          <SkillLevelAppearance
-            level={level}
-            rank={rank}
-            hideChallenger={hideChallenger}
-            hideRank={hideRank}
-            isGiant={isGiant}
-          />
+          <div>
+            <SkillLevelAppearance
+              level={level}
+              rank={rank}
+              hideChallenger={hideChallenger}
+              hideRank={hideRank}
+              isGiant={isGiant}
+            />
+          </div>
 
           <div className="flex-col items-center justify-center">
             <EloSection elo={elo} isGiant={isGiant} />
