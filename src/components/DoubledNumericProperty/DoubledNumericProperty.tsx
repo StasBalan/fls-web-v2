@@ -13,10 +13,16 @@ export function DoubledNumericProperty({
   left,
   right,
   isGiant = false,
+  wrapperClassName,
+  valueClassName,
+  labelClassName,
 }: {
   left: SingleNumericPropertyProps;
   right: SingleNumericPropertyProps;
   isGiant?: boolean;
+  wrapperClassName?: string;
+  valueClassName?: string;
+  labelClassName?: string;
 }) {
   return (
     <PropertyBase
@@ -41,6 +47,9 @@ export function DoubledNumericProperty({
           </span>
         </div>
       }
+      wrapperClassName={wrapperClassName}
+      valueClassName={valueClassName}
+      labelClassName={labelClassName}
     />
   );
 }

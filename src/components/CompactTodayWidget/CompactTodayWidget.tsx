@@ -4,6 +4,8 @@ import { SkillLevelAppearance } from "../SkillLevelAppearance/SkillLevelAppearan
 import { EloSection } from "../EloSection";
 import { SingleNumericProperty } from "../SingleNumericProperty";
 import { GainArrowProperty } from "../GainArrowProperty";
+import { DoubledNumericProperty } from "../DoubledNumericProperty";
+import { DoubledAnimatedContainersSection } from "../DoubledAnimatedContainersSection";
 
 export function CompactTodayWidget({
   elo,
@@ -63,28 +65,50 @@ export function CompactTodayWidget({
           </div>
 
           {!hideWinsLosses ? (
-            <div className={styles.matchesPlayedContainer}>
-              <SingleNumericProperty
-                label={"Wins"}
-                value={todayMatchesData.wins}
-                wrapperClassName={clsx(
-                  styles.matchesPlayedProperty,
-                  styles.matchesPlayedPropertyWin
-                )}
-                valueClassName={styles.matchesPlayedPropertyValue}
-                labelClassName={styles.matchesPlayedPropertyLabel}
-              />
-              <SingleNumericProperty
-                label={"Losses"}
-                value={todayMatchesData.losses}
-                wrapperClassName={clsx(
-                  styles.matchesPlayedProperty,
-                  styles.matchesPlayedPropertyLoss
-                )}
-                valueClassName={styles.matchesPlayedPropertyValue}
-                labelClassName={styles.matchesPlayedPropertyLabel}
-              />
-            </div>
+            <DoubledAnimatedContainersSection
+              presenceDuration={8000}
+              left={
+                <div className={styles.matchesPlayedContainer}>
+                  <DoubledNumericProperty
+                    left={{
+                      label: "Avg. Kills",
+                      value: todayMatchesData.avgKills,
+                    }}
+                    right={{
+                      label: "Avg. K/D",
+                      value: todayMatchesData.avgKD,
+                    }}
+                    wrapperClassName={styles.matchesPlayedProperty}
+                    valueClassName={styles.matchesPlayedPropertyValue}
+                    labelClassName={styles.matchesPlayedPropertyLabel}
+                  />
+                </div>
+              }
+              right={
+                <div className={styles.matchesPlayedContainer}>
+                  <SingleNumericProperty
+                    label={"Wins"}
+                    value={todayMatchesData.wins}
+                    wrapperClassName={clsx(
+                      styles.matchesPlayedProperty,
+                      styles.matchesPlayedPropertyWin
+                    )}
+                    valueClassName={styles.matchesPlayedPropertyValue}
+                    labelClassName={styles.matchesPlayedPropertyLabel}
+                  />
+                  <SingleNumericProperty
+                    label={"Losses"}
+                    value={todayMatchesData.losses}
+                    wrapperClassName={clsx(
+                      styles.matchesPlayedProperty,
+                      styles.matchesPlayedPropertyLoss
+                    )}
+                    valueClassName={styles.matchesPlayedPropertyValue}
+                    labelClassName={styles.matchesPlayedPropertyLabel}
+                  />
+                </div>
+              }
+            />
           ) : (
             <></>
           )}

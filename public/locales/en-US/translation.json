@@ -20,7 +20,7 @@
         "label": "Style settings",
         "transparent": "Transparent background",
         "rounded": "Rounded corners",
-        "winslosses": "Show Wins/Losses"
+        "winslosses": "Show today stats"
       },
       "challenger": {
         "label": "Challenger settings",
