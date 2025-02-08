@@ -9,15 +9,16 @@
   border-radius: 9999px;
   color: #000000;
   font-weight: bold;
-  font-size: 14px;
-  line-height: 20px;
+
+  font-size: 16px;
+  line-height: 16px;
 
   &Giant {
     padding: 6px;
     gap: 12px;
 
-    font-size: 42px;
-    line-height: 54px;
+    font-size: 46px;
+    line-height: 48px;
   }
 
   &_no_border {
@@ -25,12 +26,14 @@
   }
 
   .rank {
+    margin-top: 2px;
     padding-left: 6px;
 
     display: flex;
     align-items: flex-end;
 
     &Giant {
+      margin-top: 6px;
       padding-left: 18px;
     }
   }
