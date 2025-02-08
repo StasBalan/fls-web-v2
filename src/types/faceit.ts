@@ -1193,7 +1193,7 @@ export type FaceitMatchStats = {
   matchId: string;
   map: string;
   isWin: boolean;
-  elo: number;
+  elo?: number;
   kills: number;
   deaths: number;
   assists: number;
