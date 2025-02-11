@@ -20,6 +20,7 @@ import { PageFooter } from "@/components/PageFooter";
 import { useTranslation } from "react-i18next";
 import { eventService } from "@/services";
 import { CompactTodayWidgetBuilder } from "@/components/CompactTodayWidgetBuilder";
+import { Loader } from "@/components/Loader";
 
 export function WidgetBuilder() {
   const { t } = useTranslation();
@@ -86,6 +87,8 @@ export function WidgetBuilder() {
         </div>
 
         {!nickname && <></>}
+
+        {!profile && profileLoading && <Loader />}
 
         {nickname && profile === null && !profileLoading ? (
           <div className={styles.error}>

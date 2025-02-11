@@ -37,7 +37,8 @@ export function CompactTodayWidget({
   isGiant?: boolean;
 }) {
   return (
-    <div className={styles.wrapper}>
+    // key to fix Safari issue with not re-rendering width
+    <div className={styles.wrapper} key={Number(!!hideWinsLosses)}>
       <div
         className={clsx(
           styles.container,
