@@ -2,6 +2,7 @@ import clsx from "clsx";
 import styles from "./PageFooter.module.scss";
 import { Trans, useTranslation } from "react-i18next";
 import { eventService } from "@/services";
+import { DonateLinks } from "../DonateLinks/DonateLinks";
 
 export function PageFooter() {
   useTranslation();
@@ -55,6 +56,8 @@ export function PageFooter() {
           ]}
         />
       </div>
+
+      <DonateLinks />
 
       <div className={styles.disclaimer}>
         <Trans i18nKey="footer.disclaimer" />

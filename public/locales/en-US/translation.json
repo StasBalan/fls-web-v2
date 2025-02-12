@@ -5,7 +5,11 @@
   "footer": {
     "maintainers": "Created and maintained by <0>@podokonikTW</0> & <1>@nymfgg</1>",
     "news": "Follow our telegram channel <0>@faceitlivestats</0> to stay up to date with all the news and updates.",
-    "disclaimer": "FACEIT Live Stats is developed independently and is not officially endorsed by or affiliated with FACEIT."
+    "disclaimer": "FACEIT Live Stats is developed independently and is not officially endorsed by or affiliated with FACEIT.",
+    "support": {
+      "skins": "Support with skins",
+      "donation": "Support with donation"
+    }
   },
   "builder": {
     "nickname": {

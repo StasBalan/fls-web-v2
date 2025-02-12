@@ -5,7 +5,11 @@
   "footer": {
     "maintainers": "Создано и поддерживается <0>@podokonikTW</0> & <1>@nymfgg</1>",
     "news": "Подписывайся на наш телеграм канал <0>@faceitlivestats</0> чтобы быть в курсе всех новостей и обновлений.",
-    "disclaimer": "FACEIT Live Stats разработан независимо, официально не одобрен и не связан с FACEIT."
+    "disclaimer": "FACEIT Live Stats разработан независимо, официально не одобрен и не связан с FACEIT.",
+    "support": {
+      "skins": "Поддержать скинами",
+      "donation": "Поддержать донатом"
+    }
   },
   "builder": {
     "nickname": {

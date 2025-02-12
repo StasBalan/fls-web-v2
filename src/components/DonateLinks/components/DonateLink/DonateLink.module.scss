@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+
+  background-color: var(--site-text);
+  color: var(--widget-background);
+
+  font-size: 12px;
+}
