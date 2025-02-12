@@ -1,0 +1,18 @@
+User-agent: Yandex
+Disallow: /widget-rich/
+Disallow: /widget-compact/
+Disallow: /widget-compact-today/
+
+User-agent: Googlebot
+Disallow: /widget-rich/
+Disallow: /widget-compact/
+Disallow: /widget-compact-today/
+Allow: *.css
+Allow: *.js
+
+User-agent: *
+Disallow: /widget-rich/
+Disallow: /widget-compact/
+Disallow: /widget-compact-today/
+
+Sitemap: https://faceitlivestats.win/sitemap.xml
