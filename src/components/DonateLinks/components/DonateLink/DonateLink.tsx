@@ -2,12 +2,12 @@ import { eventService } from "@/services";
 import styles from "./DonateLink.module.scss";
 
 export function DonateLink({
-  key,
+  id,
   icon,
   label,
   link,
 }: {
-  key: string;
+  id: string;
   icon: React.ReactNode;
   label: string;
   link: string;
@@ -17,7 +17,7 @@ export function DonateLink({
       href={link}
       target="_blank"
       onClick={() => {
-        eventService.track("support_link_click", { type: key });
+        eventService.track("support_link_click", { id: id });
       }}
       className={styles.container}
     >
