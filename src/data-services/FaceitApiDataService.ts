@@ -1,3 +1,4 @@
+import { eventService } from "@/services";
 import { FaceitMatchStats, FaceitProfile } from "@/types";
 import { mapInnerApiMatchStatsToLocal } from "@/utils";
 
@@ -20,6 +21,13 @@ export class FaceitApiDataService {
       return profile;
     }
 
+    eventService.track("FaceitApi_error", {
+      method: "getProfile",
+      status: apiCall.status,
+      text: apiCall.statusText,
+      url: apiCall.url,
+    });
+
     throw apiCall;
   }
 
@@ -39,6 +47,13 @@ export class FaceitApiDataService {
 
       return kdrFromStats ? Number(kdrFromStats) : 0;
     }
+
+    eventService.track("FaceitApi_error", {
+      method: "getLifetimeStats",
+      status: apiCall.status,
+      text: apiCall.statusText,
+      url: apiCall.url,
+    });
 
     throw apiCall;
   }
@@ -62,6 +77,13 @@ export class FaceitApiDataService {
       return ranking?.position || 0;
     }
 
+    eventService.track("FaceitApi_error", {
+      method: "getRanking",
+      status: apiCall.status,
+      text: apiCall.statusText,
+      url: apiCall.url,
+    });
+
     throw apiCall;
   }
 
@@ -75,6 +97,13 @@ export class FaceitApiDataService {
 
       return matches.map(mapInnerApiMatchStatsToLocal);
     }
+
+    eventService.track("FaceitApi_error", {
+      method: "getStatsForMatches",
+      status: apiCall.status,
+      text: apiCall.statusText,
+      url: apiCall.url,
+    });
 
     throw apiCall;
   }
