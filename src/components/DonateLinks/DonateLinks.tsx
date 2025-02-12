@@ -13,6 +13,7 @@ export function DonateLinks() {
   return (
     <div className={styles.container}>
       <DonateLink
+        key={"skins"}
         icon={<SteamLogo className={styles.logo} />}
         label={t("footer.support.skins")}
         link={
@@ -20,11 +21,13 @@ export function DonateLinks() {
         }
       />
       <DonateLink
+        key={"donationalert"}
         icon={<DonationAlertLogo className={styles.logo} />}
         label={t("footer.support.donation")}
         link={"https://www.donationalerts.com/r/podokoniktw"}
       />
       <DonateLink
+        key={"donatepay"}
         icon={<DonatePayLogo className={styles.logo} />}
         label={t("footer.support.donation")}
         link={"https://new.donatepay.ru/@podokonikTW"}
