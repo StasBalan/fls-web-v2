@@ -47,7 +47,7 @@ export function WidgetBuilder() {
 
   return (
     <div className={styles.wrapper}>
-      <PageHeader />
+      <PageHeader hideButton />
 
       <div className={styles.container}>
         <div className={styles.topForm}>

@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 
 import { eventService } from "@/services";
 
-export function PageHeader() {
+export function PageHeader({ hideButton = false }: { hideButton?: boolean }) {
   const { t } = useTranslation();
 
   const [blurred, setBlurred] = useState(false);
@@ -46,18 +46,20 @@ export function PageHeader() {
             <span className="text-[#FF5500]">FACEIT</span> <b>Live Stats</b>
           </Link>
           <div className={styles.buttons}>
-            <Button asChild>
-              <Link
-                to="/widget-builder"
-                onClick={() => {
-                  eventService.track("build_widget_click", {
-                    source: "header",
-                  });
-                }}
-              >
-                {t("button")}
-              </Link>
-            </Button>
+            {!hideButton && (
+              <Button asChild>
+                <Link
+                  to="/widget-builder"
+                  onClick={() => {
+                    eventService.track("build_widget_click", {
+                      source: "header",
+                    });
+                  }}
+                >
+                  {t("button")}
+                </Link>
+              </Button>
+            )}
 
             <a
               href={"https://t.me/faceitlivestats"}
