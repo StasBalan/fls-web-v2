@@ -1,5 +1,4 @@
 import { faceitApiDataService } from "@/data-services";
-import { eventService } from "@/services";
 import { FaceitMatchStats, FaceitProfile } from "@/types";
 import { useCallback, useEffect, useState } from "react";
 
@@ -30,19 +29,6 @@ export function useFullWidgetInfo(
         setProfile(fetchedProfile);
       }
     } catch (err: any) {
-      let msg = "";
-      try {
-        msg = JSON.stringify(await err?.json());
-      } catch (msgErr: any) {
-        msg = msgErr;
-      }
-
-      eventService.track("useFullWidgetInfo_error", {
-        method: "fetchProfile",
-        status: err?.status,
-        msg: msg,
-      });
-
       setProfile(null);
     } finally {
       setProfileLoading(false);
@@ -55,18 +41,6 @@ export function useFullWidgetInfo(
 
       setMatches(fetchedMatches);
     } catch (err: any) {
-      let msg = "";
-      try {
-        msg = JSON.stringify(await err?.json());
-      } catch (msgErr: any) {
-        msg = msgErr;
-      }
-
-      eventService.track("useFullWidgetInfo_error", {
-        method: "fetchMatches",
-        status: err?.status,
-        msg,
-      });
       setMatches(null);
     }
   }, []);
@@ -78,19 +52,6 @@ export function useFullWidgetInfo(
 
       setKdr(fetchedLifetimeStats);
     } catch (err: any) {
-      let msg = "";
-      try {
-        msg = JSON.stringify(await err?.json());
-      } catch (msgErr: any) {
-        msg = msgErr;
-      }
-
-      eventService.track("useFullWidgetInfo_error", {
-        method: "fetchLifetimeStats",
-        status: err?.status,
-        msg,
-      });
-
       setKdr(null);
     }
   }, []);
@@ -104,18 +65,6 @@ export function useFullWidgetInfo(
 
       setRegionRanking(fetchedFaceitRanking);
     } catch (err: any) {
-      let msg = "";
-      try {
-        msg = JSON.stringify(await err?.json());
-      } catch (msgErr: any) {
-        msg = msgErr;
-      }
-
-      eventService.track("useFullWidgetInfo_error", {
-        method: "fetchRegionRanking",
-        status: err?.status,
-        msg,
-      });
       setRegionRanking(null);
     }
   }, []);
@@ -131,18 +80,6 @@ export function useFullWidgetInfo(
 
         setCountryRanking(fetchedFaceitRanking);
       } catch (err: any) {
-        let msg = "";
-        try {
-          msg = JSON.stringify(await err?.json());
-        } catch (msgErr: any) {
-          msg = msgErr;
-        }
-
-        eventService.track("useFullWidgetInfo_error", {
-          method: "fetchCountryRanking",
-          status: err?.status,
-          msg,
-        });
         setCountryRanking(null);
       }
     },

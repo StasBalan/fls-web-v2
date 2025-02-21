@@ -19,6 +19,8 @@
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-switch": "^1.1.2",
     "@tanstack/react-router": "^1.97.8",
+    "axios": "^1.7.9",
+    "axios-retry": "^4.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "i18next": "^24.2.2",
