@@ -1,7 +1,8 @@
+/* eslint-disable no-useless-catch */
 import { FaceitMatchStats, FaceitProfile } from "@/types";
 import { mapInnerApiMatchStatsToLocal } from "@/utils";
 
-import { cloudflareInstance, faceitInstance } from "./instances";
+import { matchesWorkerInstance, faceitInstance } from "./instances";
 
 export class FaceitApiDataService {
   public async getProfile(nickname: string) {
@@ -54,7 +55,7 @@ export class FaceitApiDataService {
 
   public async getStatsForMatches(id: string): Promise<FaceitMatchStats[]> {
     try {
-      const apiCall = await cloudflareInstance.get<
+      const apiCall = await matchesWorkerInstance.get<
         Array<
           Record<string, string> & {
             date: number;

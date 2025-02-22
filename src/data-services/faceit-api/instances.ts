@@ -33,17 +33,17 @@ faceitInstance.interceptors.response.use(
   errorInterceptor
 );
 
-export const cloudflareInstance = axios.create({
-  baseURL: "https://morning-glade-4641.artyom-stan0905.workers.dev/",
+export const matchesWorkerInstance = axios.create({
+  baseURL: "https://matches.faceitlivestats.win/",
 });
 
-axiosRetry(cloudflareInstance, {
+axiosRetry(matchesWorkerInstance, {
   retries: 3,
   retryDelay: axiosRetry.exponentialDelay,
   retryCondition: () => true,
 });
 
-cloudflareInstance.interceptors.response.use(
+matchesWorkerInstance.interceptors.response.use(
   (response) => response,
   errorInterceptor
 );
