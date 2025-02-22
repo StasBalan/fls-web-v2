@@ -8,7 +8,7 @@ function errorInterceptor(error: AxiosError) {
 
   eventService.track("FaceitApiDataService_error", {
     url: url.origin + url.pathname,
-    params: url.searchParams.toString(),
+    params: JSON.stringify(error.config?.params),
     code: error.code,
     status: error.status,
     message: error.message,

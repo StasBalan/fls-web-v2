@@ -6,9 +6,12 @@ import { cloudflareInstance, faceitInstance } from "./instances";
 export class FaceitApiDataService {
   public async getProfile(nickname: string) {
     try {
-      const apiCall = await faceitInstance.get<FaceitProfile>(
-        `players?nickname=${nickname}&game=cs2`
-      );
+      const apiCall = await faceitInstance.get<FaceitProfile>(`players`, {
+        params: {
+          nickname: nickname,
+          game: "cs2",
+        },
+      });
 
       return apiCall.data;
     } catch (err: any) {
