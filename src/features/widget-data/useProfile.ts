@@ -10,6 +10,7 @@ export function useProfile(nickname: string) {
   return useQuery({
     queryKey: ["widget-data/profile", nickname],
     queryFn: () => fetchProfile(nickname),
+    enabled: !!nickname,
     gcTime: 0,
     staleTime: 0,
   });
