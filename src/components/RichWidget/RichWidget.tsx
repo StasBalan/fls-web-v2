@@ -73,7 +73,7 @@ export function RichWidget({
         <DoubledAnimatedContainersSection
           left={
             <>
-              <div className={styles.statsHeader}>LAST 20 MATCHES</div>
+              <div className={styles.statsHeader}>LAST 30 MATCHES</div>
               <div className={styles.statsContainer}>
                 <SingleNumericProperty
                   label={"Win rate"}

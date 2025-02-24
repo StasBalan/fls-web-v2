@@ -1,7 +1,6 @@
 import { eventService } from "@/services";
 
 import axios, { AxiosError } from "axios";
-import axiosRetry from "axios-retry";
 
 function errorInterceptor(error: AxiosError) {
   const url = new URL(error.config?.url || "", error.config?.baseURL);
@@ -22,12 +21,6 @@ export const faceitInstance = axios.create({
   headers: { Authorization: "Bearer 5dbe323f-3fb4-4bd6-8b9f-b5688d63ebee" },
 });
 
-axiosRetry(faceitInstance, {
-  retries: 3,
-  retryDelay: axiosRetry.exponentialDelay,
-  retryCondition: () => true,
-});
-
 faceitInstance.interceptors.response.use(
   (response) => response,
   errorInterceptor
@@ -35,12 +28,6 @@ faceitInstance.interceptors.response.use(
 
 export const matchesWorkerInstance = axios.create({
   baseURL: "https://matches.faceitlivestats.win/",
-});
-
-axiosRetry(matchesWorkerInstance, {
-  retries: 3,
-  retryDelay: axiosRetry.exponentialDelay,
-  retryCondition: () => true,
 });
 
 matchesWorkerInstance.interceptors.response.use(
