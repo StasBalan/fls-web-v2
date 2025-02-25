@@ -2,7 +2,7 @@
 import { FaceitMatchStats, FaceitProfile } from "@/types";
 import { mapInnerApiMatchStatsToLocal } from "@/utils";
 
-import { matchesWorkerInstance, faceitInstance } from "./instances";
+import { faceitInstance, matchesWorkerInstance } from "./instances";
 
 export class FaceitApiDataService {
   public async getProfile(nickname: string) {
