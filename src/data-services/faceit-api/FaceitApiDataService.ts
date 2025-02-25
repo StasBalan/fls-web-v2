@@ -3,6 +3,7 @@ import { FaceitMatchStats, FaceitProfile } from "@/types";
 import { mapInnerApiMatchStatsToLocal } from "@/utils";
 
 import { faceitInstance, matchesWorkerInstance } from "./instances";
+import { eventService } from "@/services";
 
 export class FaceitApiDataService {
   public async getProfile(nickname: string) {
@@ -62,6 +63,11 @@ export class FaceitApiDataService {
           }
         >
       >("", { params: { id: id } });
+
+      eventService.track("FaceitApiDataService_success", {
+        method: "getStatsForMatches",
+        id: id,
+      });
 
       return apiCall.data.map(mapInnerApiMatchStatsToLocal);
     } catch (err: any) {
