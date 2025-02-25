@@ -2,7 +2,7 @@
 import { FaceitMatchStats, FaceitProfile } from "@/types";
 import { mapInnerApiMatchStatsToLocal } from "@/utils";
 
-import { faceitInstance, matchesWorkerInstance } from "./instances";
+import { faceitInstance, matchesYandexInstance } from "./instances";
 
 export class FaceitApiDataService {
   public async getProfile(nickname: string) {
@@ -55,7 +55,7 @@ export class FaceitApiDataService {
 
   public async getStatsForMatches(id: string): Promise<FaceitMatchStats[]> {
     try {
-      const apiCall = await matchesWorkerInstance.get<
+      const apiCall = await matchesYandexInstance.get<
         Array<
           Record<string, string> & {
             date: number;

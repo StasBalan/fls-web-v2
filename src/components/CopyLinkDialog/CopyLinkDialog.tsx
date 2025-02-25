@@ -3,7 +3,6 @@ import { Blocks, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -16,6 +15,7 @@ import { toast } from "sonner";
 import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useTranslation } from "react-i18next";
+import { DonateLinks } from "../DonateLinks";
 
 export function CopyLinkDialog({ buildUrl }: { buildUrl: () => string }) {
   const { t } = useTranslation();
@@ -57,11 +57,7 @@ export function CopyLinkDialog({ buildUrl }: { buildUrl: () => string }) {
           </CopyToClipboard>
         </div>
         <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              {t("builder.controls.dialog.close")}
-            </Button>
-          </DialogClose>
+          <DonateLinks />
         </DialogFooter>
       </DialogContent>
     </Dialog>
