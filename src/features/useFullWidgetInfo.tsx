@@ -37,7 +37,10 @@ export function useFullWidgetInfo(
 
   const fetchMatches = useCallback(async (id: string) => {
     try {
-      const fetchedMatches = await faceitApiDataService.getStatsForMatches(id);
+      const fetchedMatches = await faceitApiDataService.getStatsForMatches(
+        id,
+        "cloudflare"
+      );
 
       setMatches(fetchedMatches);
     } catch (err: any) {
