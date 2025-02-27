@@ -35,13 +35,11 @@ matchesWorkerInstance.interceptors.response.use(
   errorInterceptor
 );
 
-// https://functions.yandexcloud.net/d4e111fk6c6241r9baqi?id=e4b6ed81-f266-4ca4-a831-323f9ae90b5d
-// https://worker.faceitlivestats.win/d4e111fk6c6241r9baqi?id=e4b6ed81-f266-4ca4-a831-323f9ae90b5d
-export const matchesYandexInstance = axios.create({
-  baseURL: "https://yworker.faceitlivestats.win/d4e111fk6c6241r9baqi",
+export const matchesVercelInstance = axios.create({
+  baseURL: "https://fls-api.vercel.app/api/matches",
 });
 
-matchesYandexInstance.interceptors.response.use(
+matchesVercelInstance.interceptors.response.use(
   (response) => response,
   errorInterceptor
 );

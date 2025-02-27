@@ -2,7 +2,11 @@
 import { FaceitMatchStats, FaceitProfile } from "@/types";
 import { mapInnerApiMatchStatsToLocal } from "@/utils";
 
-import { faceitInstance, matchesWorkerInstance } from "./instances";
+import {
+  faceitInstance,
+  matchesVercelInstance,
+  matchesWorkerInstance,
+} from "./instances";
 import { eventService } from "@/services";
 
 export class FaceitApiDataService {
@@ -54,9 +58,15 @@ export class FaceitApiDataService {
     }
   }
 
-  public async getStatsForMatches(id: string): Promise<FaceitMatchStats[]> {
+  public async getStatsForMatches(
+    id: string,
+    provider: "cloudflare" | "vercel"
+  ): Promise<FaceitMatchStats[]> {
     try {
-      const apiCall = await matchesWorkerInstance.get<
+      const instance =
+        provider === "vercel" ? matchesVercelInstance : matchesWorkerInstance;
+
+      const apiCall = await instance.get<
         Array<
           Record<string, string> & {
             date: number;
@@ -67,6 +77,7 @@ export class FaceitApiDataService {
       eventService.track("FaceitApiDataService_success", {
         method: "getStatsForMatches",
         id: id,
+        instance: instance.getUri(),
       });
 
       return apiCall.data.map(mapInnerApiMatchStatsToLocal);
