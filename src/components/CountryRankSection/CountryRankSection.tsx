@@ -14,7 +14,6 @@ export function CountryRankSection({
       <img
         id="level-pic"
         src={`https://flagcdn.com/h24/${code}.png`}
-        alt={`Flag of "${code}" country`}
         className={styles.flag}
       />
       <div className={styles.rank}>
