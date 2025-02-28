@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import { create } from "zustand";
 
-const ERROR_COUNT_TO_CHANGE_PROVIDER = 2;
+const ERROR_COUNT_TO_CHANGE_PROVIDER = 3;
 
 const useErrorsStore = create<{
   errors: number;
@@ -33,6 +33,7 @@ export function useMatches(id?: string) {
     enabled: !!id,
     gcTime: 0,
     staleTime: 0,
+    retry: 1,
   });
 
   useEffect(() => {
