@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import { create } from "zustand";
 
-const ERROR_COUNT_TO_CHANGE_PROVIDER = 3;
+const ERROR_COUNT_TO_CHANGE_PROVIDER = 1;
 
 const useErrorsStore = create<{
   errors: number;
