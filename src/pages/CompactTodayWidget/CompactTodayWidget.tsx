@@ -1,4 +1,5 @@
 import { CompactTodayWidget as CompactTodayWidgetComponent } from "@/components/CompactTodayWidget";
+import { Loader } from "@/components/Loader";
 import { useRichWidgetData } from "@/features/widget-data";
 import { eventService } from "@/services";
 import { getTodayMatchesStats } from "@/utils";
@@ -50,7 +51,7 @@ export function CompactTodayWidget() {
     regionRankQuery.isLoading ||
     (matchesQuery.isLoading && matchesQuery.errorUpdateCount === 0)
   ) {
-    return <></>; // loading
+    return <Loader />; // loading
   }
 
   if (profileQuery.data === undefined) {

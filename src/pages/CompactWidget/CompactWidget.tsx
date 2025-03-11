@@ -4,6 +4,7 @@ import { CompactWidget as CompactWidgetComponent } from "@/components/CompactWid
 
 import { eventService } from "@/services";
 import { useCompactWidgetData } from "@/features/widget-data";
+import { Loader } from "@/components/Loader";
 
 const routeApi = getRouteApi("/widget-compact");
 
@@ -39,7 +40,7 @@ export function CompactWidget() {
   }
 
   if (profileQuery.isLoading || regionRankQuery.isLoading) {
-    return <></>; // loading
+    return <Loader />; // loading
   }
 
   if (profileQuery.data === undefined) {

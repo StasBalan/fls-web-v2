@@ -1,3 +1,4 @@
+import { Loader } from "@/components/Loader";
 import { RichWidget as RichWidgetComponent } from "@/components/RichWidget";
 import { useRichWidgetData } from "@/features/widget-data";
 import { eventService } from "@/services";
@@ -48,7 +49,7 @@ export function RichWidget() {
     kdrQuery.isLoading ||
     (matchesQuery.isLoading && matchesQuery.errorUpdateCount === 0)
   ) {
-    return <></>; // loading
+    return <Loader />; // loading
   }
 
   if (profileQuery.data === undefined) {
