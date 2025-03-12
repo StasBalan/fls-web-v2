@@ -18,7 +18,7 @@ function errorInterceptor(error: AxiosError) {
 
 export const faceitInstance = axios.create({
   baseURL: "https://open.faceit.com/data/v4/",
-  headers: { Authorization: "Bearer 5dbe323f-3fb4-4bd6-8b9f-b5688d63ebee" },
+  headers: { Authorization: "Bearer 3edc39a3-457a-4fea-a54e-b4a088680b2c" },
 });
 
 faceitInstance.interceptors.response.use(
