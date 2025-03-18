@@ -13,6 +13,11 @@ export class EventService {
     eventProperties?: Record<string, unknown>,
     eventOptions?: amplitude.Types.EventOptions
   ) {
-    amplitude.track(eventInput, eventProperties, eventOptions);
+    const props = {
+      origin: window.location.origin,
+      ...eventProperties,
+    };
+
+    amplitude.track(eventInput, props, eventOptions);
   }
 }
