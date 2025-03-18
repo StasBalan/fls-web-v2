@@ -45,7 +45,7 @@ export function CompactWidgetBuilder({
       { user_id: nickname }
     );
 
-    return `https://faceitlivestats.win/widget-compact?hideRank=${!showRank}&hideChallenger=${!showChallenger}&rounded=${rounded}&transparent=${transparent}&isGiant=${isGiant}&nickname=${nickname}`;
+    return `${window.location.origin}/widget-compact?hideRank=${!showRank}&hideChallenger=${!showChallenger}&rounded=${rounded}&transparent=${transparent}&isGiant=${isGiant}&nickname=${nickname}`;
   };
 
   return (

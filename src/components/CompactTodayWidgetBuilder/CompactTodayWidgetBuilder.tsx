@@ -56,7 +56,7 @@ export function CompactTodayWidgetBuilder({
       { user_id: nickname }
     );
 
-    return `https://faceitlivestats.win/widget-compact-today?hideRank=${!showRank}&hideChallenger=${!showChallenger}&hideWinsLosses=${!showWinsLosses}&rounded=${rounded}&transparent=${transparent}&isGiant=${isGiant}&nickname=${nickname}`;
+    return `${window.location.origin}/widget-compact-today?hideRank=${!showRank}&hideChallenger=${!showChallenger}&hideWinsLosses=${!showWinsLosses}&rounded=${rounded}&transparent=${transparent}&isGiant=${isGiant}&nickname=${nickname}`;
   };
 
   return (

@@ -58,7 +58,7 @@ export function RichWidgetBuilder({
       { user_id: nickname }
     );
 
-    return `https://faceitlivestats.win/widget-rich?hideRank=${!showRank}&hideChallenger=${!showChallenger}&transparent=${transparent}&nickname=${nickname}`;
+    return `${window.location.origin}/widget-rich?hideRank=${!showRank}&hideChallenger=${!showChallenger}&transparent=${transparent}&nickname=${nickname}`;
   };
 
   return (
