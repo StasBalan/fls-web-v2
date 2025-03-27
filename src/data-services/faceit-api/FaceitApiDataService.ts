@@ -60,11 +60,13 @@ export class FaceitApiDataService {
 
   public async getStatsForMatches(
     id: string,
-    provider: "cloudflare" | "vercel"
+    _provider: "cloudflare" | "vercel"
   ): Promise<FaceitMatchStats[]> {
     try {
-      const instance =
-        provider === "vercel" ? matchesVercelInstance : matchesWorkerInstance;
+      // const instance =
+      //   provider === "vercel" ? matchesVercelInstance : matchesWorkerInstance;
+
+      const instance = matchesVercelInstance;
 
       const apiCall = await instance.get<
         Array<

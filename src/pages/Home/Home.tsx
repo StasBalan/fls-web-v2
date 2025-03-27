@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { lazy, Suspense, useEffect } from "react";
 import { PageHeader } from "@/components/PageHeader";
 import { PageFooter } from "@/components/PageFooter";
+import { MirrorSection } from "@/components/MirrorSection";
 import { Trans, useTranslation } from "react-i18next";
 import { eventService } from "@/services";
 
@@ -56,6 +57,8 @@ export function Home() {
               <WidgetExamples />
             </Suspense>
           </div>
+
+          <MirrorSection />
         </section>
 
         <PageFooter />

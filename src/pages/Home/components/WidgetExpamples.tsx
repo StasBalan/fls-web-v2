@@ -28,7 +28,7 @@ function WidgetExamples() {
                 level: 10,
                 rank: 13,
                 todayMatchesData: {
-                  gain: -40,
+                  gain: 52,
                   wins: 2,
                   losses: 6,
                   avgKD: 0.92,
@@ -40,7 +40,7 @@ function WidgetExamples() {
                 level: 10,
                 rank: 32,
                 todayMatchesData: {
-                  gain: -40,
+                  gain: 0,
                   wins: 2,
                   losses: 6,
                   avgKD: 0.92,
