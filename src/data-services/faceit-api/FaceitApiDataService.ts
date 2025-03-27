@@ -5,7 +5,7 @@ import { mapInnerApiMatchStatsToLocal } from "@/utils";
 import {
   faceitInstance,
   matchesVercelInstance,
-  matchesWorkerInstance,
+  // matchesWorkerInstance,
 } from "./instances";
 import { eventService } from "@/services";
 
