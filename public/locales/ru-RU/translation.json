@@ -11,6 +11,9 @@
       "donation": "Поддержать донатом"
     }
   },
+  "twitch-player": {
+    "title": "CEO <0>nymfgg</0> стримит на Twitch прямо сейчас"
+  },
   "mirror": {
     "header": "Проблемы с отображением виджета в ОБС",
     "description": {

@@ -11,6 +11,9 @@
       "donation": "Support with donation"
     }
   },
+  "twitch-player": {
+    "title": "CEO <0>nymfgg</0> is streaming on Twitch now"
+  },
   "mirror": {
     "header": "Issues with widget displaying in OBS",
     "description": {
