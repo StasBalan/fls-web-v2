@@ -25,7 +25,7 @@ export function MirrorSection() {
           i18nKey="mirror.description.solution"
           components={[
             <a
-              href={"https://fls-web.vercel.app/widget-builder"}
+              href={"https://fls-web-v2.vercel.app/widget-builder"}
               target="_blank"
               className={clsx(styles.link, styles.linkMirror)}
             />,
