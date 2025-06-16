@@ -21,6 +21,14 @@ export function MirrorSection() {
           "text-center text-base fill-mode-backwards lg:text-xl text-balance"
         )}
       >
+        {t("mirror.description.reason")}
+      </div>
+      <div
+        className={clsx(
+          styles.description,
+          "text-center text-base fill-mode-backwards lg:text-xl text-balance"
+        )}
+      >
         <Trans
           i18nKey="mirror.description.solution"
           components={[
@@ -35,11 +43,13 @@ export function MirrorSection() {
       <div
         className={clsx(
           styles.description,
-          "text-center text-base fill-mode-backwards lg:text-xl text-balance"
+          "text-center text-base fill-mode-backwards lg:text-xl text-balance font-bold",
+          styles.descriptionAttention
         )}
       >
-        {t("mirror.description.reason")}
+        {t("mirror.description.attention")}
       </div>
+
       <div
         className={clsx(
           styles.description,

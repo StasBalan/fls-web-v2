@@ -19,7 +19,8 @@
     "description": {
       "solution": "If our site works only with VPN, and widget in OBS is not displayed, please generate and use link through mirror site: <0>faceitlivestats</0>",
       "reason": "Some providers in your country may block access to the main site",
-      "request": "If everything works without problems for you, please use the main site: <0>faceitlivestats.win</0>"
+      "request": "If everything works without problems for you, please use the main site: <0>faceitlivestats.win</0>",
+      "attention": "Attention! Mirror site may be changed and can be unavailable! Subscribe to our telegram to stay up to date!"
     },
     "footer": "You can report other questions and problems in telegram: <0>@faceitlivestats</0>"
   },
