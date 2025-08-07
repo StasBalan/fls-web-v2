@@ -38,7 +38,7 @@ matchesWorkerInstance.interceptors.response.use(
 );
 
 export const matchesVercelInstance = axios.create({
-  baseURL: "https://api-fls.vercel.app/api/matches",
+  baseURL: "https://fls-api.vercel.app/api/matches", // "https://api-fls.vercel.app/api/matches",
 });
 
 matchesVercelInstance.interceptors.response.use(
