@@ -13,7 +13,7 @@ export function CountryRankSection({
     <div className={styles.wrapper}>
       <img
         id="level-pic"
-        src={`https://flagcdn.com/h24/${code}.png`}
+        src={`/assets/flags/${code}.webp`}
         className={styles.flag}
       />
       <div className={styles.rank}>
