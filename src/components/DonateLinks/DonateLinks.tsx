@@ -17,20 +17,14 @@ export function DonateLinks() {
         icon={<SteamLogo className={styles.logo} />}
         label={t("footer.support.skins")}
         link={
-          "https://steamcommunity.com/tradeoffer/new/?partner=348390684&token=BVBMOn5k"
+          "https://steamcommunity.com/tradeoffer/new/?partner=408010277&token=vq58SkS9"
         }
       />
       <DonateLink
         id={"donationalert"}
         icon={<DonationAlertLogo className={styles.logo} />}
         label={t("footer.support.donation")}
-        link={"https://www.donationalerts.com/r/podokoniktw"}
-      />
-      <DonateLink
-        id={"donatepay"}
-        icon={<DonatePayLogo className={styles.logo} />}
-        label={t("footer.support.donation")}
-        link={"https://new.donatepay.ru/@podokonikTW"}
+        link={"https://www.donationalerts.com/r/nymfgg"}
       />
     </div>
   );
