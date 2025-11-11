@@ -1,8 +1,4 @@
-import {
-  DonatePayLogo,
-  DonationAlertLogo,
-  SteamLogo,
-} from "@/assets/companies";
+import { DonationAlertLogo, SteamLogo } from "@/assets/companies";
 import { DonateLink } from "./components";
 import styles from "./DonateLinks.module.scss";
 import { useTranslation } from "react-i18next";
