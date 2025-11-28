@@ -8,6 +8,8 @@ export function mapInnerApiMatchStatsToLocal(
     map: stats["i1"],
     isWin: stats["teamId"] === stats["i2"],
     elo: stats["elo"] === undefined ? undefined : Number(stats["elo"]),
+    elo_delta:
+      stats["elo_delta"] === undefined ? undefined : Number(stats["elo_delta"]),
     kills: Number(stats["i6"]),
     deaths: Number(stats["i8"]),
     assists: Number(stats["i7"]),

@@ -1194,6 +1194,7 @@ export type FaceitMatchStats = {
   map: string;
   isWin: boolean;
   elo?: number;
+  elo_delta?: number;
   kills: number;
   deaths: number;
   assists: number;

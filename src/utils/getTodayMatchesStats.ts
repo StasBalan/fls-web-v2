@@ -2,6 +2,7 @@ import { FaceitMatchStats } from "@/types";
 import { getTodayStartingPointDate } from "./getTodaysStartingPointDate";
 import { getEloBeforeToday } from "./getEloBeforeToday";
 import { mapMatchesToTodayStats } from "./mapMatchesToTodayStats";
+import { eventService } from "@/services";
 
 export function getTodayMatchesStats(matches: FaceitMatchStats[], elo: number) {
   const todayMatches = matches.filter(
@@ -18,10 +19,23 @@ export function getTodayMatchesStats(matches: FaceitMatchStats[], elo: number) {
 
   const stats = mapMatchesToTodayStats(todayMatches);
 
+  const eloDelta = todayMatches.reduce((acc, match) => {
+    if (match.elo_delta) {
+      acc += match.elo_delta;
+    }
+
+    return acc;
+  }, 0);
+
+  eventService.track("elo_diff_variants", {
+    eloDiff: eloDiff,
+    eloDelta: eloDelta,
+  });
+
   return {
     wins: stats.w,
     losses: stats.l,
-    gain: eloDiff,
+    gain: eloDelta, // new variant with elo_delta
     avgKills: stats.kAvg,
     avgKD: stats.kdAvg,
   };
