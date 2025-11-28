@@ -15,7 +15,7 @@ export function getTodayMatchesStats(matches: FaceitMatchStats[], elo: number) {
       ? 0
       : eloBeforeToday !== null
         ? elo - eloBeforeToday
-        : 0;
+        : null;
 
   const stats = mapMatchesToTodayStats(todayMatches);
 
@@ -27,15 +27,17 @@ export function getTodayMatchesStats(matches: FaceitMatchStats[], elo: number) {
     return acc;
   }, 0);
 
-  eventService.track("elo_diff_variants", {
-    eloDiff: eloDiff,
-    eloDelta: eloDelta,
-  });
+  if (eloDiff !== eloDelta) {
+    eventService.track("elo_diff_not_same", {
+      eloDiff: eloDiff,
+      eloDelta: eloDelta,
+    });
+  }
 
   return {
     wins: stats.w,
     losses: stats.l,
-    gain: eloDelta, // new variant with elo_delta
+    gain: eloDiff !== null ? eloDiff : eloDelta, // new variant with elo_delta
     avgKills: stats.kAvg,
     avgKD: stats.kdAvg,
   };
