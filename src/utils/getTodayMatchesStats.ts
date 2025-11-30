@@ -2,6 +2,8 @@ import { FaceitMatchStats } from "@/types";
 import { getTodayStartingPointDate } from "./getTodaysStartingPointDate";
 import { getEloBeforeToday } from "./getEloBeforeToday";
 import { mapMatchesToTodayStats } from "./mapMatchesToTodayStats";
+
+import { getEloTodayByFirstGame } from "./getEloTodayByFirstGame";
 import { eventService } from "@/services";
 
 export function getTodayMatchesStats(matches: FaceitMatchStats[], elo: number) {
@@ -10,34 +12,27 @@ export function getTodayMatchesStats(matches: FaceitMatchStats[], elo: number) {
   );
   const todayMatchesAmount = todayMatches.length;
   const eloBeforeToday = getEloBeforeToday(matches, todayMatchesAmount);
-  const eloDiff =
-    todayMatchesAmount === 0
-      ? 0
-      : eloBeforeToday !== null
-        ? elo - eloBeforeToday
-        : null;
 
-  const stats = mapMatchesToTodayStats(todayMatches);
+  const startElo =
+    eloBeforeToday !== null
+      ? eloBeforeToday
+      : getEloTodayByFirstGame(todayMatches);
 
-  const eloDelta = todayMatches.reduce((acc, match) => {
-    if (match.elo_delta) {
-      acc += match.elo_delta;
-    }
-
-    return acc;
-  }, 0);
-
-  if (eloDiff !== eloDelta) {
-    eventService.track("elo_diff_not_same", {
-      eloDiff: eloDiff,
-      eloDelta: eloDelta,
+  if (eloBeforeToday === null) {
+    eventService.track("elo_before_today_null", {
+      secondMethod: getEloTodayByFirstGame(todayMatches),
     });
   }
+
+  const eloDiff =
+    todayMatchesAmount === 0 ? 0 : startElo !== null ? elo - startElo : 0;
+
+  const stats = mapMatchesToTodayStats(todayMatches);
 
   return {
     wins: stats.w,
     losses: stats.l,
-    gain: eloDiff !== null ? eloDiff : eloDelta, // new variant with elo_delta
+    gain: eloDiff,
     avgKills: stats.kAvg,
     avgKD: stats.kdAvg,
   };
