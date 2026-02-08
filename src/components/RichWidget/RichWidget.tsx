@@ -27,18 +27,18 @@ export function RichWidget({
   rank: number;
   kdr: number;
   lastMatchesData: {
-    winRate: number | string;
-    avgKills: number | string;
-    avgHS: number | string;
-    avgKD: number | string;
-    avgKR: number | string;
+    winRate: number;
+    avgKills: number;
+    avgKD: number;
+    avgKR: number;
+    adr: number;
   };
   todayMatchesData: {
-    wins: number | string;
-    losses: number | string;
+    wins: number;
+    losses: number;
     gain: number;
-    avgKills: number | string;
-    avgKD: number | string;
+    avgKills: number;
+    avgKD: number;
   };
   countryCode: string;
   countryRank: number;
@@ -87,21 +87,21 @@ export function RichWidget({
                     value: lastMatchesData.avgKills,
                   }}
                   right={{
-                    label: "Avg. HS",
-                    value: lastMatchesData.avgHS,
-                    unit: "%",
+                    label: "ADR",
+                    value: lastMatchesData.adr
+                      ? lastMatchesData.adr.toFixed(1)
+                      : 0,
                   }}
                 />
 
                 <DoubledNumericProperty
                   left={{
-                    label: "Avg. K/D",
-                    value: lastMatchesData.avgKD,
+                    label: "K/D",
+                    value: lastMatchesData.avgKD.toFixed(2),
                   }}
                   right={{
                     label: "K/R",
-                    value: lastMatchesData.avgKR,
-                    unit: "%",
+                    value: lastMatchesData.avgKR.toFixed(2),
                   }}
                 />
               </div>
@@ -138,8 +138,10 @@ export function RichWidget({
                     value: todayMatchesData.avgKills,
                   }}
                   right={{
-                    label: "Avg. K/D",
-                    value: todayMatchesData.avgKD,
+                    label: "K/D",
+                    value: todayMatchesData.avgKD
+                      ? todayMatchesData.avgKD.toFixed(2)
+                      : todayMatchesData.avgKD,
                   }}
                 />
               </div>

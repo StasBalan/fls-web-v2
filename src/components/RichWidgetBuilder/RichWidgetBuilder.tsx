@@ -21,18 +21,18 @@ export function RichWidgetBuilder({
     rank: number;
     kdr: number;
     lastMatchesData: {
-      winRate: number | string;
-      avgKills: number | string;
-      avgHS: number | string;
-      avgKD: number | string;
-      avgKR: number | string;
+      winRate: number;
+      avgKills: number;
+      adr: number;
+      avgKD: number;
+      avgKR: number;
     };
     todayMatchesData: {
-      wins: number | string;
-      losses: number | string;
+      wins: number;
+      losses: number;
       gain: number;
-      avgKills: number | string;
-      avgKD: number | string;
+      avgKills: number;
+      avgKD: number;
     };
     countryCode: string;
     countryRank: number;

@@ -1,15 +1,17 @@
 import { FaceitMatchStats } from "@/types";
-import { mapMatchesToTodayStats } from "./mapMatchesToTodayStats";
+import { getStatsFromMatches } from "./getStatsFromMatches";
 
 export function getLastMatchesStats(matches: FaceitMatchStats[]) {
   const last30Matches = matches.slice(0, 30);
-  const stats = mapMatchesToTodayStats(last30Matches);
+
+  const stats = getStatsFromMatches(last30Matches);
 
   return {
-    winRate: stats.wr,
-    avgKills: stats.kAvg,
-    avgHS: stats.hsAvg,
-    avgKD: stats.kdAvg,
-    avgKR: stats.krAvg,
+    winRate: stats.winRate,
+    avgKills: stats.avgKills,
+    avgHS: stats.avgHS,
+    avgKD: stats.avgKD,
+    avgKR: stats.avgKR,
+    adr: stats.adr,
   };
 }

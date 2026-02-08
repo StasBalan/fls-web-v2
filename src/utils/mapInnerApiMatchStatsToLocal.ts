@@ -15,8 +15,10 @@ export function mapInnerApiMatchStatsToLocal(
     assists: Number(stats["i7"]),
     kd: Number(stats["c2"]),
     kr: Number(stats["c3"]),
+    rounds: Number(stats["i12"]),
     hs: Number(stats["i13"]),
     hsPercent: Number(stats["c4"]),
     date: stats["date"],
+    damage: Number(stats["i20"]),
   };
 }

@@ -9,7 +9,7 @@ const widgetData = [
     kdr: 1.45,
     lastMatchesData: {
       winRate: 60,
-      avgHS: 78,
+      adr: 104.3,
       avgKD: 1.24,
       avgKills: 23,
       avgKR: 1.15,
@@ -31,7 +31,7 @@ const widgetData = [
     kdr: 1.46,
     lastMatchesData: {
       winRate: 65,
-      avgHS: 80,
+      adr: 67,
       avgKD: 1.24,
       avgKills: 24,
       avgKR: 1.09,
@@ -53,7 +53,7 @@ const widgetData = [
     kdr: 1.45,
     lastMatchesData: {
       winRate: 55,
-      avgHS: 70,
+      adr: 132.7,
       avgKD: 1.05,
       avgKills: 18,
       avgKR: 1.15,

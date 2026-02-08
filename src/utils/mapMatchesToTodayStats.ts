@@ -1,8 +1,5 @@
-import {FaceitMatchStats} from '@/types';
-
-function roundTo2Decimals(num: number) {
-  return Math.round((num + Number.EPSILON) * 100) / 100;
-}
+import { FaceitMatchStats } from "@/types";
+import { roundTo2Decimals } from "./roundTo2Decimals";
 
 export function mapMatchesToTodayStats(matches: FaceitMatchStats[]) {
   const sums = matches.reduce<{
@@ -39,7 +36,7 @@ export function mapMatchesToTodayStats(matches: FaceitMatchStats[]) {
       kd: 0,
       kr: 0,
       hsP: 0,
-    },
+    }
   );
 
   const length = matches.length;

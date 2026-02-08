@@ -23,11 +23,11 @@ export function CompactTodayWidget({
   level: number;
   rank: number;
   todayMatchesData: {
-    wins: number | string;
-    losses: number | string;
+    wins: number;
+    losses: number;
     gain: number;
-    avgKills: number | string;
-    avgKD: number | string;
+    avgKills: number;
+    avgKD: number;
   };
   hideChallenger?: boolean;
   hideRank?: boolean;
@@ -78,8 +78,10 @@ export function CompactTodayWidget({
                       value: todayMatchesData.avgKills,
                     }}
                     right={{
-                      label: "Avg. K/D",
-                      value: todayMatchesData.avgKD,
+                      label: "K/D",
+                      value: todayMatchesData.avgKD
+                        ? todayMatchesData.avgKD.toFixed(2)
+                        : todayMatchesData.avgKD,
                     }}
                     wrapperClassName={styles.matchesPlayedProperty}
                     valueClassName={styles.matchesPlayedPropertyValue}

@@ -20,11 +20,11 @@ export function CompactTodayWidgetBuilder({
   level: number;
   rank: number;
   todayMatchesData: {
-    wins: number | string;
-    losses: number | string;
+    wins: number;
+    losses: number;
     gain: number;
-    avgKills: number | string;
-    avgKD: number | string;
+    avgKills: number;
+    avgKD: number;
   };
   nickname: string;
 }) {
