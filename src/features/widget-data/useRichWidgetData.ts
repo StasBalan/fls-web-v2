@@ -6,6 +6,7 @@ import { useKDR } from "./useKDR";
 import { useMatches } from "./useMatches";
 import { useProfile } from "./useProfile";
 import { useRegionRank } from "./useRegionRank";
+import { useInternalMatchesStats } from "./useInternalMatchesStats";
 
 export function useRichWidgetData(
   nickname: string,
@@ -15,6 +16,9 @@ export function useRichWidgetData(
 
   const profileQuery = useProfile(nickname);
   const matchesQuery = useMatches(profileQuery.data?.player_id);
+  const internalMatchesStatsQuery = useInternalMatchesStats(
+    profileQuery.data?.player_id
+  );
   const regionRankQuery = useRegionRank(
     profileQuery.data?.player_id,
     profileQuery.data?.games?.cs2?.region
@@ -42,6 +46,9 @@ export function useRichWidgetData(
   useEffect(() => {
     if (profileQuery.data?.games?.cs2?.faceit_elo) {
       queryClient.invalidateQueries({ queryKey: ["widget-data/matches"] });
+      queryClient.invalidateQueries({
+        queryKey: ["widget-data/internal-matches-stats"],
+      });
       queryClient.invalidateQueries({ queryKey: ["widget-data/rank/region"] });
       queryClient.invalidateQueries({ queryKey: ["widget-data/rank/country"] });
       queryClient.invalidateQueries({ queryKey: ["widget-data/kdr"] });
@@ -65,6 +72,7 @@ export function useRichWidgetData(
   return {
     profileQuery,
     matchesQuery,
+    internalMatchesStatsQuery,
     regionRankQuery,
     countryRankQuery,
     kdrQuery,

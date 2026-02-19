@@ -15,8 +15,6 @@ const useErrorsStore = create<{
 }));
 
 function fetchMatches(id: string, errors: number) {
-  console.log("fetch matches");
-
   return faceitApiDataService.getStatsForMatches(
     id,
     errors >= ERROR_COUNT_TO_CHANGE_PROVIDER ? "vercel" : "cloudflare"

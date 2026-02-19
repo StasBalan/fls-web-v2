@@ -2,7 +2,7 @@ import { CompactTodayWidget as CompactTodayWidgetComponent } from "@/components/
 import { Loader } from "@/components/Loader";
 import { useRichWidgetData } from "@/features/widget-data";
 import { eventService } from "@/services";
-import { getTodayMatchesStats } from "@/utils";
+import { getTodayInternalMatchesStats } from "@/utils";
 import { getRouteApi } from "@tanstack/react-router";
 import { useEffect } from "react";
 
@@ -19,7 +19,7 @@ export function CompactTodayWidget() {
     isGiant,
   } = routeApi.useSearch();
 
-  const { profileQuery, matchesQuery, regionRankQuery } = useRichWidgetData(
+  const { profileQuery, matchesQuery, internalMatchesStatsQuery, regionRankQuery } = useRichWidgetData(
     nickname,
     true
   );
@@ -49,7 +49,8 @@ export function CompactTodayWidget() {
   if (
     profileQuery.isLoading ||
     regionRankQuery.isLoading ||
-    (matchesQuery.isLoading && matchesQuery.errorUpdateCount === 0)
+    (matchesQuery.isLoading && matchesQuery.errorUpdateCount === 0)||
+    (internalMatchesStatsQuery.isLoading)
   ) {
     return <Loader />; // loading
   }
@@ -84,7 +85,7 @@ export function CompactTodayWidget() {
         elo={elo}
         level={level}
         rank={regionRankQuery.data || 2000} // change
-        todayMatchesData={getTodayMatchesStats(matchesQuery.data || [], elo)}
+        todayMatchesData={getTodayInternalMatchesStats(internalMatchesStatsQuery.data || [])}
         hideRank={hideRank}
         hideChallenger={hideChallenger}
         hideWinsLosses={hideWinsLosses}

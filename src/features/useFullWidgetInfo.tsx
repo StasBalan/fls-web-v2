@@ -1,5 +1,9 @@
 import { faceitApiDataService } from "@/data-services";
-import { FaceitMatchStats, FaceitProfile } from "@/types";
+import {
+  FaceitInternalMatchStats,
+  FaceitMatchStats,
+  FaceitProfile,
+} from "@/types";
 import { useCallback, useEffect, useState } from "react";
 
 export function useFullWidgetInfo(
@@ -12,6 +16,10 @@ export function useFullWidgetInfo(
   const [matches, setMatches] = useState<
     FaceitMatchStats[] | null | undefined
   >();
+  const [internalMatchesStats, setInternalMatchesStats] = useState<
+    FaceitInternalMatchStats[] | null | undefined
+  >();
+
   const [kdr, setKdr] = useState<number | null | undefined>();
   const [regionRanking, setRegionRanking] = useState<
     number | null | undefined
@@ -45,6 +53,16 @@ export function useFullWidgetInfo(
       setMatches(fetchedMatches);
     } catch (err: any) {
       setMatches(null);
+    }
+  }, []);
+
+  const fetchInternalMatchesStats = useCallback(async (id: string) => {
+    try {
+      await faceitApiDataService.getInternalStatsForMatches(id);
+
+      setInternalMatchesStats(null);
+    } catch (err: any) {
+      setInternalMatchesStats(null);
     }
   }, []);
 
@@ -107,6 +125,7 @@ export function useFullWidgetInfo(
   useEffect(() => {
     if (profile?.games?.cs2?.faceit_elo) {
       fetchMatches(profile.player_id);
+      fetchInternalMatchesStats(profile.player_id);
       fetchLifetimeStats(profile.player_id);
       fetchRegionRanking(profile.player_id, profile.games.cs2.region);
       fetchCountryRanking(
@@ -117,6 +136,7 @@ export function useFullWidgetInfo(
     }
   }, [
     fetchMatches,
+    fetchInternalMatchesStats,
     fetchLifetimeStats,
     fetchRegionRanking,
     fetchCountryRanking,
@@ -130,6 +150,7 @@ export function useFullWidgetInfo(
     profile,
     profileLoading,
     matches,
+    internalMatchesStats,
     kdr,
     countryRanking,
     regionRanking,

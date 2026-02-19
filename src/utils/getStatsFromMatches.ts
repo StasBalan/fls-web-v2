@@ -12,7 +12,12 @@ export type Stats = {
   adr: number;
 };
 
-export const getStatsFromMatches = (matches: FaceitMatchStats[]): Stats => {
+type StatsFromMatch = Pick<
+  FaceitMatchStats,
+  "isWin" | "kills" | "deaths" | "assists" | "rounds" | "hs" | "damage"
+>;
+
+export const getStatsFromMatches = (matches: StatsFromMatch[]): Stats => {
   if (matches.length === 0) {
     return {
       wins: 0,

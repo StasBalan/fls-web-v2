@@ -36,3 +36,20 @@ export type FaceitMatchStats = {
   hsPercent: number;
   date: number;
 };
+
+export type FaceitInternalMatchStats = {
+  "Kills": string;
+  "Deaths": string;
+  "Assists": string;
+  "Rounds": string;
+  "Headshots": string;
+  "Damage": string;
+  "Result": string;
+  "Match Finished At": number;
+}
+
+export type FaceitInternalMatchStatsResponse = {
+  items: Array<{
+    stats: FaceitInternalMatchStats
+  }>
+}

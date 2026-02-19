@@ -4,3 +4,5 @@ export * from "./mapMatchesToTodayStats";
 export * from "./getEloBeforeToday";
 export * from "./getLastMatchesStats";
 export * from "./getTodayMatchesStats";
+export * from "./getLastInternalMatchesStats";
+export * from "./getTodayInternalMatchesStats";

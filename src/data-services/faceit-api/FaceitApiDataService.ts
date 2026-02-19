@@ -1,13 +1,9 @@
 /* eslint-disable no-useless-catch */
-import { FaceitMatchStats, FaceitProfile } from "@/types";
-import { mapInnerApiMatchStatsToLocal } from "@/utils";
+import { FaceitInternalMatchStats, FaceitInternalMatchStatsResponse, FaceitMatchStats, FaceitProfile } from "@/types";
 
 import {
   faceitInstance,
-  matchesVercelInstance,
-  // matchesWorkerInstance,
 } from "./instances";
-import { eventService } from "@/services";
 
 export class FaceitApiDataService {
   public async getProfile(nickname: string) {
@@ -58,31 +54,42 @@ export class FaceitApiDataService {
     }
   }
 
+  public async getInternalStatsForMatches(id: string): Promise<Array<FaceitInternalMatchStats>> {
+    try {
+      const stats = await faceitInstance.get<FaceitInternalMatchStatsResponse>(`players/${id}/games/cs2/stats?offset=0&limit=30`);
+      const response = stats.data.items.map((item) => item.stats)
+
+      return response;
+    } catch (err: any) {
+      throw err;
+    }
+  }
+
   public async getStatsForMatches(
-    id: string,
+    _id: string,
     _provider: "cloudflare" | "vercel"
   ): Promise<FaceitMatchStats[]> {
     try {
-      // const instance =
-      //   provider === "vercel" ? matchesVercelInstance : matchesWorkerInstance;
+      // // const instance =
+      // //   provider === "vercel" ? matchesVercelInstance : matchesWorkerInstance;
 
-      const instance = matchesVercelInstance;
+      // const instance = matchesVercelInstance;
 
-      const apiCall = await instance.get<
-        Array<
-          Record<string, string> & {
-            date: number;
-          }
-        >
-      >("", { params: { id: id } });
+      // const apiCall = await instance.get<
+      //   Array<
+      //     Record<string, string> & {
+      //       date: number;
+      //     }
+      //   >
+      // >("", { params: { id: id } });
 
-      eventService.track("FaceitApiDataService_success", {
-        method: "getStatsForMatches",
-        id: id,
-        instance: instance.getUri(),
-      });
+      // eventService.track("FaceitApiDataService_success", {
+      //   method: "getStatsForMatches",
+      //   id: id,
+      //   instance: instance.getUri(),
+      // });
 
-      return apiCall.data.map(mapInnerApiMatchStatsToLocal);
+      return []; // apiCall.data.map(mapInnerApiMatchStatsToLocal);
     } catch (err: any) {
       throw err;
     }

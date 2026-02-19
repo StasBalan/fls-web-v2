@@ -3,7 +3,6 @@ import styles from "./CompactTodayWidget.module.scss";
 import { SkillLevelAppearance } from "../SkillLevelAppearance/SkillLevelAppearance";
 import { EloSection } from "../EloSection";
 import { SingleNumericProperty } from "../SingleNumericProperty";
-import { GainArrowProperty } from "../GainArrowProperty";
 import { DoubledNumericProperty } from "../DoubledNumericProperty";
 import { DoubledAnimatedContainersSection } from "../DoubledAnimatedContainersSection";
 
@@ -61,10 +60,10 @@ export function CompactTodayWidget({
           <div className="flex-col items-center justify-center">
             <EloSection elo={elo} isGiant={isGiant} />
 
-            <GainArrowProperty
+            {/* <GainArrowProperty
               value={todayMatchesData.gain}
               isGiant={isGiant}
-            />
+            /> */}
           </div>
 
           {!hideWinsLosses ? (

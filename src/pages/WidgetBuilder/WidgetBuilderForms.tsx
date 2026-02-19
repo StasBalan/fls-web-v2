@@ -3,7 +3,10 @@ import { useRichWidgetData } from "@/features/widget-data";
 import { ErrorHint } from "./ErrorHint";
 import { CompactWidgetBuilder } from "@/components/CompactWidgetBuilder";
 import { RichWidgetBuilder } from "@/components/RichWidgetBuilder";
-import { getLastMatchesStats, getTodayMatchesStats } from "@/utils";
+import {
+  getLastInternalMatchesStats,
+  getTodayInternalMatchesStats,
+} from "@/utils";
 import { CompactTodayWidgetBuilder } from "@/components/CompactTodayWidgetBuilder";
 
 export function WidgetBuilderForms({
@@ -16,6 +19,7 @@ export function WidgetBuilderForms({
   const {
     profileQuery,
     matchesQuery,
+    internalMatchesStatsQuery,
     regionRankQuery,
     countryRankQuery,
     kdrQuery,
@@ -30,7 +34,8 @@ export function WidgetBuilderForms({
     regionRankQuery.isLoading ||
     countryRankQuery.isLoading ||
     kdrQuery.isLoading ||
-    (matchesQuery.isLoading && matchesQuery.errorUpdateCount === 0)
+    (matchesQuery.isLoading && matchesQuery.errorUpdateCount === 0) ||
+    internalMatchesStatsQuery.isLoading
   ) {
     return <Loader />;
   }
@@ -87,10 +92,11 @@ export function WidgetBuilderForms({
           level: profileQuery.data.games.cs2.skill_level,
           rank: regionRankQuery.data || 2000,
           kdr: kdrQuery.data || 1,
-          lastMatchesData: getLastMatchesStats(matchesQuery.data || []),
-          todayMatchesData: getTodayMatchesStats(
-            matchesQuery.data || [],
-            profileQuery.data.games.cs2.faceit_elo
+          lastMatchesData: getLastInternalMatchesStats(
+            internalMatchesStatsQuery.data || []
+          ),
+          todayMatchesData: getTodayInternalMatchesStats(
+            internalMatchesStatsQuery.data || []
           ),
           countryCode: profileQuery.data.country,
           countryRank: countryRankQuery.data || 2000,
@@ -105,9 +111,8 @@ export function WidgetBuilderForms({
         nickname={nickname}
         elo={profileQuery.data.games.cs2.faceit_elo}
         level={profileQuery.data.games.cs2.skill_level}
-        todayMatchesData={getTodayMatchesStats(
-          matchesQuery.data || [],
-          profileQuery.data.games.cs2.faceit_elo
+        todayMatchesData={getTodayInternalMatchesStats(
+          internalMatchesStatsQuery.data || []
         )}
         rank={regionRankQuery.data || 2000}
       />

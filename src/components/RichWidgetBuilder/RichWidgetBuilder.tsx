@@ -33,6 +33,7 @@ export function RichWidgetBuilder({
       gain: number;
       avgKills: number;
       avgKD: number;
+      adr: number;
     };
     countryCode: string;
     countryRank: number;

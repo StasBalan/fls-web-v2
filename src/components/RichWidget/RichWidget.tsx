@@ -6,7 +6,6 @@ import { CountryRankSection } from "../CountryRankSection/CountryRankSection";
 import { KDRSection } from "../KDRSection";
 import { SingleNumericProperty } from "../SingleNumericProperty";
 import { DoubledNumericProperty } from "../DoubledNumericProperty";
-import { GainProperty } from "../GainProperty";
 import { DoubledAnimatedContainersSection } from "../DoubledAnimatedContainersSection";
 
 export function RichWidget({
@@ -39,6 +38,7 @@ export function RichWidget({
     gain: number;
     avgKills: number;
     avgKD: number;
+    adr: number;
   };
   countryCode: string;
   countryRank: number;
@@ -111,7 +111,7 @@ export function RichWidget({
             <>
               <div className={styles.statsHeader}>STATS TODAY</div>
               <div className={styles.statsContainer}>
-                <GainProperty label={"Gain"} value={todayMatchesData.gain} />
+                {/* <GainProperty label={"Gain"} value={todayMatchesData.gain} /> */}
 
                 <div className={styles.matchesPlayedContainer}>
                   <SingleNumericProperty
@@ -138,11 +138,18 @@ export function RichWidget({
                     value: todayMatchesData.avgKills,
                   }}
                   right={{
-                    label: "K/D",
-                    value: todayMatchesData.avgKD
-                      ? todayMatchesData.avgKD.toFixed(2)
-                      : todayMatchesData.avgKD,
+                    label: "ADR",
+                    value: todayMatchesData.adr
+                      ? todayMatchesData.adr.toFixed(1)
+                      : 0,
                   }}
+                />
+
+                <SingleNumericProperty
+                  label={"K/D"}
+                  value={todayMatchesData.avgKD
+                    ? todayMatchesData.avgKD.toFixed(2)
+                    : todayMatchesData.avgKD}
                 />
               </div>
             </>
