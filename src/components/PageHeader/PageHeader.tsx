@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import styles from "./PageHeader.module.scss";
 import { Link } from "@tanstack/react-router";
-import { Logo } from "@/assets/Logo";
+import { LogoNew } from "@/assets/LogoNew";
 import { Button } from "../ui/button";
 import { Telegram } from "@/assets/Telegram";
 import { SelectLanguage } from "../SelectLanguage";
@@ -27,7 +27,7 @@ export function PageHeader({ hideButton = false }: { hideButton?: boolean }) {
       },
       {
         signal: abortController.signal,
-      }
+      },
     );
 
     return () => {
@@ -42,12 +42,12 @@ export function PageHeader({ hideButton = false }: { hideButton?: boolean }) {
       >
         <div className={styles.content}>
           <Link to="/" className={styles.logoContainer}>
-            <Logo className={styles.logoIcon} />
-            <span className="text-[#FF5500]">FACEIT</span> <b>Live Stats</b>
+            <LogoNew className="w-[255px] h-[40px]" />
           </Link>
+
           <div className={styles.buttons}>
             {!hideButton && (
-              <Button asChild>
+              <Button asChild className="font-bold">
                 <Link
                   to="/widget-builder"
                   onClick={() => {

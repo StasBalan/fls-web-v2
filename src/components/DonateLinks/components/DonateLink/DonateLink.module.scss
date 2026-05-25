@@ -11,4 +11,8 @@
   color: var(--widget-background);
 
   font-size: 12px;
+
+  &:hover {
+    opacity: .8;
+  }
 }

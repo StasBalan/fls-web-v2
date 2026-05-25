@@ -15,8 +15,12 @@
   --site-text-secondary: #a3a3a3;
   --site-background: #1f1f1f;
   --site-background-light: #000000;
+  /* it's blue tint */
+  /* --site-background: #080810;
+  --site-background-light: #080810; */
+  /* --site-header-background: #080810cc; */
   --site-background-gradient: linear-gradient(
-    45deg,
+    /* 45deg */ 120deg,
     var(--site-background-light),
     var(--site-background),
     var(--site-background-light)
@@ -49,6 +53,8 @@ body {
 @layer base {
   :root {
     --background: 0 0% 3.9%;
+    /* it's blue tint */
+    /* --background: 240 33% 5%; */
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -76,6 +82,8 @@ body {
   }
   .dark {
     --background: 0 0% 3.9%;
+    /* it's blue tint */
+    /* --background: 240 33% 5%; */
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;

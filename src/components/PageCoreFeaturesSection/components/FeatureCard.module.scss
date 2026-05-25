@@ -1,0 +1,53 @@
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.card {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.proBorder {
+  // border: 1px solid #ffb700;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(251, 191, 36, 0.1),
+    inset 0 0 20px rgba(251, 191, 36, 0.03);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 17px;
+    background: conic-gradient(
+      from var(--angle),
+      transparent 60%,
+      rgba(255, 250, 180, 0.7) 76%,
+      rgba(255, 255, 255, 1) 85%,
+      rgba(255, 250, 180, 0.7) 94%,
+      transparent 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    padding: 2px;
+    animation: border-shimmer 3s linear infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes border-shimmer {
+  to {
+    --angle: 360deg;
+  }
+}

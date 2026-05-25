@@ -1,19 +1,20 @@
+import clsx from "clsx";
 import { DonationAlertLogo, SteamLogo } from "@/assets/companies";
 import { DonateLink } from "./components";
 import styles from "./DonateLinks.module.scss";
 import { useTranslation } from "react-i18next";
 
-export function DonateLinks() {
+export function DonateLinks({ className }: { className?: string }) {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.container}>
+    <div className={clsx(styles.container, className)}>
       <DonateLink
         id={"skins"}
         icon={<SteamLogo className={styles.logo} />}
         label={t("footer.support.skins")}
         link={
-          "https://steamcommunity.com/tradeoffer/new/?partner=408010277&token=vq58SkS9"
+          "https://steamcommunity.com/tradeoffer/new/?partner=348390684&token=BVBMOn5k"
         }
       />
       <DonateLink

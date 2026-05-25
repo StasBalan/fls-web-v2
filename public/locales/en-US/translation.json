@@ -3,10 +3,13 @@
   "description": "Dynamic customizable widgets for OBS <0></0>and other studio software.",
   "button": "Build Widget",
   "footer": {
+    "description": "Real-time match statistics, player analytics, and live game tracking for competitive gaming.",
     "maintainers": "Created and maintained by <0>@podokonikTW</0> & <1>@nymfgg</1>",
     "news": "Follow our telegram channel <0>@faceitlivestats</0> to stay up to date with all the news and updates.",
     "disclaimer": "FACEIT Live Stats is developed independently and is not officially endorsed by or affiliated with FACEIT.",
     "support": {
+      "title": "Support the project",
+      "description": "A project by <0>@podokonikTW</0> and <1>@nymfgg</1>. You can voluntarily support further development by submitting CS2 skins via Steam Trade and donation. There is no compensation — every support helps to cover server and development costs.",
       "skins": "Support with skins",
       "donation": "Support with donation"
     }
@@ -15,7 +18,7 @@
     "title": "CEO <0>nymfgg</0> is streaming on Twitch now"
   },
   "mirror": {
-    "header": "Issues with widget displaying in OBS",
+    "header": "Any issues using the widget in OBS?",
     "description": {
       "solution": "If our site works only with VPN, and widget in OBS is not displayed, please generate and use link through mirror site: <0>faceitlivestats</0>",
       "reason": "Some providers in your country may block access to the main site",
@@ -23,6 +26,46 @@
       "attention": "Attention! Mirror site may be changed and can be unavailable! Subscribe to our telegram to stay up to date!"
     },
     "footer": "You can report other questions and problems in telegram: <0>@faceitlivestats</0>"
+  },
+  "hero": {
+    "badge": "Now with real-time match tracking",
+    "title": "Stream smarter. <0></0>Show your stats.",
+    "description": "Display your FACEIT rank, K/D, and live match stats directly in OBS. Fully customizable widgets that update automatically while you play.",
+    "cta": {
+      "widget": "Build Your Widget",
+      "overlay": "Get your overlay"
+    },
+    "stats": {
+      "streamers": "100+ streamers",
+      "free": "Free to use"
+    }
+  },
+  "coreFeatures": {
+    "badge": "Core Features",
+    "title": "Everything you need to level up your stream",
+    "subtitle": "Powerful widgets and overlays that transform viewer and streamline your broadcast — all updating in real time.",
+    "widget": {
+      "badge": "Faceit Widget",
+      "title": "Everything that matters, in one widget",
+      "description": "Instantly see your current Elo, K/D, and national rank. Tracksession stats, 30-match analytics, and win rates — all in a single customizable overlay.",
+      "features": [
+        "Three display styles — Compact, Compact+, and Rich",
+        "Real-time Elo tracking and session overview",
+        "30-match analytics with win rate, Avg.kills, ADR, K/D, and K/R"
+      ],
+      "cta": "Build Your Widget"
+    },
+    "overlay": {
+      "badge": "Faceit Overlay",
+      "title": "Smart FACEIT Overlay",
+      "description": "This tool makes your stream more engaging and unique. The overlay shows upcoming match info and your end-game statistics.",
+      "features": [
+        "Works with OBS, Streamlabs, and XSplit",
+        "Auto-updates before and after matches",
+        "Unique design"
+      ],
+      "cta": "Get Your Overlay"
+    }
   },
   "builder": {
     "nickname": {
@@ -50,7 +93,11 @@
         "title": "Widget link",
         "description": "Create 'Browser' source in OBS or other studio software and paste this link.",
         "close": "Close",
-        "toast": "Copied."
+        "toast": "Copied.",
+        "upsell": {
+          "title": "Faceit Overlay",
+          "description": "Write us in Telegram to get access to Faceit overlay for your stream"
+        }
       }
     }
   }
