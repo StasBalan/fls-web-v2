@@ -68,5 +68,12 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <script type="module">
+      const mod = await import(
+        "https://cdn.shieldlabs.ai/snippet.js?publicKey=fc9fef973aa3b1edf9d26a4008f31397"
+      );
+      mod.checkAnonymous();
+    </script>
   </body>
 </html>
