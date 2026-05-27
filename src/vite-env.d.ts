@@ -4,6 +4,7 @@
 interface ImportMetaEnv {
   readonly VITE_AMPLITUDE_API_KEY: string;
   readonly VITE_FACEIT_BEARER_TOKEN: string;
+  readonly VITE_SHIELD_PUBLIC_KEY: string;
   // more env variables...
 }
 

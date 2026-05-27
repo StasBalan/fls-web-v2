@@ -6,6 +6,7 @@ import { router } from "./router";
 import "./i18n";
 
 import { eventService } from "./services";
+import { useCheckShieldLabs } from "./useCheckShieldLabs";
 
 eventService.init();
 
@@ -18,6 +19,8 @@ const queryClient = new QueryClient({
 });
 
 function App() {
+  useCheckShieldLabs();
+
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
