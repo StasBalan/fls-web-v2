@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { CheckCircle2 } from "lucide-react";
-import { useRef } from "react";
 import { ProBadge } from "@/components/ProBadge";
 import styles from "./FeatureCard.module.scss";
 
