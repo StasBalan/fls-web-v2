@@ -56,7 +56,7 @@ export function CopyLinkDialog({ buildUrl }: { buildUrl: () => string }) {
               setTimeout(() => setCopied(false), 2000);
             }}
           >
-            <Button type="submit" size="sm" className="px-3">
+            <Button type="submit" size="sm" className="px-3" disabled={copied}>
               {copied ? <Check /> : <Copy />}
             </Button>
           </CopyToClipboard>

@@ -24,7 +24,7 @@ export function PageHeroSection({ widgetPreview }: PageHeroSectionProps) {
   return (
     <section
       className={clsx(
-        "relative w-full min-h-screen pt-[200px] pb-9 px-4",
+        "relative w-full lg:min-h-screen pt-[120px] md:pt-[150px] lg:pt-[200px] pb-[60px] lg:pb-9 px-4",
         styles.section,
       )}
     >
