@@ -56,7 +56,7 @@ export function PageHeroSection({ widgetPreview }: PageHeroSectionProps) {
             </Button>
 
             <Button asChild variant="outline" className="font-bold h-12 px-6">
-              <a href="https://t.me/faceitlivestatss" target="_blank" rel="noopener noreferrer">
+              <a href="https://t.me/fls_overlay_bot" target="_blank" rel="noopener noreferrer">
                 {t("hero.cta.overlay")}
 
                 <ProBadge />

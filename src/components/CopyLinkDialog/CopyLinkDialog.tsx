@@ -64,7 +64,7 @@ export function CopyLinkDialog({ buildUrl }: { buildUrl: () => string }) {
 
         <DialogFooter>
           <a
-            href="https://t.me/faceitlivestatss"
+            href="https://t.me/fls_overlay_bot"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-start justify-between gap-4 rounded-xl border border-[#FFB700]/40 bg-[#FFB700]/5 px-4 py-3 transition-colors hover:bg-[#FFB700]/10"

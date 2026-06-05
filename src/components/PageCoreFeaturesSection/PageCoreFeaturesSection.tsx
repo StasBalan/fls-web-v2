@@ -65,7 +65,7 @@ export function PageCoreFeaturesSection() {
           features={overlayFeatures}
           cta={
             <Button asChild className="w-full font-bold h-12">
-              <a href="https://t.me/faceitlivestatss" target="_blank" rel="noopener noreferrer">
+              <a href="https://t.me/fls_overlay_bot" target="_blank" rel="noopener noreferrer">
                 {t("coreFeatures.overlay.cta")}
                 <ArrowRight className="w-4 h-4" />
               </a>
