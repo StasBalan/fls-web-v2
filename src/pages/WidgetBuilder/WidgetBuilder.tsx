@@ -16,7 +16,6 @@ import { PageHeader } from "@/components/PageHeader";
 import { PageFooter } from "@/components/PageFooter";
 import { useTranslation } from "react-i18next";
 import { eventService } from "@/services";
-
 import { WidgetBuilderForms } from "./WidgetBuilderForms";
 
 export function WidgetBuilder() {
@@ -27,7 +26,7 @@ export function WidgetBuilder() {
     setNickname(value);
   }, 1000);
 
-  const [widgetType, setWidgetType] = useState<string>("compact-today");
+  const [widgetType, setWidgetType] = useState<string>("rich");
 
   useEffect(() => {
     eventService.track("view_widget_builder_page");
@@ -77,7 +76,9 @@ export function WidgetBuilder() {
         <WidgetBuilderForms nickname={nickname} widgetType={widgetType} />
       </div>
 
-      <PageFooter />
+      <div className={styles.footerContainer}>
+        <PageFooter />
+      </div>
     </div>
   );
 }

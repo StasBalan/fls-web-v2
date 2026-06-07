@@ -1,0 +1,17 @@
+.section {
+  position: relative;
+  // For blue theme in the future mb
+  // isolation: isolate;
+
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   inset: 0;
+  //   width: 50vw;
+  //   left: 50%;
+  //   top: 20%;
+  //   transform: translateX(-50%);
+  //   background: radial-gradient(ellipse at center, #1a1a2e 0%, #141421 25%, #080810 70%);
+  //   z-index: -1;
+  // }
+}

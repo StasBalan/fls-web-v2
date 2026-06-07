@@ -1,66 +1,66 @@
-import clsx from "clsx";
-import styles from "./PageFooter.module.scss";
 import { Trans, useTranslation } from "react-i18next";
-import { eventService } from "@/services";
+import { Link } from "@tanstack/react-router";
+import { LogoNew } from "@/assets/LogoNew";
 import { DonateLinks } from "../DonateLinks/DonateLinks";
+import { eventService } from "@/services";
 
 export function PageFooter() {
-  useTranslation();
+  const { t } = useTranslation();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className={styles.container}>
-      <div>
-        <Trans
-          i18nKey="footer.maintainers"
-          components={[
-            <a
-              href={"https://www.twitch.tv/podokoniktw/about"}
-              target="_blank"
-              className={clsx(styles.link, styles.twitch)}
-              onClick={() => {
-                eventService.track("twitch_click", {
-                  source: "footer",
-                  value: "podokoniktw",
-                });
-              }}
-            />,
-            <a
-              href={"https://www.twitch.tv/nymfgg/about"}
-              target="_blank"
-              className={clsx(styles.link, styles.twitch)}
-              onClick={() => {
-                eventService.track("twitch_click", {
-                  source: "footer",
-                  value: "nymfgg",
-                });
-              }}
-            />,
-          ]}
-        />
+    <footer className="w-full px-3 py-8 border-t border-white/[0.08] text-sm text-[var(--site-text-secondary)]">
+      <div className="flex flex-col gap-8 mb-8 md:flex-row md:justify-between md:gap-12">
+        <div className="flex flex-col gap-3 max-w-[280px]">
+          <Link to="/" className="w-fit">
+            <LogoNew />
+          </Link>
+          <p className="text-[13px]">{t("footer.description")}</p>
+        </div>
+
+        <div className="flex flex-col gap-3 max-w-[400px]">
+          <h3 className="text-[13px] font-bold text-[var(--site-text)]">
+            {t("footer.support.title")}
+          </h3>
+
+          <p className="text-[13px]">
+            <Trans
+              i18nKey="footer.support.description"
+              components={[
+                <a
+                  href="https://www.twitch.tv/podokoniktw/about"
+                  target="_blank"
+                  className="text-[#b98dfb] font-semibold underline underline-offset-2"
+                  onClick={() =>
+                    eventService.track("twitch_click", {
+                      source: "footer",
+                      value: "podokoniktw",
+                    })
+                  }
+                />,
+                <a
+                  href="https://www.twitch.tv/nymfgg/about"
+                  target="_blank"
+                  className="text-[#b98dfb] font-semibold underline underline-offset-2"
+                  onClick={() =>
+                    eventService.track("twitch_click", {
+                      source: "footer",
+                      value: "nymfgg",
+                    })
+                  }
+                />,
+              ]}
+            />
+          </p>
+
+          <DonateLinks />
+        </div>
       </div>
 
-      <div>
-        <Trans
-          i18nKey="footer.news"
-          components={[
-            <a
-              href={"https://t.me/faceitlivestats"}
-              target="_blank"
-              className={clsx(styles.link, styles.telegram)}
-              onClick={() => {
-                eventService.track("telegram_click", {
-                  source: "footer",
-                });
-              }}
-            />,
-          ]}
-        />
-      </div>
+      <div className="flex flex-col gap-2 text-xs opacity-60 md:flex-row md:justify-between md:items-center">
+        <span>© {year} FACEIT Live Stats</span>
 
-      <DonateLinks />
-
-      <div className={styles.disclaimer}>
-        <Trans i18nKey="footer.disclaimer" />
+        <span>{t("footer.disclaimer")}</span>
       </div>
     </footer>
   );
