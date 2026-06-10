@@ -25,7 +25,7 @@ export function PageHeroSection({ widgetPreview }: PageHeroSectionProps) {
     <section
       className={clsx(
         "relative w-full lg:min-h-screen pt-[120px] md:pt-[150px] lg:pt-[200px] pb-[60px] lg:pb-9 px-4",
-        styles.section,
+        styles.section
       )}
     >
       <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -56,7 +56,17 @@ export function PageHeroSection({ widgetPreview }: PageHeroSectionProps) {
             </Button>
 
             <Button asChild variant="outline" className="font-bold h-12 px-6">
-              <a href="https://t.me/fls_overlay_bot" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://t.me/fls_overlay_bot"
+                onClick={() => {
+                  console.log("penim");
+                  eventService.track("get_overlay_click", {
+                    source: "hero",
+                  });
+                }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {t("hero.cta.overlay")}
 
                 <ProBadge />

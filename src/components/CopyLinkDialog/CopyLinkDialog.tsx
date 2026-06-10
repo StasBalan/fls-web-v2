@@ -18,6 +18,7 @@ import { useTranslation } from "react-i18next";
 import { DonateLinks } from "../DonateLinks";
 import { ProBadge } from "../ProBadge";
 import { MirrorInfoCard } from "../MirrorInfoCard";
+import { eventService } from "@/services";
 
 export function CopyLinkDialog({ buildUrl }: { buildUrl: () => string }) {
   const { t } = useTranslation();
@@ -65,6 +66,11 @@ export function CopyLinkDialog({ buildUrl }: { buildUrl: () => string }) {
         <DialogFooter>
           <a
             href="https://t.me/fls_overlay_bot"
+            onClick={() => {
+              eventService.track("get_overlay_click", {
+                source: "widget_link_copy_dialog",
+              });
+            }}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-start justify-between gap-4 rounded-xl border border-[#FFB700]/40 bg-[#FFB700]/5 px-4 py-3 transition-colors hover:bg-[#FFB700]/10"
