@@ -56,7 +56,7 @@ export function RichWidgetBuilder({
         hideChallenger: !showChallenger,
         hideRank: !showRank,
       },
-      { user_id: nickname }
+      { user_id: nickname },
     );
 
     return `${window.location.origin}/widget-rich?hideRank=${!showRank}&hideChallenger=${!showChallenger}&transparent=${transparent}&nickname=${nickname}`;

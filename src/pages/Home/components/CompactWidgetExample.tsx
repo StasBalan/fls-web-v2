@@ -12,6 +12,7 @@ export function CompactWidgetExample({
     elo: number;
     level: number;
     rank: number;
+    countryRank: number;
   }>;
   duration: number;
   rounded: boolean;
@@ -43,6 +44,7 @@ export function CompactWidgetExample({
       elo={currentData.elo}
       level={currentData.elo}
       rank={currentData.rank}
+      countryRank={currentData.countryRank}
       transparent={false}
       rounded={rounded}
       hideChallenger={hideChallenger}

@@ -10,6 +10,7 @@ import {
   SkillLevel7,
   SkillLevel8,
   SkillLevel9,
+  SkillLevelUnranked,
 } from "@/assets/skill-level";
 import { ChallengerSection } from "../ChallengerSection";
 
@@ -49,14 +50,20 @@ export function SkillLevelAppearance({
   hideChallenger = false,
   hideRank = false,
   isGiant = false,
+  unranked,
 }: {
   level: number;
   rank: number;
   hideChallenger?: boolean;
   hideRank?: boolean;
   isGiant?: boolean;
+  unranked: boolean;
 }) {
   const classNames = clsx(styles.icon, isGiant && styles.iconGiant);
+
+  if (unranked) {
+    return <SkillLevelUnranked className={classNames} />;
+  }
 
   if (level < 10) {
     const SkillLevelIconComponent = getSkillLevelIcon(level);

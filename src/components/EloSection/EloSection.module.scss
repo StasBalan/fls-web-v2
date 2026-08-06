@@ -3,8 +3,18 @@
   line-height: 18px;
   font-weight: bold;
 
+  &Unranked {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
   &Giant {
     font-size: 54px;
     line-height: 54px;
+  }
+
+  &UnrankedGiant {
+    font-size: 48px;
+    line-height: 48px;
   }
 }

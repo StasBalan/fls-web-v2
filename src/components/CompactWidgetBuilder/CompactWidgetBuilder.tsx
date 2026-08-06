@@ -15,11 +15,13 @@ export function CompactWidgetBuilder({
   level,
   rank,
   nickname,
+  countryRank,
 }: {
   elo: number;
   level: number;
   rank: number;
   nickname: string;
+  countryRank: number;
 }) {
   const { t } = useTranslation();
 
@@ -42,7 +44,7 @@ export function CompactWidgetBuilder({
         hideChallenger: !showChallenger,
         hideRank: !showRank,
       },
-      { user_id: nickname }
+      { user_id: nickname },
     );
 
     return `${window.location.origin}/widget-compact?hideRank=${!showRank}&hideChallenger=${!showChallenger}&rounded=${rounded}&transparent=${transparent}&isGiant=${isGiant}&nickname=${nickname}`;
@@ -55,6 +57,7 @@ export function CompactWidgetBuilder({
           elo={elo}
           level={level}
           rank={rank}
+          countryRank={countryRank}
           transparent={transparent}
           rounded={rounded}
           hideChallenger={!showChallenger}

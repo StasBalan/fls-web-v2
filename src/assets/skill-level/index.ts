@@ -10,3 +10,4 @@ export * from "./SkillLevel8";
 export * from "./SkillLevel9";
 export * from "./SkillLevel10";
 export * from "./SkillLevelChallenger";
+export * from "./SkillLevelUnranked";

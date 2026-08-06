@@ -18,7 +18,7 @@ export function CountryRankSection({
       />
       <div className={styles.rank}>
         <span>#</span>
-        <AnimatedNumber value={rank} />
+        {rank === 0 ? <span>TBD</span> : <AnimatedNumber value={rank} />}
       </div>
     </div>
   );

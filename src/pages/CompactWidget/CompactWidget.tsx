@@ -12,10 +12,8 @@ export function CompactWidget() {
   const { nickname, hideRank, hideChallenger, rounded, transparent, isGiant } =
     routeApi.useSearch();
 
-  const { profileQuery, regionRankQuery } = useCompactWidgetData(
-    nickname,
-    true
-  );
+  const { profileQuery, regionRankQuery, countryRankQuery } =
+    useCompactWidgetData(nickname, true);
 
   useEffect(() => {
     eventService.track("view_widget_page", { type: "compact" });
@@ -30,7 +28,7 @@ export function CompactWidget() {
           nickname: nickname,
           elo: profileQuery.data.games.cs2.faceit_elo,
         },
-        { user_id: nickname }
+        { user_id: nickname },
       );
     }
   }, [nickname, profileQuery.data?.games?.cs2?.faceit_elo]);
@@ -39,7 +37,11 @@ export function CompactWidget() {
     return <div>Error: No nickname found in URL.</div>;
   }
 
-  if (profileQuery.isLoading || regionRankQuery.isLoading) {
+  if (
+    profileQuery.isLoading ||
+    regionRankQuery.isLoading ||
+    countryRankQuery.isLoading
+  ) {
     return <Loader />; // loading
   }
 
@@ -72,7 +74,8 @@ export function CompactWidget() {
       <CompactWidgetComponent
         elo={elo}
         level={level}
-        rank={regionRankQuery.data || 2000} // change
+        rank={regionRankQuery.data || 0}
+        countryRank={countryRankQuery.data || 0}
         hideRank={hideRank}
         hideChallenger={hideChallenger}
         rounded={rounded}

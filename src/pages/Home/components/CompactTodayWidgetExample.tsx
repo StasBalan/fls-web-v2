@@ -13,6 +13,7 @@ export function CompactTodayWidgetExample({
     elo: number;
     level: number;
     rank: number;
+    countryRank: number;
     todayMatchesData: {
       wins: number;
       losses: number;
@@ -52,6 +53,7 @@ export function CompactTodayWidgetExample({
       elo={currentData.elo}
       level={currentData.elo}
       rank={currentData.rank}
+      countryRank={currentData.countryRank}
       todayMatchesData={currentData.todayMatchesData}
       transparent={false}
       rounded={rounded}

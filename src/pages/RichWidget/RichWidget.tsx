@@ -2,7 +2,10 @@ import { Loader } from "@/components/Loader";
 import { RichWidget as RichWidgetComponent } from "@/components/RichWidget";
 import { useRichWidgetData } from "@/features/widget-data";
 import { eventService } from "@/services";
-import { getLastInternalMatchesStats, getTodayInternalMatchesStats } from "@/utils";
+import {
+  getLastInternalMatchesStats,
+  getTodayInternalMatchesStats,
+} from "@/utils";
 import { getRouteApi } from "@tanstack/react-router";
 import { useEffect } from "react";
 
@@ -34,7 +37,7 @@ export function RichWidget() {
           nickname: nickname,
           elo: profileQuery.data.games.cs2.faceit_elo,
         },
-        { user_id: nickname }
+        { user_id: nickname },
       );
     }
   }, [nickname, profileQuery.data?.games?.cs2?.faceit_elo]);
@@ -48,8 +51,8 @@ export function RichWidget() {
     regionRankQuery.isLoading ||
     countryRankQuery.isLoading ||
     kdrQuery.isLoading ||
-    (matchesQuery.isLoading && matchesQuery.errorUpdateCount === 0)||
-    (internalMatchesStatsQuery.isLoading)
+    (matchesQuery.isLoading && matchesQuery.errorUpdateCount === 0) ||
+    internalMatchesStatsQuery.isLoading
   ) {
     return <Loader />; // loading
   }
@@ -83,12 +86,16 @@ export function RichWidget() {
       <RichWidgetComponent
         elo={elo}
         level={level}
-        rank={regionRankQuery.data || 2000} // change
-        kdr={kdrQuery.data || 1} // change
-        lastMatchesData={getLastInternalMatchesStats(internalMatchesStatsQuery.data || [])}
-        todayMatchesData={getTodayInternalMatchesStats(internalMatchesStatsQuery.data || [])}
+        rank={regionRankQuery.data || 0}
+        kdr={kdrQuery.data || 1}
+        lastMatchesData={getLastInternalMatchesStats(
+          internalMatchesStatsQuery.data || [],
+        )}
+        todayMatchesData={getTodayInternalMatchesStats(
+          internalMatchesStatsQuery.data || [],
+        )}
         countryCode={profileQuery.data.country}
-        countryRank={countryRankQuery.data || 2000} // change
+        countryRank={countryRankQuery.data || 0}
         hideRank={hideRank}
         hideChallenger={hideChallenger}
         transparent={transparent}

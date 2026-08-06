@@ -13,12 +13,14 @@ export function CompactTodayWidgetBuilder({
   elo,
   level,
   rank,
+  countryRank,
   todayMatchesData,
   nickname,
 }: {
   elo: number;
   level: number;
   rank: number;
+  countryRank: number;
   todayMatchesData: {
     wins: number;
     losses: number;
@@ -53,7 +55,7 @@ export function CompactTodayWidgetBuilder({
         hideRank: !showRank,
         hideWinsLosses: !showWinsLosses,
       },
-      { user_id: nickname }
+      { user_id: nickname },
     );
 
     return `${window.location.origin}/widget-compact-today?hideRank=${!showRank}&hideChallenger=${!showChallenger}&hideWinsLosses=${!showWinsLosses}&rounded=${rounded}&transparent=${transparent}&isGiant=${isGiant}&nickname=${nickname}`;
@@ -66,6 +68,7 @@ export function CompactTodayWidgetBuilder({
           elo={elo}
           level={level}
           rank={rank}
+          countryRank={countryRank}
           todayMatchesData={todayMatchesData}
           transparent={transparent}
           rounded={rounded}

@@ -51,7 +51,7 @@ export function RichWidget({
       <div
         className={clsx(
           styles.container,
-          transparent && styles.container_transparent
+          transparent && styles.container_transparent,
         )}
       >
         <div className={styles.topSection}>
@@ -61,8 +61,9 @@ export function RichWidget({
               rank={rank}
               hideChallenger={hideChallenger}
               hideRank={hideRank}
+              unranked={countryRank === 0}
             />
-            <EloSection elo={elo} />
+            <EloSection elo={elo} unranked={countryRank === 0} />
           </div>
 
           <KDRSection kdr={kdr} />
@@ -119,7 +120,7 @@ export function RichWidget({
                     value={todayMatchesData.wins}
                     wrapperClassName={clsx(
                       styles.matchesPlayedProperty,
-                      styles.matchesPlayedPropertyWin
+                      styles.matchesPlayedPropertyWin,
                     )}
                   />
                   <SingleNumericProperty
@@ -127,7 +128,7 @@ export function RichWidget({
                     value={todayMatchesData.losses}
                     wrapperClassName={clsx(
                       styles.matchesPlayedProperty,
-                      styles.matchesPlayedPropertyLoss
+                      styles.matchesPlayedPropertyLoss,
                     )}
                   />
                 </div>
@@ -147,9 +148,11 @@ export function RichWidget({
 
                 <SingleNumericProperty
                   label={"K/D"}
-                  value={todayMatchesData.avgKD
-                    ? todayMatchesData.avgKD.toFixed(2)
-                    : todayMatchesData.avgKD}
+                  value={
+                    todayMatchesData.avgKD
+                      ? todayMatchesData.avgKD.toFixed(2)
+                      : todayMatchesData.avgKD
+                  }
                 />
               </div>
             </>

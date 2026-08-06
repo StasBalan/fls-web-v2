@@ -17,6 +17,7 @@ export function CompactTodayWidget({
   transparent = false,
   rounded = false,
   isGiant = false,
+  countryRank,
 }: {
   elo: number;
   level: number;
@@ -34,6 +35,7 @@ export function CompactTodayWidget({
   transparent?: boolean;
   rounded?: boolean;
   isGiant?: boolean;
+  countryRank: number;
 }) {
   return (
     // key to fix Safari issue with not re-rendering width
@@ -43,7 +45,7 @@ export function CompactTodayWidget({
           styles.container,
           transparent && styles.container_transparent,
           rounded && styles.container_rounded,
-          isGiant && styles.containerGiant
+          isGiant && styles.containerGiant,
         )}
       >
         <div className={clsx(styles.content, isGiant && styles.contentGiant)}>
@@ -54,11 +56,16 @@ export function CompactTodayWidget({
               hideChallenger={hideChallenger}
               hideRank={hideRank}
               isGiant={isGiant}
+              unranked={countryRank === 0}
             />
           </div>
 
           <div className="flex-col items-center justify-center">
-            <EloSection elo={elo} isGiant={isGiant} />
+            <EloSection
+              elo={elo}
+              isGiant={isGiant}
+              unranked={countryRank === 0}
+            />
 
             {/* <GainArrowProperty
               value={todayMatchesData.gain}
@@ -95,7 +102,7 @@ export function CompactTodayWidget({
                     value={todayMatchesData.wins}
                     wrapperClassName={clsx(
                       styles.matchesPlayedProperty,
-                      styles.matchesPlayedPropertyWin
+                      styles.matchesPlayedPropertyWin,
                     )}
                     valueClassName={styles.matchesPlayedPropertyValue}
                     labelClassName={styles.matchesPlayedPropertyLabel}
@@ -105,7 +112,7 @@ export function CompactTodayWidget({
                     value={todayMatchesData.losses}
                     wrapperClassName={clsx(
                       styles.matchesPlayedProperty,
-                      styles.matchesPlayedPropertyLoss
+                      styles.matchesPlayedPropertyLoss,
                     )}
                     valueClassName={styles.matchesPlayedPropertyValue}
                     labelClassName={styles.matchesPlayedPropertyLabel}

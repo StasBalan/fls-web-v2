@@ -78,7 +78,8 @@ export function WidgetBuilderForms({
         nickname={nickname}
         elo={profileQuery.data.games.cs2.faceit_elo}
         level={profileQuery.data.games.cs2.skill_level}
-        rank={regionRankQuery.data || 2000}
+        rank={regionRankQuery.data || 0}
+        countryRank={countryRankQuery.data || 0}
       />
     );
   }
@@ -90,16 +91,16 @@ export function WidgetBuilderForms({
         data={{
           elo: profileQuery.data.games.cs2.faceit_elo,
           level: profileQuery.data.games.cs2.skill_level,
-          rank: regionRankQuery.data || 2000,
+          rank: regionRankQuery.data || 0,
           kdr: kdrQuery.data || 1,
           lastMatchesData: getLastInternalMatchesStats(
-            internalMatchesStatsQuery.data || []
+            internalMatchesStatsQuery.data || [],
           ),
           todayMatchesData: getTodayInternalMatchesStats(
-            internalMatchesStatsQuery.data || []
+            internalMatchesStatsQuery.data || [],
           ),
           countryCode: profileQuery.data.country,
-          countryRank: countryRankQuery.data || 2000,
+          countryRank: countryRankQuery.data || 0,
         }}
       />
     );
@@ -112,9 +113,10 @@ export function WidgetBuilderForms({
         elo={profileQuery.data.games.cs2.faceit_elo}
         level={profileQuery.data.games.cs2.skill_level}
         todayMatchesData={getTodayInternalMatchesStats(
-          internalMatchesStatsQuery.data || []
+          internalMatchesStatsQuery.data || [],
         )}
-        rank={regionRankQuery.data || 2000}
+        rank={regionRankQuery.data || 0}
+        countryRank={countryRankQuery.data || 0}
       />
     );
   }

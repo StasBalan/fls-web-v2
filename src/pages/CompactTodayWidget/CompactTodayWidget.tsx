@@ -19,10 +19,13 @@ export function CompactTodayWidget() {
     isGiant,
   } = routeApi.useSearch();
 
-  const { profileQuery, matchesQuery, internalMatchesStatsQuery, regionRankQuery } = useRichWidgetData(
-    nickname,
-    true
-  );
+  const {
+    profileQuery,
+    matchesQuery,
+    internalMatchesStatsQuery,
+    regionRankQuery,
+    countryRankQuery,
+  } = useRichWidgetData(nickname, true);
 
   useEffect(() => {
     eventService.track("view_widget_page", { type: "compact-today" });
@@ -37,7 +40,7 @@ export function CompactTodayWidget() {
           nickname: nickname,
           elo: profileQuery.data.games.cs2.faceit_elo,
         },
-        { user_id: nickname }
+        { user_id: nickname },
       );
     }
   }, [nickname, profileQuery.data?.games?.cs2?.faceit_elo]);
@@ -49,8 +52,9 @@ export function CompactTodayWidget() {
   if (
     profileQuery.isLoading ||
     regionRankQuery.isLoading ||
-    (matchesQuery.isLoading && matchesQuery.errorUpdateCount === 0)||
-    (internalMatchesStatsQuery.isLoading)
+    countryRankQuery.isLoading ||
+    (matchesQuery.isLoading && matchesQuery.errorUpdateCount === 0) ||
+    internalMatchesStatsQuery.isLoading
   ) {
     return <Loader />; // loading
   }
@@ -84,8 +88,11 @@ export function CompactTodayWidget() {
       <CompactTodayWidgetComponent
         elo={elo}
         level={level}
-        rank={regionRankQuery.data || 2000} // change
-        todayMatchesData={getTodayInternalMatchesStats(internalMatchesStatsQuery.data || [])}
+        rank={regionRankQuery.data || 0}
+        countryRank={countryRankQuery.data || 0}
+        todayMatchesData={getTodayInternalMatchesStats(
+          internalMatchesStatsQuery.data || [],
+        )}
         hideRank={hideRank}
         hideChallenger={hideChallenger}
         hideWinsLosses={hideWinsLosses}

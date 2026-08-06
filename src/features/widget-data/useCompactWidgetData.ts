@@ -3,17 +3,23 @@ import { useQueryClient } from "@tanstack/react-query";
 
 import { useProfile } from "./useProfile";
 import { useRegionRank } from "./useRegionRank";
+import { useCountryRank } from "./useCountryRank";
 
 export function useCompactWidgetData(
   nickname: string,
-  shouldRepeat: boolean = true
+  shouldRepeat: boolean = true,
 ) {
   const queryClient = useQueryClient();
 
   const profileQuery = useProfile(nickname);
   const regionRankQuery = useRegionRank(
     profileQuery.data?.player_id,
-    profileQuery.data?.games.cs2.region
+    profileQuery.data?.games.cs2.region,
+  );
+  const countryRankQuery = useCountryRank(
+    profileQuery.data?.player_id,
+    profileQuery.data?.games?.cs2?.region,
+    profileQuery.data?.country,
   );
 
   useEffect(() => {
@@ -38,5 +44,6 @@ export function useCompactWidgetData(
   return {
     profileQuery,
     regionRankQuery,
+    countryRankQuery,
   };
 }
